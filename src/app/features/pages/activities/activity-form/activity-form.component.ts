@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+
 
 @Component({
   selector: 'app-activity-form',
@@ -7,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityFormComponent implements OnInit {
   title = 'base-ong-angular-client';
+
+  public Editor = ClassicEditor;
 
   constructor() { }
 

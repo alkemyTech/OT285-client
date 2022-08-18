@@ -11,6 +11,12 @@ import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.comp
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 
+//Material
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input'; 
+import { MatButtonModule } from '@angular/material/button'; 
+
 @NgModule({
   declarations: [
     ActivityFormComponent,
@@ -31,8 +37,16 @@ import { UserFormComponent } from "./pages/users/user-form/user-form.component";
     SlidesFormComponent,
     TestimonialFormComponent,
     UserFormComponent,
-    RouterModule
+    RouterModule,
   ],
-  imports: [CommonModule, AppRoutingModule, RouterModule],
+  imports: [
+    CommonModule, 
+    AppRoutingModule, 
+    RouterModule, 
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule
+  ],
 })
 export class FeaturesModule {}

@@ -10,6 +10,8 @@ import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 export class SlidesFormComponent implements OnInit {
   form: FormGroup;
   public Editor = ClassicEditor;
+  slideEmpty!: boolean;
+  slideData!: any;
 
   constructor(
     private formBuilder: FormBuilder // Se inyecta => private http: HttpService
@@ -22,9 +24,49 @@ export class SlidesFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /* Obtengo el objeto slide y lo inserto en el formulario,
+     si el objeto viene vacio, slideEmpty sera true.
+    */
+    /* 
+    this.http.get(PARAMETROS).subscribe((data)=> {
+    this.slideData = data;
+    this.name?.setValue(data.name);
+    this.description?.setValue(data.description);
+    this.image?.setValue(data.image);
+    this.order?.setValue(data.order);
 
-  sendSlide(event: Event) {}
+    if(this.name == "" && this.description == "" && this.image == "" && this.order == ""){
+      this.slideEmpty = true
+    } else { this.slideEmpty = false }
+    })
+    
+    */
+  }
+
+  sendSlide(event: Event) {
+    event.preventDefault;
+    let url = "";
+    let newForm: any = {
+      name: this.name?.value,
+      description: this.description?.value,
+      image: this.image?.value,
+      order: this.order?.value,
+    };
+    if (this.slideEmpty) {
+      url = "/Slides/create";
+      /*
+      this.http.post(url, newForm).subscribe() 
+      */
+    } else if (!this.slideEmpty) {
+      url = "/Slides/"; // + this.slideData.id;
+      /*
+      this.http.patch(url, newForm).subscribe() 
+      */
+    }
+    //To Delete
+    console.log(newForm);
+  }
 
   //Form Getters
   get name() {

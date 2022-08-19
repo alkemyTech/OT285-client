@@ -1,17 +1,12 @@
-<div class="flex-container">
-  <div *ngIf="!slideEmpty" class="flex-item">
-    <h2>Editar Slide</h2>
+<div class="form-container">
+  <div *ngIf="!slideEmpty">
+    <h1>Editar Slide</h1>
   </div>
-  <div *ngIf="slideEmpty" class="flex-item">
-    <h2>Crear Slide</h2>
+  <div *ngIf="slideEmpty">
+    <h1>Crear Slide</h1>
   </div>
-  <form
-    #f="ngForm"
-    class="flex-item"
-    [formGroup]="form"
-    (ngSubmit)="sendSlide($event)"
-  >
-    <div class="align-start">
+  <form #f="ngForm" [formGroup]="form" (ngSubmit)="sendSlide($event)">
+    <div class="input-form">
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input
@@ -21,7 +16,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="align-start">
+    <div class="input-form">
       <mat-form-field appearance="fill">
         <mat-label>Imagen</mat-label>
         <input
@@ -31,7 +26,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="align-start">
+    <div class="input-form">
       <mat-form-field appearance="fill">
         <mat-label>Order</mat-label>
         <input
@@ -41,7 +36,7 @@
         />
       </mat-form-field>
     </div>
-    <div style="width: 500px">
+    <div class="input-form">
       <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
     </div>
     <button
@@ -49,7 +44,7 @@
       mat-raised-button
       [disabled]="!f.valid"
       color="primary"
-      style="margin-top: 10px"
+      class="section-buttons"
     >
       Enviar
     </button>

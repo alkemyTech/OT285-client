@@ -1,1 +1,36 @@
-<p>categories-form works!</p>
+
+<form [formGroup]="categoriesForm">
+  <h1 >Categorias</h1>
+  <div class="form-container">
+    <mat-form-field class="input-form" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput maxlength="256" placeholder="Ingrese un nombre..." formControlName="name" />
+      <mat-error *ngIf="categoriesForm.controls.name.hasError('required')">
+        Debes ingresar un nombre
+      </mat-error>
+      <mat-error *ngIf="categoriesForm.controls.name.hasError('minlength')">
+        El nombre debe tener por lo menos 4 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <div>
+      <button type="button" mat-raised-button (click)="fileInput.click()">Elegir Imagen</button>
+      <input hidden (change)="onFileSelected($event)" #fileInput type="file" />
+      <span class="file-name">{{ categoriesForm.value.image?.name }}</span>
+      <mat-error *ngIf="categoriesForm.controls.image.hasError('required') && categoriesForm.controls.image.touched">
+        Debes elegir una imagen
+      </mat-error>
+    </div>
+
+    <div class="mt">
+      <ckeditor formControlName="description" [editor]="Editor" [config]="editorConfig"></ckeditor>
+      <mat-error *ngIf="categoriesForm.controls.image.hasError('required') && categoriesForm.controls.image.touched">
+        Debes elegir una imagen
+      </mat-error>
+    </div>
+
+    <div class="section-buttons">
+      <button mat-raised-button color="primary" (click)="sendForm()">Crear</button>
+    </div>
+  </div>
+</form>

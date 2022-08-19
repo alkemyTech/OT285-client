@@ -1,1 +1,57 @@
-<p>slides-form works!</p>
+<div class="flex-container">
+  <div *ngIf="!slideEmpty" class="flex-item">
+    <h2>Editar Slide</h2>
+  </div>
+  <div *ngIf="slideEmpty" class="flex-item">
+    <h2>Crear Slide</h2>
+  </div>
+  <form
+    #f="ngForm"
+    class="flex-item"
+    [formGroup]="form"
+    (ngSubmit)="sendSlide($event)"
+  >
+    <div class="align-start">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          placeholder="Introduce un Nombre"
+          formControlName="name"
+        />
+      </mat-form-field>
+    </div>
+    <div class="align-start">
+      <mat-form-field appearance="fill">
+        <mat-label>Imagen</mat-label>
+        <input
+          matInput
+          placeholder="Introduce una Imagen"
+          formControlName="image"
+        />
+      </mat-form-field>
+    </div>
+    <div class="align-start">
+      <mat-form-field appearance="fill">
+        <mat-label>Order</mat-label>
+        <input
+          matInput
+          placeholder="Introduce un Orden"
+          formControlName="order"
+        />
+      </mat-form-field>
+    </div>
+    <div style="width: 500px">
+      <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
+    </div>
+    <button
+      type="submit"
+      mat-raised-button
+      [disabled]="!f.valid"
+      color="primary"
+      style="margin-top: 10px"
+    >
+      Enviar
+    </button>
+  </form>
+</div>

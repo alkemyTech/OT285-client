@@ -6,47 +6,43 @@
     <h1>Crear Slide</h1>
   </div>
   <form #f="ngForm" [formGroup]="form" (ngSubmit)="sendSlide($event)">
-    <div class="input-form">
-      <mat-form-field appearance="fill">
-        <mat-label>Nombre</mat-label>
-        <input
-          matInput
-          placeholder="Introduce un Nombre"
-          formControlName="name"
-        />
-      </mat-form-field>
-    </div>
-    <div class="input-form">
-      <mat-form-field appearance="fill">
-        <mat-label>Imagen</mat-label>
-        <input
-          matInput
-          placeholder="Introduce una Imagen"
-          formControlName="image"
-        />
-      </mat-form-field>
-    </div>
-    <div class="input-form">
-      <mat-form-field appearance="fill">
-        <mat-label>Order</mat-label>
-        <input
-          matInput
-          placeholder="Introduce un Orden"
-          formControlName="order"
-        />
-      </mat-form-field>
-    </div>
+    <mat-form-field class="input-form" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        placeholder="Introduce un Nombre"
+        formControlName="name"
+      />
+    </mat-form-field>
+    <mat-form-field class="input-form" appearance="fill">
+      <mat-label>Imagen</mat-label>
+      <input
+        matInput
+        placeholder="Introduce una Imagen"
+        formControlName="image"
+      />
+    </mat-form-field>
+    <mat-form-field class="input-form" appearance="fill">
+      <mat-label>Order</mat-label>
+      <input
+        matInput
+        placeholder="Introduce un Orden"
+        formControlName="order"
+      />
+    </mat-form-field>
     <div class="input-form">
       <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
     </div>
-    <button
-      type="submit"
-      mat-raised-button
-      [disabled]="!f.valid"
-      color="primary"
-      class="section-buttons"
-    >
-      Enviar
-    </button>
+    <div class="section-buttons">
+      <button
+        type="submit"
+        mat-raised-button
+        [disabled]="!f.valid"
+        color="primary"
+      >
+        Enviar
+      </button>
+      <button mat-raised-button color="accent">Cancelar</button>
+    </div>
   </form>
 </div>

@@ -1,48 +1,22 @@
-<body style="background-color: black;">
+<div class="form-container">
+
+
+  <form class="example-form">
+      <mat-form-field class="input-form" appearance="fill">
+        <mat-label>Message</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+      </mat-form-field>
+    </form>
     
-<h1>HOLA</h1>
-<form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Message</mat-label>
-      <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-    </mat-form-field>
-  </form>
-  
-<p>
-    <mat-form-field appearance="fill">
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>   
 
+    <div>
+      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+    </div>
 
-    </mat-form-field>
-    <button mat-raised-button color="primary">BOTON</button>
-      <button mat-raised-button color="accent">BOTON ACCENT</button>
-      <button mat-raised-button color="warn">BOTON WARN</button>
-  </p>
-  <p>
-    <mat-form-field appearance="standard">
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill">
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-  </p>
+    <div class="section-buttons">
 
+      <button mat-raised-button color="accent">Cancelar</button>
+      <button mat-raised-button color="primary">Enviar</button>
+    </div>
 
-  <div style="width: 500px;">
-    <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
-  </div>
-
-</body> 
-
-
+</div >

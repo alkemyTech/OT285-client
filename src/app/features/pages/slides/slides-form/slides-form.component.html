@@ -28,10 +28,11 @@
         El Order es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-    <div class="input-form">
+    <div class="mt-20">
       <mat-label style="display: block">Elegir Imagen</mat-label>
       <input
         type="file"
+        class="input-form"
         placeholder="Introduce una Imagen"
         formControlName="image"
         (change)="loadImg($event)"
@@ -40,9 +41,13 @@
         Una Imagen es <strong>requerida</strong>
       </mat-error>
     </div>
-    <div class="input-form" style="margin-top: 20px">
+    <div class="mt-20">
       <mat-label style="display: block">Descripción</mat-label>
-      <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
+      <ckeditor
+        class="input-form"
+        [editor]="Editor"
+        formControlName="description"
+      ></ckeditor>
       <mat-error
         *ngIf="description?.hasError('required') && description?.touched"
       >

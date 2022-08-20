@@ -68,6 +68,8 @@ export class SlidesFormComponent implements OnInit {
     console.log(newForm);
   }
 
+  loadImg(event: Event) {}
+
   //Form Getters
   get name() {
     return this.form.get("name");

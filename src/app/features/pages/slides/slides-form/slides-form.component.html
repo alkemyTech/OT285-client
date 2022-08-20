@@ -15,14 +15,6 @@
       />
     </mat-form-field>
     <mat-form-field class="input-form" appearance="fill">
-      <mat-label>Imagen</mat-label>
-      <input
-        matInput
-        placeholder="Introduce una Imagen"
-        formControlName="image"
-      />
-    </mat-form-field>
-    <mat-form-field class="input-form" appearance="fill">
       <mat-label>Order</mat-label>
       <input
         matInput
@@ -31,6 +23,15 @@
       />
     </mat-form-field>
     <div class="input-form">
+      <mat-label style="display: block">Elegir Imagen</mat-label>
+      <input
+        type="file"
+        placeholder="Introduce una Imagen"
+        formControlName="image"
+        (change)="loadImg($event)"
+      />
+    </div>
+    <div class="input-form" style="margin-top: 20px">
       <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
     </div>
     <div class="section-buttons">
@@ -42,7 +43,7 @@
       >
         Enviar
       </button>
-      <button mat-raised-button color="accent">Cancelar</button>
+      <button type="button" mat-raised-button color="accent">Cancelar</button>
     </div>
   </form>
 </div>

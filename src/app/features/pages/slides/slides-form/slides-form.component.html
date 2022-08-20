@@ -13,6 +13,9 @@
         placeholder="Introduce un Nombre"
         formControlName="name"
       />
+      <mat-error *ngIf="name?.hasError('required')">
+        El Nombre es <strong>requerido</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="input-form" appearance="fill">
       <mat-label>Order</mat-label>
@@ -21,6 +24,9 @@
         placeholder="Introduce un Orden"
         formControlName="order"
       />
+      <mat-error *ngIf="order?.hasError('required')">
+        El Order es <strong>requerido</strong>
+      </mat-error>
     </mat-form-field>
     <div class="input-form">
       <mat-label style="display: block">Elegir Imagen</mat-label>
@@ -30,9 +36,18 @@
         formControlName="image"
         (change)="loadImg($event)"
       />
+      <mat-error *ngIf="image?.hasError('required') && image?.touched">
+        Una Imagen es <strong>requerida</strong>
+      </mat-error>
     </div>
     <div class="input-form" style="margin-top: 20px">
+      <mat-label style="display: block">Descripción</mat-label>
       <ckeditor [editor]="Editor" formControlName="description"></ckeditor>
+      <mat-error
+        *ngIf="description?.hasError('required') && description?.touched"
+      >
+        Una Descripción es <strong>requerida</strong>
+      </mat-error>
     </div>
     <div class="section-buttons">
       <button

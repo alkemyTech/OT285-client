@@ -2,7 +2,7 @@
 <div class="form-container">
 <form [formGroup]="formLogin" (ngSubmit)="addLogin(formLogin.value)">
     <div>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="example-form" appearance="fill">
             <mat-label>Name</mat-label>
             <input type="text" matInput #message1 maxlength="256" placeholder="Ex. I need help with..." formControlName="name">
             <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>

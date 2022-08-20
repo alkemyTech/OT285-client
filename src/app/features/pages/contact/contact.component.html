@@ -1,12 +1,12 @@
 <p>contact works!</p>
 <div class="form-container">
-<form [formGroup]="formLogin" (ngSubmit)="addLogin(formLogin.value)">
+<form [formGroup]="formContact" (ngSubmit)="addLogin(formContact.value)">
     <div>
-        <mat-form-field class="example-form" appearance="fill">
+        <mat-form-field class="example-form" appearance="fill" id="name-form-contact" name="name-form-contact">
             <mat-label>Name</mat-label>
-            <input type="text" matInput #message1 maxlength="256" placeholder="Ex. I need help with..." formControlName="name">
-            <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-            <mat-hint align="end">{{message.value.length}} / 256</mat-hint> -->
+            <input type="text" matInput #message1 maxlength="256" placeholder="Escribe tu nombre" formControlName="name">
+            <mat-error *ngIf="formContact.get('name')?.invalid">{{this.nameError}}</mat-error>
+           
         </mat-form-field>
     </div>
 
@@ -14,8 +14,7 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
             <input type="email" matInput #message2 placeholder="Ex. I need help with..." formControlName="email">
-           <!--  <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
-            <!-- <mat-hint align="end">{{message.value.length}} / 256</mat-hint> -->
+            <mat-error *ngIf="formContact.get('email')?.invalid">{{this.emailError}}</mat-error>
         </mat-form-field>
     </div>
 
@@ -24,14 +23,14 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Phone</mat-label>
             <input type="tel" matInput #message3  placeholder="Ex. I need help with..." formControlName="phone">
-           <!--  <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
-            <!-- <mat-hint align="end">{{message.value.length}} / 256</mat-hint> -->
+            <mat-error *ngIf="formContact.get('phone')?.invalid">{{this.phoneError}}</mat-error>
         </mat-form-field>
     </div>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Leave a comment</mat-label>
         <textarea matInput maxlength="256" placeholder="Ex. It makes me feel..." formControlName="message"></textarea>
+        <mat-error *ngIf="formContact.get('message')?.invalid">{{this.messageError}}</mat-error>
       </mat-form-field>
 
     
@@ -39,7 +38,7 @@
         
         
         <div class="example-button-row">
-            <button mat-raised-button color="primary" [disabled]="formLogin.invalid">Submit</button>
+            <button mat-raised-button color="primary" [disabled]="formContact.invalid">Enviar</button>
         </div>
 
 

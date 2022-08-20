@@ -12,6 +12,7 @@ export class SlidesFormComponent implements OnInit {
   public Editor = ClassicEditor;
   slideEmpty!: boolean;
   slideData!: any;
+  imageFile!: File | null;
 
   constructor(
     private formBuilder: FormBuilder // Se inyecta => private http: HttpService
@@ -50,7 +51,7 @@ export class SlidesFormComponent implements OnInit {
     let newForm: any = {
       name: this.name?.value,
       description: this.description?.value,
-      image: this.image?.value,
+      image: this.imageFile,
       order: this.order?.value,
     };
     if (this.slideEmpty) {
@@ -68,7 +69,10 @@ export class SlidesFormComponent implements OnInit {
     console.log(newForm);
   }
 
-  loadImg(event: Event) {}
+  loadImg(event: any) {
+    const file: File | null = event.target.files[0];
+    this.imageFile = file;
+  }
 
   //Form Getters
   get name() {

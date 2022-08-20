@@ -1,1 +1,68 @@
-<p>user-form works!</p>
+<div class="form-container">
+    <h1 *ngIf="editing">Editar usuario</h1>
+    <h1 *ngIf="!editing">Crear nuevo usuario</h1>
+
+
+    <form class="example-form" [formGroup]="form">
+        <div class="fileInputContainer">
+            <input #fileUpload formControlName="image" class="file-input" type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpg">
+            <button mat-raised-button color="primary" (click)="fileUpload.click()" >
+                Subir Imagen
+            </button>
+            {{fileName || 'Ninguna imagen subida'}}
+            
+        </div>
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="" formControlName="name">
+            <mat-error *ngIf="form.hasError('minlength', 'name') && !form.hasError('required', 'name')">
+                El nombre debe tener minimo 4 caracteres
+            </mat-error>
+            <mat-error *ngIf="form.hasError('required', 'name')">
+                Un nombre es <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Por ejemplo: usuario@gmail.com" type="email" formControlName="email">
+            <mat-error *ngIf="form.hasError('email', 'email') && !form.hasError('required', 'email')">
+              Porfavor ingresa un email valido
+            </mat-error>
+            <mat-error *ngIf="form.hasError('required', 'email')">
+                Un email es <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Elige un rol</mat-label>
+            <mat-select formControlName="rol">
+              <mat-option value="usuario">Usuario</mat-option>
+              <mat-option value="administrador">Administrador</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.hasError('required', 'rol')">
+                Un rol es <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input-form">
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+            <mat-error *ngIf="form.hasError('minlength', 'description') && !form.hasError('required', 'description')">
+                La descripcion debe ser de minimo 10 caracteres
+            </mat-error>
+            <mat-error *ngIf="form.hasError('required', 'description')">
+                Una descripcion es <strong>requerida</strong>
+            </mat-error>
+        </mat-form-field>
+
+
+        <div class="section-buttons">
+            <button mat-raised-button color="primary" (click)="send()" [disabled]="form.invalid">Enviar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+
+    </form>
+    <div>
+        {{form.value | json}}
+    </div>
+</div>

@@ -22,60 +22,40 @@ export class ActivityFormComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  errorImageActivity="Unicamente archivos jpg o png";
+  errorNameActivity="Ingresa un nombre valido";
   
+  
+
   formActivity = new FormGroup({
-    nameActivity : new FormControl ('',[Validators.required, Validators.min(3)]),
-    /* descriptionActivicty: new FormControl('',), */
-    imageActivity: new FormControl ('', [Validators.required, Validators.pattern(/^.*\.(png|jpg)$/)])
+    nameActivity : new FormControl
+     ('',[Validators.required,
+       Validators.min(3)]),
+    imageActivity: new FormControl
+     ('', [Validators.required,
+       Validators.pattern(/.(?:jpg|png)/)])
 
 
   });
 
-
-
-  addActivity(){
-    
-
+  errorImage(){
+    if(this.formActivity.get('imageActivity')?.invalid && this.formActivity.get('imageActivity')?.touched){
+      this.errorImageActivity="Unicamente archivos jpg o png";
+    }
+    else{
+      this.errorImageActivity="";
+    }
   }
 
 
+
+  addActivity(form:any){
+    
+  }
+
+  loadImageActivity(event:any){
+    const file = event.target.files[0];
+  }
 
 
 

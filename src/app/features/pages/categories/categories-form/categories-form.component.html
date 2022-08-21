@@ -20,17 +20,20 @@
       <mat-error *ngIf="categoriesForm.controls.image.hasError('required') && categoriesForm.controls.image.touched">
         Debes elegir una imagen
       </mat-error>
+      <mat-error *ngIf="categoriesForm.controls.image.hasError('InvalidType') && !categoriesForm.controls.image.hasError('required')">
+        La imagen debe ser formato .jpg o .png
+      </mat-error>
     </div>
 
     <div class="mt">
       <ckeditor formControlName="description" [editor]="Editor" [config]="editorConfig"></ckeditor>
-      <mat-error *ngIf="categoriesForm.controls.image.hasError('required') && categoriesForm.controls.image.touched">
-        Debes elegir una imagen
+      <mat-error *ngIf="categoriesForm.controls.description.hasError('required') && categoriesForm.controls.description.touched">
+        Debes ingresar una descripción.
       </mat-error>
     </div>
 
     <div class="section-buttons">
-      <button mat-raised-button color="primary" (click)="sendForm()">Crear</button>
+      <button mat-raised-button color="primary" (click)="sendForm()">{{category ? 'Modificar' : 'Crear'}}</button>
     </div>
   </div>
 </form>

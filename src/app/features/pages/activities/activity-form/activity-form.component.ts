@@ -23,14 +23,56 @@ export class ActivityFormComponent implements OnInit {
 
 
 
-  formActivicty = new FormGroup({
-    name : new FormControl ('',[Validators.required, Validators.min(3)])
 
-  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  formActivity = new FormGroup({
+    nameActivity : new FormControl ('',[Validators.required, Validators.min(3)]),
+    /* descriptionActivicty: new FormControl('',), */
+    imageActivity: new FormControl ('', [Validators.required, Validators.pattern(/^.*\.(png|jpg)$/)])
+
+
+  });
+
+
 
   addActivity(){
-
     
+
   }
 
 

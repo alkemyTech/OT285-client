@@ -33,7 +33,9 @@ export class ActivityFormComponent implements OnInit {
        Validators.min(3)]),
     imageActivity: new FormControl
      ('', [Validators.required,
-       Validators.pattern(/.(?:jpg|png)/)])
+       Validators.pattern(/.(?:jpg|png)/)]),
+    descriptionActivity: new FormControl
+    ('Ingesa una descripcion')
 
 
   });
@@ -49,8 +51,15 @@ export class ActivityFormComponent implements OnInit {
 
 
 
-  addActivity(form:any){
+  addActivity(formActivity:FormGroup){
     
+    /* crear actividad  (/activities/create) */
+
+  }
+
+  modifyActivity(formActivity:FormGroup){
+    /* modificar actividad (/activities/:id) */
+
   }
 
   loadImageActivity(event:any){

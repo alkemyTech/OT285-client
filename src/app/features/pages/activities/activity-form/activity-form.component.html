@@ -24,4 +24,24 @@
 </div >
 
 
-<app-contact></app-contact>
+<div class="form-container">
+
+  <form class="example-form">
+      <div>
+        <mat-form-field class="example-form" appearance="fill" id="name-form-activicty" name="name-form-activicty">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput #message_name maxlength="256" placeholder="Escribe tu nombre" formControlName="name">
+          <!--  <mat-error *ngIf="formContact.get('name')?.invalid">{{this.nameError}}</mat-error> -->
+          
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <ckeditor [editor]="creationActivicty" data="<p>Crear actividades</p>"></ckeditor>
+      </div>
+  </form>
+
+
+
+</div>

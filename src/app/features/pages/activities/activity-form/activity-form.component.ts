@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
@@ -13,9 +14,28 @@ export class ActivityFormComponent implements OnInit {
 
   public Editor = ClassicEditor;
 
+  public creationActivicty =  ClassicEditor;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+
+  formActivicty = new FormGroup({
+    name : new FormControl ('',[Validators.required, Validators.min(3)])
+
+  })
+
+  addActivity(){
+
+    
+  }
+
+
+
+
+
 
 }

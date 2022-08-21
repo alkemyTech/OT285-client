@@ -13,7 +13,7 @@
     <div>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
-            <input type="email" matInput #message2 placeholder="Ex. I need help with..." formControlName="email">
+            <input type="email" matInput #message2 placeholder="Escribe tu email" formControlName="email">
             <mat-error *ngIf="formContact.get('email')?.invalid">{{this.emailError}}</mat-error>
         </mat-form-field>
     </div>
@@ -22,14 +22,14 @@
     <div>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Phone</mat-label>
-            <input type="tel" matInput #message3  placeholder="Ex. I need help with..." formControlName="phone">
+            <input type="tel" matInput #message3  placeholder="Escribe tu telefono" formControlName="phone">
             <mat-error *ngIf="formContact.get('phone')?.invalid">{{this.phoneError}}</mat-error>
         </mat-form-field>
     </div>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Leave a comment</mat-label>
-        <textarea matInput maxlength="256" placeholder="Ex. It makes me feel..." formControlName="message"></textarea>
+        <textarea matInput maxlength="256" placeholder="Deja tu comentario" formControlName="message"></textarea>
         <mat-error *ngIf="formContact.get('message')?.invalid">{{this.messageError}}</mat-error>
       </mat-form-field>
 

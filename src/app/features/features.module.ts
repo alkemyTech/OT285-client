@@ -12,11 +12,9 @@ import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
-
+import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 
 //Material
-
-
 
 @NgModule({
   declarations: [
@@ -29,6 +27,7 @@ import { ContactComponent } from "./pages/contact/contact.component";
     TestimonialFormComponent,
     UserFormComponent,
     ContactComponent,
+    OrganizationDataComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -39,13 +38,9 @@ import { ContactComponent } from "./pages/contact/contact.component";
     SlidesFormComponent,
     TestimonialFormComponent,
     UserFormComponent,
-    RouterModule
-  ],
-  imports: [
-    CommonModule, 
-    AppRoutingModule, 
+    OrganizationDataComponent,
     RouterModule,
-    SharedModule
   ],
+  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
 })
 export class FeaturesModule {}

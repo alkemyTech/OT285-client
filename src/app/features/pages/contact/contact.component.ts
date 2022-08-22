@@ -23,12 +23,12 @@ export class ContactComponent implements OnInit {
 
 
   formContact = new FormGroup({
-    name:   new FormControl('',[Validators.required, Validators.min(3), Validators.maxLength(256)] ),
-    email : new FormControl('', [Validators.required, Validators.email]),
-    phone : new FormControl('', [Validators.required,
+    nameContact:   new FormControl('',[Validators.required, Validators.min(3), Validators.maxLength(256)] ),
+    emailContact : new FormControl('', [Validators.required, Validators.email]),
+    phoneContact : new FormControl('', [Validators.required,
       Validators.min(8),
       Validators.pattern(/^[0-9]{8,}$/)]),
-    message : new FormControl('', [Validators.required])
+    messageContact : new FormControl('', [Validators.required])
 
 
    
@@ -40,10 +40,8 @@ export class ContactComponent implements OnInit {
 
     addLogin(form:any){
 
-      console.log(this.formContact.get('name')?.value);
-      console.log(this.formContact.get('email')?.value);
-      console.log(this.formContact.get('phone')?.value);
-      console.log(this.formContact.get('message')?.value);
+      /** enviar email*/
+    
     }
 
 }

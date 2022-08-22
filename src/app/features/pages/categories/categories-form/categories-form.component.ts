@@ -46,7 +46,7 @@ export class CategoriesFormComponent implements OnInit {
     this.categoriesForm.controls['image'].setValue(file ? file : '');
   }
 
-  sendForm(){
+  sendForm(): void {
     if(this.categoriesForm.valid){
       if(this.category){
         //Petición PATCH al endpoint de actualización del server (/categories/:id)

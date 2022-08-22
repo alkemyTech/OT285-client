@@ -1,1 +1,31 @@
-<p>login-form works!</p>
+<div class="form-container">
+    <form class="form-body" [formGroup]="formulario" (ngSubmit)="login()">
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="usuario@correo.com" formControlName="email">            
+        </mat-form-field>
+
+        <div *ngIf="formulario.controls['email'].invalid && (formulario.controls['email'].dirty || formulario.controls['email'].touched)" class="alert">
+            <div *ngIf="formulario.controls['email'].errors">
+            Ingrese Usuario
+            </div>
+        </div>
+
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="Contraseña" type='password' formControlName="password">
+        </mat-form-field>
+
+        <div *ngIf="formulario.controls['password'].invalid && (formulario.controls['password'].dirty || formulario.controls['password'].touched)" class="alert">
+            <div *ngIf="formulario.controls['password'].errors">
+            Ingrese Contraseña
+            </div>
+        </div>  
+
+        <div class="section-buttons">
+            <button type="submit" mat-flat-button color="primary">
+                Enviar
+            </button>
+        </div>
+    </form>
+</div>

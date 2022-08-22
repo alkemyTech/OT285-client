@@ -28,3 +28,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-top: 20px;
     text-align: center;
 }
+
+//lucio añado estilos
+.alert{
+    color: red;
+}
+
+.form-body{
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field{
+    width: 50%;
+    margin: 0 auto;    
+}
+//

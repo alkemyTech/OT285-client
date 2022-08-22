@@ -14,7 +14,7 @@ export class ActivityFormComponent implements OnInit {
 
   public Editor = ClassicEditor;
 
-  public creationActivicty =  ClassicEditor;
+  
 
   constructor() { }
 

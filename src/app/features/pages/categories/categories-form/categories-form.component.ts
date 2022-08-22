@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ImageValidator } from './image.validator';
+import { ImageValidator } from '../../../../shared/validators/image.validator';
 
 interface category {
   name:string,

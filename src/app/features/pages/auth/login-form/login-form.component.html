@@ -5,7 +5,7 @@
             <input matInput placeholder="usuario@correo.com" formControlName="email">            
         </mat-form-field>
 
-        <mat-error *ngIf="logingForm.controls['email'].invalid && (logingForm.controls['email'].dirty || logingForm.controls['email'].touched)" class="alert">
+        <mat-error *ngIf="logingForm.controls['email'].invalid && (logingForm.controls['email'].dirty || logingForm.controls['email'].touched)">
             <mat-error *ngIf="logingForm.controls['email'].errors">
             Ingrese Usuario
             </mat-error>
@@ -16,7 +16,7 @@
             <input matInput placeholder="Contraseña" type='password' formControlName="password">
         </mat-form-field>
 
-        <mat-error *ngIf="logingForm.controls['password'].invalid && (logingForm.controls['password'].dirty || logingForm.controls['password'].touched)" class="alert">
+        <mat-error *ngIf="logingForm.controls['password'].invalid && (logingForm.controls['password'].dirty || logingForm.controls['password'].touched)">
             <mat-error *ngIf="logingForm.controls['password'].errors">
             Ingrese Contraseña
             </mat-error>

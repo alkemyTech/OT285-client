@@ -14,70 +14,11 @@ export class ActivityFormComponent implements OnInit {
 
   public Editor = ClassicEditor;
 
-  public creationActivicty =  ClassicEditor;
+  
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  formActivity = new FormGroup({
-    nameActivity : new FormControl ('',[Validators.required, Validators.min(3)]),
-    /* descriptionActivicty: new FormControl('',), */
-    imageActivity: new FormControl ('', [Validators.required, Validators.pattern(/^.*\.(png|jpg)$/)])
-
-
-  });
-
-
-
-  addActivity(){
-    
-
-  }
-
-
-
-
-
 
 }

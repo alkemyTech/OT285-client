@@ -40,7 +40,7 @@ export class ActivityFormComponent implements OnInit {
 
   });
 
-  errorImage(){
+  errorImage(): void{
     if(this.formActivity.get('imageActivity')?.invalid && this.formActivity.get('imageActivity')?.touched){
       this.errorImageActivity="Unicamente archivos jpg o png";
     }
@@ -51,18 +51,18 @@ export class ActivityFormComponent implements OnInit {
 
 
 
-  addActivity(formActivity:FormGroup){
+  addActivity(formActivity:FormGroup):void{
     
     /* crear actividad  (/activities/create) */
 
   }
 
-  modifyActivity(formActivity:FormGroup){
+  modifyActivity(formActivity:FormGroup):void{
     /* modificar actividad (/activities/:id) */
 
   }
 
-  loadImageActivity(event:any){
+  loadImageActivity(event:any):void{
     const file = event.target.files[0];
   }
 

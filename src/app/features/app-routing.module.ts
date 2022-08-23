@@ -4,19 +4,24 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { CategoriesFormComponent } from "./pages/categories/categories-form/categories-form.component";
+import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 
 const routes: Routes = [
-  { 
-    path: "actividades", 
-    component: ActivityFormComponent 
-  },
-  { 
-    path: "categorias", 
-    component: CategoriesFormComponent 
+  {
+    path: "actividades",
+    component: ActivityFormComponent,
   },
   {
-    path:'backoffice',
-    component:DashboardComponent
+    path: "backoffice/organization",
+    component: OrganizationDataComponent,
+  },
+  {
+    path: "categorias",
+    component: CategoriesFormComponent,
+  },
+  {
+    path: "backoffice",
+    component: DashboardComponent,
   },
   {
     path: "",

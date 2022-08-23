@@ -5,12 +5,18 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { CategoriesFormComponent } from "./pages/categories/categories-form/categories-form.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
+import { RegisterFormComponent } from "./pages/auth/register-form/register-form.component";
 import { LoginFormComponent } from "./pages/auth/login-form/login-form.component";
 
 const routes: Routes = [
   {
+    path: "registro", 
+    component: RegisterFormComponent 
+  },
+  {
     path: "login", 
-    component: LoginFormComponent },
+    component: LoginFormComponent 
+  },
   { 
     path: "actividades",
     component: ActivityFormComponent,

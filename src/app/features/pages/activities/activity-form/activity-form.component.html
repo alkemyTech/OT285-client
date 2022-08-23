@@ -1,29 +1,3 @@
-
-<h1 >Hola mundo</h1>
-<div class="form-container">
-
-
-  <form class="example-form">
-      <mat-form-field class="input-form" appearance="fill">
-        <mat-label>Message</mat-label>
-        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-      </mat-form-field>
-    </form>
-    
-
-    <div>
-      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
-    </div>
-
-    <div class="section-buttons">
-
-      <button mat-raised-button color="accent">Cancelar</button>
-      <button mat-raised-button color="primary">Enviar</button>
-    </div>
-
-</div >
-
-
 <div class="form-container">
   
   <form class="example-form" [formGroup]="formActivity" >

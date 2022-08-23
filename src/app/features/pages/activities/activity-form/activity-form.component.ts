@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-
-
 @Component({
   selector: 'app-activity-form',
   templateUrl: './activity-form.component.html',
@@ -12,22 +10,17 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class ActivityFormComponent implements OnInit {
   title = 'base-ong-angular-client';
 
-  public Editor = ClassicEditor;
-
-  public creationActivicty =  ClassicEditor;
+  public creationActivity = ClassicEditor;
+  
+  errorImageActivity="Unicamente archivos jpg o png";
+  errorNameActivity="Ingresa un nombre valido";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-
-  errorImageActivity="Unicamente archivos jpg o png";
-  errorNameActivity="Ingresa un nombre valido";
-  
-  
-
-  formActivity = new FormGroup({
+formActivity = new FormGroup({
     nameActivity : new FormControl
      ('',[Validators.required,
        Validators.min(3)]),
@@ -36,7 +29,6 @@ export class ActivityFormComponent implements OnInit {
        Validators.pattern(/.(?:jpg|png)/)]),
     descriptionActivity: new FormControl
     ('Ingesa una descripcion')
-
 
   });
 

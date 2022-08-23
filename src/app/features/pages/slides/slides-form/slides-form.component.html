@@ -18,14 +18,15 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="input-form" appearance="fill">
-      <mat-label>Order</mat-label>
+      <mat-label>Orden</mat-label>
       <input
+        type="number"
         matInput
-        placeholder="Introduce un Orden"
+        placeholder="Numero de Orden"
         formControlName="order"
       />
       <mat-error *ngIf="order?.hasError('required')">
-        El Order es <strong>requerido</strong>
+        El Orden es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
     <div class="mt-20">

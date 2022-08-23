@@ -12,6 +12,7 @@ import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 
 //Material
@@ -27,6 +28,7 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
     TestimonialFormComponent,
     UserFormComponent,
     ContactComponent,
+    DashboardComponent,
     OrganizationDataComponent,
   ],
   exports: [

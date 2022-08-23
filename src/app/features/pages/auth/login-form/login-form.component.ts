@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
   
-  formulario: FormGroup = new FormGroup({
+  logingForm: FormGroup = new FormGroup({
     'email': new FormControl('', Validators.required),
     'password': new FormControl('', Validators.required)
   });
@@ -19,6 +19,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){
-    console.log(this.formulario);
+    console.log(this.logingForm);
   }
 }

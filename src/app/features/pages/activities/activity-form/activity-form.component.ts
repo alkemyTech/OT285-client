@@ -66,7 +66,6 @@ export class ActivityFormComponent implements OnInit {
     const file = event.target.files[0];
   }
 
-
-
-
 }
+
+

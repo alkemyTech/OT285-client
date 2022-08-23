@@ -5,31 +5,31 @@
             <input required matInput placeholder="usuario@correo.com" type='email' formControlName="email">            
         </mat-form-field>
             
-        <div *ngIf="submitted && f.email.errors" class="alert">
-            <div *ngIf="f.email.errors.required">Correo requerido</div>
-            <div *ngIf="f.email.errors.email || f.email.errors.pattern">Debe proporcionar un correo válido</div>
-        </div>
+        <mat-error *ngIf="submitted && f.email.errors">
+            <mat-error *ngIf="f.email.errors.required">Correo requerido</mat-error>
+            <mat-error *ngIf="f.email.errors.email || f.email.errors.pattern">Debe proporcionar un correo válido</mat-error>
+        </mat-error>
 
         <mat-form-field class="form-field" appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input required matInput placeholder="Contraseña" type='password' formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
         </mat-form-field>
             
-        <div *ngIf="submitted && f.password.errors" class="alert">
-            <div *ngIf="f.password.errors.required">Contraseña requerida</div>
-            <div *ngIf="f.password.errors.minlength">Contraseña debe tener al menos 6 caracteres</div>
-            <div *ngIf="f.password.errors.pattern">Contraseña debe contener minimo 1 letra, 1 numero y 1 caracter especial</div>
-        </div>
+        <mat-error *ngIf="submitted && f.password.errors">
+            <mat-error *ngIf="f.password.errors.required">Contraseña requerida</mat-error>
+            <mat-error *ngIf="f.password.errors.minlength">Contraseña debe tener al menos 6 caracteres</mat-error>
+            <mat-error *ngIf="f.password.errors.pattern">Contraseña debe contener minimo 1 letra, 1 numero y 1 caracter especial</mat-error>
+        </mat-error>
 
         <mat-form-field class="form-field" appearance="fill">
             <mat-label>Confirmar Contraseña</mat-label>
             <input required matInput placeholder="Contraseña" type='password' formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
         </mat-form-field>
 
-        <div *ngIf="submitted && f.confirmPassword.errors" class="alert">
-            <div *ngIf="f.confirmPassword.errors.required">Confirmar contraseña requerido</div>
-            <div *ngIf="f.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>
-        </div>
+        <mat-error *ngIf="submitted && f.confirmPassword.errors">
+            <mat-error *ngIf="f.confirmPassword.errors.required">Confirmar contraseña requerido</mat-error>
+            <mat-error *ngIf="f.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</mat-error>
+        </mat-error>
 
         <div class="section-buttons">
             <button type="submit" mat-flat-button color="primary"> Enviar </button>

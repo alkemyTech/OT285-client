@@ -10,7 +10,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class ActivityFormComponent implements OnInit {
   title = 'base-ong-angular-client';
 
-  public creationActivity = ClassicEditor;
+  public creationActivicty = ClassicEditor;
   
   errorImageActivity="Unicamente archivos jpg o png";
   errorNameActivity="Ingresa un nombre valido";

@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 @Component({
@@ -45,7 +50,7 @@ export class SlidesFormComponent implements OnInit {
     */
   }
 
-  sendSlide(event: Event) {
+  sendSlide(event: Event): void {
     event.preventDefault;
     let url = "";
     let newForm: any = {
@@ -60,31 +65,32 @@ export class SlidesFormComponent implements OnInit {
       this.http.post(url, newForm).subscribe() 
       */
     } else if (!this.slideEmpty) {
-      url = "/Slides/"; // + this.slideData.id;
+      url = "/Slides/" + "this.slideData.id";
       /*
       this.http.patch(url, newForm).subscribe() 
       */
     }
     //To Delete
+    console.log(url);
     console.log(newForm);
   }
 
-  loadImg(event: any) {
+  loadImg(event: any): void {
     const file: File | null = event.target.files[0];
     this.imageFile = file;
   }
 
   //Form Getters
-  get name() {
+  get name(): AbstractControl | null {
     return this.form.get("name");
   }
-  get description() {
+  get description(): AbstractControl | null {
     return this.form.get("description");
   }
-  get image() {
+  get image(): AbstractControl | null {
     return this.form.get("image");
   }
-  get order() {
+  get order(): AbstractControl | null {
     return this.form.get("order");
   }
 }

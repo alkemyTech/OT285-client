@@ -12,12 +12,10 @@ import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 
 //Material
-
-
 
 @NgModule({
   declarations: [
@@ -31,6 +29,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     UserFormComponent,
     ContactComponent,
     DashboardComponent,
+    OrganizationDataComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -41,13 +40,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     SlidesFormComponent,
     TestimonialFormComponent,
     UserFormComponent,
-    RouterModule
-  ],
-  imports: [
-    CommonModule, 
-    AppRoutingModule, 
+    OrganizationDataComponent,
     RouterModule,
-    SharedModule
   ],
+  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
 })
 export class FeaturesModule {}

@@ -22,3 +22,56 @@
     </div>
 
 </div >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-container">
+  
+  <form class="example-form" [formGroup]="formActivity" >
+      <div>
+        <mat-form-field class="input-form" appearance="fill" id="name-form-activity" name="name-form-activity">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput #message_name maxlength="256" placeholder="Escribe tu nombre" formControlName="nameActivity">
+          <!--  <mat-error *ngIf="formContact.get('name')?.invalid">{{this.nameError}}</mat-error> -->
+          
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <ckeditor [editor]="creationActivicty"  data="<p>Crear actividades</p>"></ckeditor>
+      </div>
+      <br>
+
+      <div class="fileInputContainer">
+        <input #fileUpload formControlName="imageActivity" class="file-input" type="file"  accept="image/png, image/jpg">
+    </div>
+
+    <br>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary">Enviar</button>
+  </div>
+
+  </form>
+
+
+
+</div>

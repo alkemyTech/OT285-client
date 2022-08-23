@@ -11,6 +11,9 @@ import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.comp
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
+import { ContactComponent } from "./pages/contact/contact.component";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 
 //Material
 
@@ -26,6 +29,8 @@ import { SharedModule } from "../shared/shared.module";
     SlidesFormComponent,
     TestimonialFormComponent,
     UserFormComponent,
+    ContactComponent,
+    DashboardComponent,
   ],
   exports: [
     ActivityFormComponent,

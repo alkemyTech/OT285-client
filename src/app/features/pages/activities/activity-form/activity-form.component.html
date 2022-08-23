@@ -1,24 +1,41 @@
-
-<h1 >Hola mundo</h1>
 <div class="form-container">
+  
+  <form class="example-form" [formGroup]="formActivity" >
+        <div>
+          <mat-form-field class="input-form" appearance="fill" id="name-form-activity" name="name-form-activity">
+              <mat-label>Name</mat-label>
+              <input type="text" matInput #message1 maxlength="256" placeholder="Escribe tu nombre" formControlName="nameActivity">
+              <mat-error *ngIf="formActivity.get('nameActivity')?.invalid">{{this.errorNameActivity}}</mat-error>
+          </mat-form-field>
+      </div>
+      <br>
+      <br>
 
 
-  <form class="example-form">
-      <mat-form-field class="input-form" appearance="fill">
-        <mat-label>Message</mat-label>
-        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-      </mat-form-field>
-    </form>
-    
+      <div>
+        <ckeditor [editor]="creationActivicty" data="<p>Here description!</p>" formControlName="description"
+          formControlName="descriptionActivity"></ckeditor>
+      </div>
+  
+    <br>
+    <br>
+      <div class="fileInputContainer">
+        <input #fileUpload formControlName="image" class="file-input" type="file" (change)="loadImageActivity($event)" accept="image/png, image/jpg"
+        formControlName="imageActivity">
+        <mat-error>{{errorImage()}} {{this.errorImageActivity}}</mat-error>
 
-    <div>
-      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+      </div>
+
+      <div class="section-buttons">
+        <button mat-raised-button color="primary" id="createActivity" [disabled]="formActivity.invalid"
+         (click)="addActivity(formActivity.value)">Crear Actividad</button>
+
+        <br>
+          <button mat-raised-button color="primary" id="editActivity" [disabled]="formActivity.invalid"
+           (click)="modifyActivity(formActivity.value)">Editar Actividad</button>
     </div>
 
-    <div class="section-buttons">
+ 
 
-      <button mat-raised-button color="accent">Cancelar</button>
-      <button mat-raised-button color="primary">Enviar</button>
-    </div>
-
-</div >
+  </form>
+</div>

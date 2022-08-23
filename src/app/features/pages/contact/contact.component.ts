@@ -41,6 +41,7 @@ export class ContactComponent implements OnInit {
     addLogin(form:any):void{
 
       /** enviar email*/
+
     }
 
 }

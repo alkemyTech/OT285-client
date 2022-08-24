@@ -1,0 +1,14 @@
+.form-body{
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field{
+    width: 50%;
+    margin: 0 auto;    
+}
+
+.mat-error{
+    padding-bottom: 5px;
+}

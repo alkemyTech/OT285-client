@@ -16,7 +16,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
   ],
   exports: [
     MatFormFieldModule,

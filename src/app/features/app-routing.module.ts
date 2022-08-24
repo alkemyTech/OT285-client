@@ -8,8 +8,13 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
 import { RegisterFormComponent } from "./pages/auth/register-form/register-form.component";
 import { LoginFormComponent } from "./pages/auth/login-form/login-form.component";
 import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
+import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 
 const routes: Routes = [
+  {
+    path: "usuarios",
+    component: UserFormComponent,
+  },
   {
     path: "registro",
     component: RegisterFormComponent,
@@ -47,7 +52,7 @@ const routes: Routes = [
     path: "**",
     redirectTo: "actividades",
     pathMatch: "full",
-  },
+  }
 ];
 
 @NgModule({

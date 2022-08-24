@@ -9,7 +9,6 @@ import { CategoriesFormComponent } from "./pages/categories/categories-form/cate
 import { NewsFormComponent } from "./pages/news/news-form/news-form.component";
 import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
-import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
@@ -26,7 +25,6 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    UserFormComponent,
     ContactComponent,
     DashboardComponent,
     OrganizationDataComponent,
@@ -39,7 +37,6 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    UserFormComponent,
     OrganizationDataComponent,
     RouterModule,
   ],

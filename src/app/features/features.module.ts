@@ -13,6 +13,7 @@ import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
+import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
 
 //Material
 
@@ -28,6 +29,7 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
     ContactComponent,
     DashboardComponent,
     OrganizationDataComponent,
+    MemberFormComponent
   ],
   exports: [
     ActivityFormComponent,
@@ -39,6 +41,7 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
     TestimonialFormComponent,
     OrganizationDataComponent,
     RouterModule,
+    MemberFormComponent
   ],
   imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
 })

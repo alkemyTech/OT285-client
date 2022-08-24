@@ -1,7 +1,7 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-user-form',
@@ -27,14 +27,16 @@ export class UserFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.form.patchValue(this.user)
+    if(this.user){
+      this.form.patchValue(this.user)
+
+    }
     this.form.value.name == '' ? this.editing = false : this.editing = true;
-    console.log(this.form.invalid);
     
     
   }
 
-  send(){
+  send(): void{
     this.userToSend = this.form.value;
     if(this.editing){
       this.edit(this.userToSend);
@@ -45,11 +47,11 @@ export class UserFormComponent implements OnInit {
     console.log(this.userToSend);
     
   }
-  cancel(){
+  cancel(): void{
 
   }
 
-  fileChangeEvent(event: any) {
+  fileChangeEvent(event: any): void {
 
     const file: File = event.target.files[0];
     
@@ -58,10 +60,10 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  edit(userInfo: User):void{
+  edit(userInfo: User): void{
     //Petición PATCH al endpoint de actualización del server (/users/:id).
   }
-  create(userInfo: User):void{
+  create(userInfo: User): void{
     //petición POST al endpoint de creación de Usuarios (/users/create).
   }
 }

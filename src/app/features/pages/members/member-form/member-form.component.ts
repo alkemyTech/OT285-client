@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/core/models/user';
 
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Member } from 'src/app/models/member';
+import { Member } from 'src/app/core/models/member';
 
 @Component({
   selector: 'app-member-form',
@@ -43,7 +43,7 @@ export class MemberFormComponent implements OnInit {
       })      
     }
   }
-  addLink(event: any){
+  addLink(event: any): void{
     const links: string[] = this.form.get('links')?.value;
     const link = event.value;
     if(this.reg.test(link)){
@@ -59,7 +59,7 @@ export class MemberFormComponent implements OnInit {
       
     
   }
-  removeLink(link: string){
+  removeLink(link: string): void{
     const links = this.form.get('links')?.value;
     const index = links.indexOf(link);
     if (index >= 0) {
@@ -69,18 +69,18 @@ export class MemberFormComponent implements OnInit {
       });
     }
   }
-  fileChangeEvent(event: any) {
+  fileChangeEvent(event: any): void{
     const file: File = event.target.files[0];
     
     if (file) {
       this.fileName = file.name;
     }
   }
-  send(){
+  send(): void{
     console.log(this.form.value);
     
   }
-  cancel(){
+  cancel(): void{
 
   }
 }

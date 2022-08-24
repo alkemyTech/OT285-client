@@ -7,10 +7,59 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   templateUrl: './activity-form.component.html',
   styleUrls: ['./activity-form.component.scss']
 })
-export class ActivityFormComponent implements OnInit {  
+export class ActivityFormComponent implements OnInit {
+  title = 'base-ong-angular-client';
 
   constructor() { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+  }
+
+  public creationActivity = ClassicEditor;
+  errorImageActivity="Unicamente archivos jpg o png";
+  errorNameActivity="Ingresa un nombre valido";
+
+
+formActivity = new FormGroup({
+    nameActivity : new FormControl
+     ('',[Validators.required,
+       Validators.min(3)]),
+    imageActivity: new FormControl
+     ('', [Validators.required,
+       Validators.pattern(/.(?:jpg|png)/)]),
+    descriptionActivity: new FormControl
+    ('Ingesa una descripcion')
+
+  });
+
+  errorImage(): void{
+    if(this.formActivity.get('imageActivity')?.invalid && this.formActivity.get('imageActivity')?.touched){
+      this.errorImageActivity="Unicamente archivos jpg o png";
+    }
+    else{
+      this.errorImageActivity="";
+    }
+  }
+
+
+
+  addActivity(formActivity:FormGroup):void{
+    
+    /* crear actividad  (/activities/create) */
+
+  }
+
+  modifyActivity(formActivity:FormGroup):void{
+    /* modificar actividad (/activities/:id) */
+
+  }
+
+  loadImageActivity(event:any):void{
+    const file = event.target.files[0];
+  }
+
+
+
+
 
 }

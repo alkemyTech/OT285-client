@@ -11,10 +11,11 @@ import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.comp
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
+import { ContactComponent } from "./pages/contact/contact.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 
 //Material
-
-
 
 @NgModule({
   declarations: [
@@ -25,7 +26,10 @@ import { SharedModule } from "../shared/shared.module";
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    UserFormComponent
+    UserFormComponent,
+    ContactComponent,
+    DashboardComponent,
+    OrganizationDataComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -36,13 +40,9 @@ import { SharedModule } from "../shared/shared.module";
     SlidesFormComponent,
     TestimonialFormComponent,
     UserFormComponent,
-    RouterModule
-  ],
-  imports: [
-    CommonModule, 
-    AppRoutingModule, 
+    OrganizationDataComponent,
     RouterModule,
-    SharedModule
   ],
+  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
 })
 export class FeaturesModule {}

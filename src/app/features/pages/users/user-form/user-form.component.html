@@ -5,12 +5,17 @@
 
     <form class="example-form" [formGroup]="form">
         <div class="fileInputContainer">
-            <input #fileUpload formControlName="image" class="file-input" type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpg">
-            <button mat-raised-button color="primary" (click)="fileUpload.click()" >
+            <input hidden #fileUpload type="file" (change)="fileChangeEvent($event)">
+            <button mat-raised-button color="primary" (click)="fileUpload.click(); form.controls.image.markAsTouched()" >
                 Subir Imagen
             </button>
             {{fileName || 'Ninguna imagen subida'}}
-            
+            <mat-error *ngIf="form.controls.image.hasError('required') && form.controls.image.touched">
+                Debes elegir una imagen
+            </mat-error>
+            <mat-error *ngIf="form.controls.image.hasError('InvalidType') && !form.controls.image.hasError('required')">
+                La imagen debe ser formato .jpg o .png
+            </mat-error>
         </div>
         <mat-form-field class="input-form" appearance="fill">
             <mat-label>Nombre</mat-label>

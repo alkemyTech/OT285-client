@@ -9,12 +9,13 @@ import { CategoriesFormComponent } from "./pages/categories/categories-form/cate
 import { NewsFormComponent } from "./pages/news/news-form/news-form.component";
 import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
+import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
-import { MemberFormComponent } from './pages/members/member-form/member-form.component';
+import { ContactComponent } from "./pages/contact/contact.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 
 //Material
-
-
 
 @NgModule({
   declarations: [
@@ -25,7 +26,10 @@ import { MemberFormComponent } from './pages/members/member-form/member-form.com
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    MemberFormComponent,
+    UserFormComponent,
+    ContactComponent,
+    DashboardComponent,
+    OrganizationDataComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -35,13 +39,10 @@ import { MemberFormComponent } from './pages/members/member-form/member-form.com
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    RouterModule
-  ],
-  imports: [
-    CommonModule, 
-    AppRoutingModule, 
+    UserFormComponent,
+    OrganizationDataComponent,
     RouterModule,
-    SharedModule
   ],
+  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
 })
 export class FeaturesModule {}

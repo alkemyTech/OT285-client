@@ -11,7 +11,6 @@ import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.comp
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
-import { MemberFormComponent } from './pages/members/member-form/member-form.component';
 
 //Material
 
@@ -26,8 +25,7 @@ import { MemberFormComponent } from './pages/members/member-form/member-form.com
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    UserFormComponent,
-    MemberFormComponent,
+    UserFormComponent
   ],
   exports: [
     ActivityFormComponent,

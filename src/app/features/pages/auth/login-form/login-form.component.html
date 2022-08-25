@@ -2,25 +2,23 @@
     <form class="form-body" [formGroup]="logingForm" (ngSubmit)="login()">
         <mat-form-field class="form-field" appearance="fill">
             <mat-label>Usuario</mat-label>
-            <input matInput placeholder="usuario@correo.com" formControlName="email">            
-        </mat-form-field>
-
-        <mat-error *ngIf="logingForm.controls['email'].invalid && (logingForm.controls['email'].dirty || logingForm.controls['email'].touched)">
-            <mat-error *ngIf="logingForm.controls['email'].errors">
-            Ingrese Usuario
-            </mat-error>
-        </mat-error>
+            <input matInput placeholder="usuario@correo.com" formControlName="email">   
+            <mat-error *ngIf="logingForm.controls['email'].invalid && (logingForm.controls['email'].dirty || logingForm.controls['email'].touched)">
+                <mat-error *ngIf="logingForm.controls['email'].errors">
+                Ingrese Usuario
+                </mat-error>
+            </mat-error>         
+        </mat-form-field>       
 
         <mat-form-field class="form-field" appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input matInput placeholder="Contraseña" type='password' formControlName="password">
-        </mat-form-field>
-
-        <mat-error *ngIf="logingForm.controls['password'].invalid && (logingForm.controls['password'].dirty || logingForm.controls['password'].touched)">
-            <mat-error *ngIf="logingForm.controls['password'].errors">
-            Ingrese Contraseña
-            </mat-error>
-        </mat-error>  
+            <mat-error *ngIf="logingForm.controls['password'].invalid && (logingForm.controls['password'].dirty || logingForm.controls['password'].touched)">
+                <mat-error *ngIf="logingForm.controls['password'].errors">
+                Ingrese Contraseña
+                </mat-error>
+            </mat-error>  
+        </mat-form-field>        
 
         <div class="section-buttons">
             <button type="submit" mat-flat-button color="primary">

@@ -11,7 +11,6 @@ import { MustMatch } from 'src/app/shared/validators/pass-match.validator';
 export class RegisterFormComponent implements OnInit {
   
   registerForm!: FormGroup;
-  submitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -30,7 +29,6 @@ export class RegisterFormComponent implements OnInit {
 
   register(): void{
     console.log(this.registerForm);
-    this.submitted = true;
 
     // return si formulario es invalido
     if (this.registerForm.invalid) {
@@ -39,7 +37,6 @@ export class RegisterFormComponent implements OnInit {
   }
 
   onReset(): void {
-    this.submitted = false;
     this.registerForm.reset();
   }
 }

@@ -49,10 +49,10 @@ export class MemberFormComponent implements OnInit {
     }
     this.clearInput(event);
   }
-  clearInput(event: any) {
+  clearInput(event: any): void {
     event.value = "";
   }
-  uploadLinks(link: string) {
+  uploadLinks(link: string): void {
     const links: string[] = this.form.get("links")?.value;
     if (typeof link == "string") {
       links.push(link);

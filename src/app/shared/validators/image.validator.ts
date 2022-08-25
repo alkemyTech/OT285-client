@@ -5,14 +5,9 @@ export function ImageValidator(control: AbstractControl): { InvalidType:boolean 
     return null;
   }
   if (!control.value.type) {
-    let controlEdgeArray = control.value.split(".");
-    let controlEdgeType =
-      controlEdgeArray[controlEdgeArray.length - 1].toLowerCase();
-    if (
-      controlEdgeType == "jpg" ||
-      controlEdgeType == "png" ||
-      controlEdgeType == "jpeg"
-    ) {
+    let controlArray = control.value.split(".");
+    let controlType = controlArray[controlArray.length - 1].toLowerCase();
+    if (controlType == "jpg" || controlType == "png" || controlType == "jpeg") {
       return null;
     }
   }

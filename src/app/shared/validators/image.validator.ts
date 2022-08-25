@@ -8,7 +8,6 @@ export function ImageValidator(control: AbstractControl): { InvalidType:boolean 
     let controlEdgeArray = control.value.split(".");
     let controlEdgeType =
       controlEdgeArray[controlEdgeArray.length - 1].toLowerCase();
-    console.log(controlEdgeType);
     if (
       controlEdgeType == "jpg" ||
       controlEdgeType == "png" ||

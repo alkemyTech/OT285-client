@@ -2,7 +2,7 @@
     <form class="form-body" [formGroup]="logingForm" (ngSubmit)="login()">
         <mat-form-field class="form-field" appearance="fill">
             <mat-label>Usuario</mat-label>
-            <input matInput placeholder="usuario@correo.com" formControlName="email">   
+            <input required matInput placeholder="usuario@correo.com" formControlName="email">   
             <mat-error *ngIf="logingForm.controls['email'].invalid && (logingForm.controls['email'].dirty || logingForm.controls['email'].touched)">
                 <mat-error *ngIf="logingForm.controls['email'].errors">
                 Ingrese Usuario
@@ -12,7 +12,7 @@
 
         <mat-form-field class="form-field" appearance="fill">
             <mat-label>Contraseña</mat-label>
-            <input matInput placeholder="Contraseña" type='password' formControlName="password">
+            <input required matInput placeholder="Contraseña" type='password' formControlName="password">
             <mat-error *ngIf="logingForm.controls['password'].invalid && (logingForm.controls['password'].dirty || logingForm.controls['password'].touched)">
                 <mat-error *ngIf="logingForm.controls['password'].errors">
                 Ingrese Contraseña

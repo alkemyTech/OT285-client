@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShowTitleNewsComponent } from './components/show-title-news/show-title-news.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ShowTitleNewsComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -19,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     CKEditorModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ShowTitleNewsComponent
   ]
 })
 export class SharedModule { }

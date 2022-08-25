@@ -8,8 +8,13 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
 import { RegisterFormComponent } from "./pages/auth/register-form/register-form.component";
 import { LoginFormComponent } from "./pages/auth/login-form/login-form.component";
 import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
+import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
 
 const routes: Routes = [
+  {
+    path: "miembros",
+    component: MemberFormComponent,
+  },
   {
     path: "registro",
     component: RegisterFormComponent,

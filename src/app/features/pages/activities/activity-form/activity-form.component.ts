@@ -20,6 +20,11 @@ export class ActivityFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public creationActivity = ClassicEditor;
+  errorImageActivity="Unicamente archivos jpg o png";
+  errorNameActivity="Ingresa un nombre valido";
+
+
 formActivity = new FormGroup({
     nameActivity : new FormControl
      ('',[Validators.required,
@@ -57,5 +62,9 @@ formActivity = new FormGroup({
   loadImageActivity(event:any):void{
     const file = event.target.files[0];
   }
+
+
+
+
 
 }

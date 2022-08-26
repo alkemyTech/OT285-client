@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-slider-carousel",
-  templateUrl: "./slider-carousel.component.html",
-  styleUrls: ["./slider-carousel.component.scss"],
+  selector: "app-slider",
+  templateUrl: "./slider.component.html",
+  styleUrls: ["./slider.component.scss"],
 })
-export class SliderCarouselComponent implements OnInit {
+export class SliderComponent implements OnInit {
   carouselList!: any;
 
   constructor(/* private http: HttpService */) {}

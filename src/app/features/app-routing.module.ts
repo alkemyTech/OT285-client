@@ -10,6 +10,7 @@ import { LoginFormComponent } from "./pages/auth/login-form/login-form.component
 import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
 import { DonationComponent } from "./pages/donations/donation/donation.component";
 import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
+import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: "backoffice/Slides",
     component: SlidesFormComponent,
+  },
+  {
+    path: "actividades/detalles",
+    component: ActivitiesDetailComponent
   },
   {
     path: "",

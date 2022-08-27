@@ -14,7 +14,6 @@ import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
-import { SliderComponent } from "../shared/Components/slider/slider.component";
 
 //Material
 
@@ -31,7 +30,6 @@ import { SliderComponent } from "../shared/Components/slider/slider.component";
     ContactComponent,
     DashboardComponent,
     OrganizationDataComponent,
-    SliderComponent,
   ],
   exports: [
     ActivityFormComponent,

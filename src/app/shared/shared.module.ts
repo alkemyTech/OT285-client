@@ -4,9 +4,10 @@ import { MaterialModule } from "./material.module";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { SliderComponent } from "./Components/slider/slider.component";
 
 @NgModule({
-  declarations: [],
+  declarations: [SliderComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -15,6 +16,12 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     NgbModule,
   ],
-  exports: [MaterialModule, CKEditorModule, ReactiveFormsModule, FormsModule],
+  exports: [
+    MaterialModule,
+    CKEditorModule,
+    ReactiveFormsModule,
+    SliderComponent,
+    FormsModule,
+  ],
 })
 export class SharedModule {}

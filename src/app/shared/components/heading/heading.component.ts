@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeadingComponent implements OnInit {
 
-  @Input() tittle!:string;
+  @Input() title!:string;
   @Input() image:string = 'https://images6.alphacoders.com/322/thumb-1920-322420.jpg';
 
   constructor() { }

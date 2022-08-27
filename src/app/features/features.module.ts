@@ -1,5 +1,5 @@
 import { RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
+import { CommonModule, CurrencyPipe } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { ActivityFormComponent } from "./pages/activities/activity-form/activity-form.component";
@@ -14,6 +14,8 @@ import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
+import { DonationComponent } from './pages/donations/donation/donation.component';
+import { ThanksComponent } from './pages/donations/thanks/thanks.component';
 
 //Material
 
@@ -30,6 +32,8 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
     ContactComponent,
     DashboardComponent,
     OrganizationDataComponent,
+    DonationComponent,
+    ThanksComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -41,8 +45,9 @@ import { OrganizationDataComponent } from "./pages/organization/organization-dat
     TestimonialFormComponent,
     UserFormComponent,
     OrganizationDataComponent,
-    RouterModule,
+    RouterModule
   ],
   imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
+  providers: [CurrencyPipe]
 })
 export class FeaturesModule {}

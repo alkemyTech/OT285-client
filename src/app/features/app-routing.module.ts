@@ -10,8 +10,13 @@ import { LoginFormComponent } from "./pages/auth/login-form/login-form.component
 import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
 import { DonationComponent } from "./pages/donations/donation/donation.component";
 import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
+import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 
 const routes: Routes = [
+  {
+    path: "nosotros",
+    component: AboutUsComponent,
+  },
   {
     path: "gracias",
     component: ThanksComponent,

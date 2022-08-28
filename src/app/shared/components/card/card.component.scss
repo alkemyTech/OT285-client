@@ -4,8 +4,8 @@ mat-card{
 }
 
 img{
-    max-width: 240px;
-    max-height: 240px;
+    width: 220px;
+    height: 220px;
 }
 
 .mat-card-header .mat-card-title{
@@ -19,9 +19,18 @@ img{
 
 .cardFlex{
     display: flex;
-    max-width: 420px;
+    max-width: 450px;
+    align-items: center;
 }
 
-.mr-0{
-    margin-right: 0;
+.m-10{
+    margin: 10px !important;
+}
+
+@media only screen and (max-width: 600px) { //Responsive styles in mobile
+
+    img{
+        width: 175px;
+        height: 175px;
+    }
 }

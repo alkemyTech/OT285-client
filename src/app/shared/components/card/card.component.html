@@ -6,13 +6,13 @@
     <img 
         *ngIf="options.image; else placeholder" 
         mat-card-image [src]="'assets/images/' + options.image"
-        [ngClass]="{'mr-0': options.imageLeft}"
+        [ngClass]="{'m-10': options.imageLeft}"
     >
     <ng-template #placeholder>
         <img 
             mat-card-image 
             src="https://via.placeholder.com/300"
-            [ngClass]="{'mr-0': options.imageLeft}"
+            [ngClass]="{'m-10': options.imageLeft}"
         >
     </ng-template>
 

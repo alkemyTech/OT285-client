@@ -12,8 +12,13 @@ import { DonationComponent } from "./pages/donations/donation/donation.component
 import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
 import { UsersListComponent } from "./pages/users/users-list/users-list.component";
 import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
+import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
 
 const routes: Routes = [
+  {
+    path: "miembros",
+    component: MemberFormComponent,
+  },
   {
     path: "nosotros",
     component: AboutUsComponent,
@@ -67,7 +72,7 @@ const routes: Routes = [
     path: "**",
     redirectTo: "actividades",
     pathMatch: "full",
-  },
+  }
 ];
 
 @NgModule({

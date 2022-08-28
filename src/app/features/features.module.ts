@@ -16,6 +16,7 @@ import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 import { DonationComponent } from './pages/donations/donation/donation.component';
 import { ThanksComponent } from './pages/donations/thanks/thanks.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { AboutUsComponent } from './pages/about/about-us/about-us.component';
 
 //Material
@@ -35,6 +36,7 @@ import { AboutUsComponent } from './pages/about/about-us/about-us.component';
     OrganizationDataComponent,
     DonationComponent,
     ThanksComponent,
+    UsersListComponent,
     AboutUsComponent,
   ],
   exports: [

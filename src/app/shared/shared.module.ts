@@ -4,12 +4,14 @@ import { MaterialModule } from './material.module';
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeadingComponent } from './components/heading/heading.component';
+import { CardComponent } from './components/card/card.component';
 
 
 
 @NgModule({
   declarations: [
-    HeadingComponent
+    HeadingComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { HeadingComponent } from './components/heading/heading.component';
     CKEditorModule,
     ReactiveFormsModule,
     FormsModule,
-    HeadingComponent
+    HeadingComponent,
+    CardComponent
   ]
 })
 export class SharedModule { }

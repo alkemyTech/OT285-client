@@ -1,25 +1,29 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from './material.module';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MaterialModule } from "./material.module";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { SliderComponent } from "./components/slider/slider.component";
+import { HeadingComponent } from "./components/heading/heading.component";
 
 @NgModule({
-  declarations: [],
+  declarations: [HeadingComponent, SliderComponent],
   imports: [
     CommonModule,
     MaterialModule,
     CKEditorModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
   ],
   exports: [
     MaterialModule,
     CKEditorModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    SliderComponent,
+    FormsModule,
+    HeadingComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

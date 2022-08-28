@@ -1,5 +1,5 @@
 import { RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
+import { CommonModule, CurrencyPipe } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { ActivityFormComponent } from "./pages/activities/activity-form/activity-form.component";
@@ -14,6 +14,10 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
+import { DonationComponent } from './pages/donations/donation/donation.component';
+import { ThanksComponent } from './pages/donations/thanks/thanks.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { AboutUsComponent } from './pages/about/about-us/about-us.component';
 
 //Material
 
@@ -30,6 +34,10 @@ import { MemberFormComponent } from "./pages/members/member-form/member-form.com
     DashboardComponent,
     OrganizationDataComponent,
     MemberFormComponent
+    DonationComponent,
+    ThanksComponent,
+    UsersListComponent,
+    AboutUsComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -41,8 +49,10 @@ import { MemberFormComponent } from "./pages/members/member-form/member-form.com
     TestimonialFormComponent,
     OrganizationDataComponent,
     RouterModule,
-    MemberFormComponent
+    MemberFormComponent,
+    RouterModule
   ],
   imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
+  providers: [CurrencyPipe]
 })
 export class FeaturesModule {}

@@ -11,8 +11,13 @@ import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.comp
 import { DonationComponent } from "./pages/donations/donation/donation.component";
 import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
 import { UsersListComponent } from "./pages/users/users-list/users-list.component";
+import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 
 const routes: Routes = [
+  {
+    path: "nosotros",
+    component: AboutUsComponent,
+  },
   {
     path: "gracias",
     component: ThanksComponent,

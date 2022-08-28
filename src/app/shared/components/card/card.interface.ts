@@ -1,5 +1,6 @@
 export interface Card{
     title:string;
-    image:string;
+    image?:string;
     description:string;
+    imageLeft?:boolean;
 }

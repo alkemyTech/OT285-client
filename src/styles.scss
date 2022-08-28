@@ -32,3 +32,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ck-editor__editable_inline {
     min-height: 200px;
 }
+
+.error-color {
+    color: #f44336
+}
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

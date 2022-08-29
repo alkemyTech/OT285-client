@@ -7,7 +7,7 @@
   </div>
   <form #f="ngForm" [formGroup]="form" (ngSubmit)="sendSlide($event)">
     <mat-form-field class="input-form" appearance="fill">
-      <mat-label>Nombre</mat-label>
+      <mat-label>Nombre<span class="error-color">*</span></mat-label>
       <input
         matInput
         placeholder="Introduce un Nombre"
@@ -18,7 +18,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="input-form" appearance="fill">
-      <mat-label>Orden</mat-label>
+      <mat-label>Orden<span class="error-color">*</span></mat-label>
       <input
         type="number"
         matInput
@@ -30,20 +30,30 @@
       </mat-error>
     </mat-form-field>
     <div class="mt-20">
-      <mat-label style="display: block">Elegir Imagen</mat-label>
+      <mat-label style="display: block"
+        >Elegir Imagen<span class="error-color">*</span></mat-label
+      >
       <input
         type="file"
         class="input-form"
         placeholder="Introduce una Imagen"
         formControlName="image"
         (change)="loadImg($event)"
+        accept=".png, .jpg, .jpeg"
       />
       <mat-error *ngIf="image?.hasError('required') && image?.touched">
         Una Imagen es <strong>requerida</strong>
       </mat-error>
+      <mat-error
+        *ngIf="image?.hasError('InvalidType') && !image?.hasError('required')"
+      >
+        La imagen debe ser formato .jpg o .png
+      </mat-error>
     </div>
     <div class="mt-20">
-      <mat-label style="display: block">Descripción</mat-label>
+      <mat-label style="display: block"
+        >Descripción<span class="error-color">*</span></mat-label
+      >
       <ckeditor
         class="input-form"
         [editor]="Editor"

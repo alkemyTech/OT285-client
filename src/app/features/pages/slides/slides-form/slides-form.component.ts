@@ -6,6 +6,7 @@ import {
   Validators,
 } from "@angular/forms";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { ImageValidator } from "src/app/shared/validators/image.validator";
 
 @Component({
   selector: "app-slides-form",
@@ -25,7 +26,7 @@ export class SlidesFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ["", [Validators.required]],
       description: ["", [Validators.required]],
-      image: ["", [Validators.required]],
+      image: ["", [Validators.required, ImageValidator]],
       order: ["", [Validators.required]],
     });
   }

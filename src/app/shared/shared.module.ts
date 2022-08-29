@@ -4,18 +4,17 @@ import { MaterialModule } from "./material.module";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { SliderComponent } from "./components/slider/slider.component";
 import { HeadingComponent } from "./components/heading/heading.component";
-import { CardComponent } from './components/card/card.component';
+import { CardComponent } from "./components/card/card.component";
+import { SliderComponent } from "./components/slider/slider.component";
 import { ListComponent } from "./components/list/list.component";
 
-
 @NgModule({
-  declarations: [
+  declarations: [    
     HeadingComponent,
-    CardComponent,
+    CardComponent,   
     SliderComponent,
-    ListComponent
+    ListComponent  
   ],
   imports: [
     CommonModule,

@@ -17,7 +17,7 @@ export class PublicApiServiceService {
     return this.http.get<T>(url) 
   }
 
-  post<T>(postUrl: string, obj: any): Observable<T> {
-    return this.http.post<T>(this.apiUrl + postUrl, obj);
+  post<T>(url: string, obj: any): Observable<T> {
+    return this.http.post<T>(this.apiUrl + url, obj);
   }
 }

@@ -39,7 +39,7 @@ import { UserFormComponent } from "./pages/users/user-form/user-form.component";
     ThanksComponent,
     UsersListComponent,
     AboutUsComponent,
-    UserFormComponent
+    UserFormComponent,    
   ],
   exports: [
     ActivityFormComponent,

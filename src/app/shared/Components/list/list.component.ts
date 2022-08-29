@@ -11,7 +11,6 @@ export class ListComponent implements OnInit {
   membersList: Card[] = [
     {
       title: 'Example',
-      image: 'ex-image',
       description: 'Lorem Ipsum',
       imageLeft: true
     },

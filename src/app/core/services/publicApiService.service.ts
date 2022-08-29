@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { PrivateApiServiceService } from "./privateApiService.service";
 
 @Injectable({
   providedIn: "root",

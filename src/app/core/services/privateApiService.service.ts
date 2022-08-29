@@ -31,11 +31,12 @@ export class PrivateApiServiceService {
     return apiCall;
   }
 
-  patch(route: string, id: number, data: {}): void {
+  patch<T>(route: string, id: number, data: {}): Observable<T> | null {
     const headers = this.getHeaders();
     if (headers) {
       const url = this.apiUrl + "/" + route + (id ? "/" + id : "");
-      this.http.patch(url, data, { headers: headers });
+      return this.http.patch<T>(url, data, { headers: headers });
     }
+    return null;
   }
 }

@@ -50,7 +50,7 @@ const routes: Routes = [
     component: SlidesFormComponent,
   },
   {
-    path: "actividades/detalles",
+    path: "actividades/:id",
     component: ActivitiesDetailComponent
   },
   {

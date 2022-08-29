@@ -18,6 +18,7 @@ import { DonationComponent } from './pages/donations/donation/donation.component
 import { ThanksComponent } from './pages/donations/thanks/thanks.component';
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
 
+
 //Material
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
     DonationComponent,
     ThanksComponent,
     ActivitiesDetailComponent,
+    
   ],
   exports: [
     ActivityFormComponent,

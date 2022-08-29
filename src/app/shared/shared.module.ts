@@ -6,10 +6,14 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from './components/card/card.component';
+import { SliderComponent } from "./components/slider/slider.component";
 
 @NgModule({
-  declarations: [HeadingComponent,
-    CardComponent,],
+  declarations: [
+    HeadingComponent,
+    CardComponent,
+    SliderComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

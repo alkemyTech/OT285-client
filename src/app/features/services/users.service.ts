@@ -10,45 +10,34 @@ export class UsersService {
   constructor(private privateApi: PrivateApiServiceService) {}
 
   getAllUsers() {
-    let usersList: [];
-    let message: string;
     this.privateApi.get(this.route).subscribe(
       (data) => {
-        usersList = data.data;
-        return usersList;
+        return data;
       },
       (err) => {
-        message = err.message;
-        return message;
+        return err;
       }
     );
   }
 
   storeUser(obj: any) {
-    let message: string;
     this.privateApi.post(this.route, obj).subscribe(
       (data) => {
-        message = data.message;
-        return message;
+        return data;
       },
       (err) => {
-        message = err.message;
-        return message;
+        return err;
       }
     );
   }
 
   getUser(id: number) {
-    let user: {};
-    let message: string;
     this.privateApi.get(this.route, id).subscribe(
       (data) => {
-        user = data.data;
-        return user;
+        return data;
       },
       (err) => {
-        message = err.message;
-        return message;
+        return err;
       }
     );
   }
@@ -57,12 +46,10 @@ export class UsersService {
     let message: string;
     this.privateApi.put(this.route, id, obj).subscribe(
       (data) => {
-        message = data.message;
-        return message;
+        return data;
       },
       (err) => {
-        message = err.message;
-        return message;
+        return err;
       }
     );
   }
@@ -71,12 +58,10 @@ export class UsersService {
     let message: string;
     this.privateApi.delete(this.route, id).subscribe(
       (data) => {
-        message = data.data;
-        return message;
+        return data;
       },
       (err) => {
-        message = err.message;
-        return message;
+        return err;
       }
     );
   }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemberFormComponent } from './member-form.component';
+import { SliderComponent } from './slider.component';
 
-describe('MemberFormComponent', () => {
-  let component: MemberFormComponent;
-  let fixture: ComponentFixture<MemberFormComponent>;
+describe('SliderComponent', () => {
+  let component: SliderComponent;
+  let fixture: ComponentFixture<SliderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MemberFormComponent ]
+      declarations: [ SliderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MemberFormComponent);
+    fixture = TestBed.createComponent(SliderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

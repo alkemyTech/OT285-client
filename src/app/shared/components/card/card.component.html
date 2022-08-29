@@ -1,0 +1,28 @@
+<mat-card [ngClass]="{'cardFlex': options.imageLeft}">
+    <mat-card-header *ngIf="!options.imageLeft">
+        <mat-card-title>{{options.title}}</mat-card-title>
+    </mat-card-header>
+    
+    <img 
+        *ngIf="options.image; else placeholder" 
+        mat-card-image [src]="'assets/images/' + options.image"
+        [ngClass]="{'m-10': options.imageLeft}"
+    >
+    <ng-template #placeholder>
+        <img 
+            mat-card-image 
+            src="https://via.placeholder.com/300"
+            [ngClass]="{'m-10': options.imageLeft}"
+        >
+    </ng-template>
+
+    <div>
+        <mat-card-header *ngIf="options.imageLeft">
+            <mat-card-title>{{options.title}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content  [innerHTML]="options.description">
+        </mat-card-content>
+    </div>
+    
+</mat-card>

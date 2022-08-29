@@ -13,8 +13,13 @@ import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
 import { UsersListComponent } from "./pages/users/users-list/users-list.component";
 import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
+import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 
 const routes: Routes = [
+  {
+    path: "usuarios",
+    component: UserFormComponent,
+  },
   {
     path: "miembros",
     component: MemberFormComponent,

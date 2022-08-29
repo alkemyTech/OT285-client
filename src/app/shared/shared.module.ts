@@ -27,7 +27,7 @@ import { SliderComponent } from "./components/slider/slider.component";
     MaterialModule,
     CKEditorModule,
     ReactiveFormsModule,
-    
+    SliderComponent,
     FormsModule,
     HeadingComponent,
     CardComponent

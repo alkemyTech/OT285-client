@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,10 +8,10 @@ export class PrivateApiServiceService {
 
   constructor() { }
 
-  getHeaders(): Headers | null {
+  getHeaders(): HttpHeaders | null {
     const token = localStorage.getItem('token')
     if(token){
-      const headers = new Headers({
+      const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       })

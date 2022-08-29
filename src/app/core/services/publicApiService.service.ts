@@ -20,10 +20,10 @@ export class PublicApiServiceService {
     return this.http.get<T>(url) 
   }
 
-  patch(data: any): void{ 
-    if(this.privateApiService.getHeaders()){
-      this.http.patch(this.apiUrl, data, {headers: this.privateApiService.getHeaders()})
-
+  patch(route: string, id: number, data: {}): void{
+    const headers = this.privateApiService.getHeaders();
+    if(headers){
+      this.http.patch(this.apiUrl, data, {headers: headers})
     }
   }
 }

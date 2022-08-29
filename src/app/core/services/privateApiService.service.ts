@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class PrivateApiServiceService {
   
-  apiUrl: string = '.../'; //COMPLETAR
+  apiUrl: string = '.../';
 
   constructor(private http: HttpClient) { }
 
-  getHeaders(): HttpHeaders | null { //Cambio Headers por HttpHeaders
+  getHeaders(): HttpHeaders | null {
     const token = localStorage.getItem('token')
     if(token){
-      const headers = new HttpHeaders({ //Cambio Headers por HttpHeaders
+      const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       })
@@ -25,7 +25,7 @@ export class PrivateApiServiceService {
 
   get<T>(route: string, id: number | null): Observable<T> {
     const headers = this.getHeaders();
-    let url = this.apiUrl + route + (id ? '/' + id : '');
+    const url = this.apiUrl + route + (id ? '/' + id : '');
     let apiCall: Observable<T>;
     (headers ? apiCall = this.http.get<T>( url, { headers: headers }) : apiCall = this.http.get<T>(url));    
     return apiCall;

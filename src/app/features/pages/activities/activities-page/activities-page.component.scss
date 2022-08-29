@@ -1,3 +1,9 @@
 div{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+div > app-card{
+    margin: 20px 0;
 }

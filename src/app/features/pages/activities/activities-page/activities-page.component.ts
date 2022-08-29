@@ -14,23 +14,18 @@ export class ActivitiesPageComponent implements OnInit {
       title:'Actividad 1',
       description:'Esta es la actividad 1'
     },
-   
     {
       title:'Actividad 2',
       description:'Esta es la actividad 2'
     },
-   
     {
       title:'Actividad 3',
       description:'Esta es la actividad 3'
     },
-   
     {
       title:'Actividad 4',
       description:'Esta es la actividad 4'
-    },
-   
-   
+    }
   ]
 
   constructor() { }

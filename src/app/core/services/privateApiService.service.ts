@@ -30,4 +30,12 @@ export class PrivateApiServiceService {
     (headers ? apiCall = this.http.get<T>( url, { headers: headers }) : apiCall = this.http.get<T>(url));    
     return apiCall;
   }
+
+  patch(route: string, id: number, data: {}): void {
+    const headers = this.getHeaders();
+    if (headers) {
+      const url = this.apiUrl + "/" + route + (id ? "/" + id : "");
+      this.http.patch(url, data, { headers: headers });
+    }
+  }
 }

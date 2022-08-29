@@ -6,9 +6,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SliderComponent } from "./components/slider/slider.component";
 import { HeadingComponent } from "./components/heading/heading.component";
+import { CardComponent } from './components/card/card.component';
+
 
 @NgModule({
-  declarations: [HeadingComponent, SliderComponent],
+  declarations: [HeadingComponent,
+    CardComponent, SliderComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -24,6 +27,7 @@ import { HeadingComponent } from "./components/heading/heading.component";
     SliderComponent,
     FormsModule,
     HeadingComponent,
-  ],
+    CardComponent
+  ]
 })
 export class SharedModule {}

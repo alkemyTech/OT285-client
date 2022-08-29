@@ -33,7 +33,7 @@ import { AboutUsComponent } from './pages/about/about-us/about-us.component';
     ContactComponent,
     DashboardComponent,
     OrganizationDataComponent,
-    MemberFormComponent
+    MemberFormComponent,
     DonationComponent,
     ThanksComponent,
     UsersListComponent,

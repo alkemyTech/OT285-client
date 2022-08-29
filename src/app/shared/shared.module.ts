@@ -8,7 +8,6 @@ import { SliderComponent } from "./components/slider/slider.component";
 import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from './components/card/card.component';
 
-
 @NgModule({
   declarations: [HeadingComponent,
     CardComponent, SliderComponent],

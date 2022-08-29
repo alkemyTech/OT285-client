@@ -6,11 +6,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from './components/card/card.component';
-import { SliderComponent } from "./components/heading/slider/slider.component";
 
 @NgModule({
   declarations: [HeadingComponent,
-    CardComponent, SliderComponent],
+    CardComponent,],
   imports: [
     CommonModule,
     MaterialModule,
@@ -23,7 +22,7 @@ import { SliderComponent } from "./components/heading/slider/slider.component";
     MaterialModule,
     CKEditorModule,
     ReactiveFormsModule,
-    SliderComponent,
+    
     FormsModule,
     HeadingComponent,
     CardComponent

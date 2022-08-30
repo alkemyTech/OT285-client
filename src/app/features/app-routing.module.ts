@@ -15,6 +15,7 @@ import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
+import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
 
 const routes: Routes = [
   {
@@ -69,6 +70,11 @@ const routes: Routes = [
     path: "backoffice/Slides",
     component: SlidesFormComponent,
   },
+  {
+    path: "actividades/:id",
+    component:ActivitiesDetailComponent,
+  },
+
   {
     path: "",
     redirectTo: "actividades",

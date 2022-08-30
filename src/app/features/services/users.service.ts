@@ -5,7 +5,7 @@ import { PrivateApiServiceService } from "src/app/core/services/privateApiServic
   providedIn: "root",
 })
 export class UsersService {
-  route: string = "users";
+  private readonly route: string = "users";
 
   constructor(private privateApi: PrivateApiServiceService) {}
 
@@ -17,11 +17,11 @@ export class UsersService {
     return this.privateApi.post(this.route, obj);
   }
 
-  getUser(id: number): any {
+  getUser(id: string): any {
     return this.privateApi.get(this.route, id);
   }
 
-  updateUser(id: number, obj: any): any {
+  updateUser(id: string, obj: any): any {
     return this.privateApi.put(this.route, id, obj);
   }
 

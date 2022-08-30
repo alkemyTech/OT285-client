@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ImageValidator } from './image.validator';
+import { ImageValidator } from '../../../../shared/validators/image.validator';
 
-
+interface category {
+  name:string,
+  image:File,
+  description:string
+}
 
 @Component({
   selector: 'app-categories-form',
@@ -12,11 +16,14 @@ import { ImageValidator } from './image.validator';
 })
 export class CategoriesFormComponent implements OnInit {
 
+  @Input() category:category | undefined
+
   public Editor = ClassicEditor;
 
   editorConfig = { 
     placeholder:'Ingrese una descripción...'
   }
+
 
   categoriesForm = this.fb.group({
     name:['', [Validators.required, Validators.minLength(4), Validators.maxLength(256)]],
@@ -29,6 +36,9 @@ export class CategoriesFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.category){
+      this.categoriesForm.patchValue(this.category)
+    }
   }
 
   onFileSelected(event: any): void {
@@ -36,9 +46,17 @@ export class CategoriesFormComponent implements OnInit {
     this.categoriesForm.controls['image'].setValue(file ? file : '');
   }
 
-  sendForm(){
+  sendForm(): void {
     if(this.categoriesForm.valid){
-      console.log(this.categoriesForm.value)
+      if(this.category){
+        //Petición PATCH al endpoint de actualización del server (/categories/:id)
+        console.log('PATCH:', this.categoriesForm.value)
+      }else{
+        //Petición POST al endpoint de creación de Categorías (/categories)
+        console.log('POST:', this.categoriesForm.value)
+      }
+    }else{
+      this.categoriesForm.markAllAsTouched();
     }
   }
 

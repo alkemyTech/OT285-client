@@ -9,10 +9,45 @@ export class UsersService {
 
   constructor(private privateApi: PrivateApiServiceService) {}
 
-  getAllUsers() {
+  getAllUsers(name?: string, role?: string, skip?: number, limit?: number) {
     this.privateApi.get(this.route).subscribe(
       (data) => {
-        return data;
+        //Lista Completa
+        let usersList = data;
+        //Busqueda por nombre
+        if (name) {
+          let usersListByName = [];
+          for (let i = 0; i < usersList.data.length; i++) {
+            if (usersList.data[i].name.includes(name)) {
+              usersListByName.push(usersList.data[i]);
+            }
+          }
+          usersList.data = usersListByName;
+        }
+        //Busqueda por Rol
+        if (role) {
+          let usersListByRole = [];
+          for (let i = 0; i < usersList.data.length; i++) {
+            if (usersList.data[i].role_id.includes(role)) {
+              usersListByRole.push(usersList.data[i]);
+            }
+          }
+          usersList.data = usersListByRole;
+        }
+        //Busqueda con Skip
+        if (skip) {
+          let usersListWithSkip = [];
+          usersListWithSkip = usersList.data.slice(skip);
+          usersList.data = usersListWithSkip;
+        }
+        //Busqueda con Limit
+        if (limit) {
+          let usersListWithLimit = [];
+          usersListWithLimit = usersList.data.slice(0, limit);
+          usersList.data = usersListWithLimit;
+        }
+        //Devuelve la lista modificada o no modificada
+        return usersList;
       },
       (err) => {
         return err;

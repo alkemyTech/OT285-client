@@ -1,6 +1,28 @@
 import { Injectable } from "@angular/core";
 import { PrivateApiServiceService } from "src/app/core/services/privateApiService.service";
 
+interface UsersList {
+  success: boolean;
+  data: {
+    id: number;
+    name: string;
+    email: string;
+    email_verified_at: any;
+    password: string;
+    role_id: string;
+    remember_token: any;
+    created_at: string;
+    updated_at: any;
+    deleted_at: any;
+    group_id: any;
+    latitude: any;
+    longitude: any;
+    address: any;
+    profile_image: any;
+  }[];
+  message: string;
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -18,7 +40,7 @@ export class UsersService {
     this.privateApi.get(this.route).subscribe(
       (data) => {
         //Lista Completa
-        let usersList = data;
+        let usersList: UsersList = data as UsersList;
         //Busqueda por nombre
         if (name) {
           let usersListByName = [];

@@ -24,13 +24,13 @@ export class PrivateApiServiceService {
 
   get<T>(route: string, id?: number): Observable<T> {
     const headers: HttpHeaders | null = this.getHeaders();
-    const url: string = this.apiUrl + route + (id ? '/' + id : '');
-    
+    const url: string = this.apiUrl + route + (id ? "/" + id : "");
+
     let apiCall: Observable<T>;
     headers
       ? (apiCall = this.http.get<T>(url, { headers: headers }))
       : (apiCall = this.http.get<T>(url));
-    
+
     return apiCall;
   }
 
@@ -52,9 +52,18 @@ export class PrivateApiServiceService {
 
     let apiCall: Observable<T>;
     headers
-      ? apiCall = this.http.post<T>(url, body, { headers: headers })
-      : apiCall = this.http.post<T>(url, body);
-    
+      ? (apiCall = this.http.post<T>(url, body, { headers: headers }))
+      : (apiCall = this.http.post<T>(url, body));
+
     return apiCall;
+  }
+
+  put<T>(route: string, id: number, obj: any): Observable<T> {
+    const headers = this.getHeaders();
+    let url = this.apiUrl + route + "/" + id;
+    if (headers) {
+      return this.http.put<T>(url, obj, { headers: headers });
+    }
+    return this.http.put<T>(url, obj);
   }
 }

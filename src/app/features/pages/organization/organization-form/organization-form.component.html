@@ -1,0 +1,49 @@
+<div class="form-container">
+
+    <form class="organization-form" [formGroup]="organizationForm">
+
+        <h1 style="margin-bottom: 5%;">Organización</h1>
+
+        <mat-form-field appearance="fill" style="width: 60%">
+            <mat-label>Nombre</mat-label>
+            <input matInput #input formControlName="name">
+            <mat-error class="errorMsg" *ngIf="nameControl.hasError('required')">El campo es obligatorio</mat-error>
+        </mat-form-field>
+
+        <div class="fileInputContainer" style="margin-bottom: 3%;">
+            <input #fileUpload formControlName="image" class="inputFile" type="file" (change)="fileChangeEvent($event)"
+            accept="image/*" style="display: none;">
+            <button mat-raised-button color="primary" (click)="fileUpload.click()">
+                Subir Logo
+            </button>
+            {{fileName || 'Seleccionar imagen'}}
+            <mat-error class="errorMsg" *ngIf="imageControl.hasError('required') && infoRequired">El campo es obligatorio</mat-error>
+        </div>
+
+        <div style="margin-bottom: 3%;">
+            <label>Descripción corta</label>
+            <ckeditor [editor]="Editor" data="<p>Ingresa tu novedad!</p>" formControlName="shortText"></ckeditor>
+            <mat-error class="errorMsg" *ngIf="shortTextControl.hasError('required') && infoRequired">El campo es obligatorio</mat-error>
+        </div>
+
+        <div style="margin-bottom: 3%;">
+            <label>Descripción completa</label>
+            <ckeditor [editor]="Editor" data="<p>Ingresa tu novedad!</p>" formControlName="longText"></ckeditor>
+            <mat-error class="errorMsg" *ngIf="longTextControl.hasError('required') && infoRequired">El campo es obligatorio</mat-error>
+        </div>
+
+        <div class="socialNetworks">
+            <mat-form-field appearance="fill" style="width: 60%">
+                <mat-label>Redes sociales</mat-label>
+                <input matInput #input formControlName="socialNetworks" type="url" #url class="urlInput" required pattern="https://.*" >
+            </mat-form-field>
+            <button mat-raised-button color="primary" style="width: fit-content;" (click)="addUrl(url.value)" style="margin-left: 5%">Agregar</button>
+            <h5>{{urlArray}}</h5>
+        </div>
+
+        <div class="sectionBtn" style="text-align: center;">
+            <button mat-raised-button color="primary" style="width: fit-content;" (click)="saveOrEdit()">Enviar</button>
+        </div>
+
+    </form>
+</div>

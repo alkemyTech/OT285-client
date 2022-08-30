@@ -1,1 +1,48 @@
-<p>news-form works!</p>
+<div class="form-container">
+
+    <form class="news-form" [formGroup]="newsForm">
+
+        <h1 style="margin-bottom: 5%;">Novedades</h1>
+
+        <mat-form-field appearance="fill" style="width: 60%">
+            <mat-label>Título</mat-label>
+            <input matInput #input formControlName="title">
+            <mat-error class="errorMsg" *ngIf="titleControl.hasError('required')">El campo es obligatorio</mat-error>
+            <mat-error class="errorMsg"
+                *ngIf="titleControl.hasError('minlength', 'title') || !newsForm.hasError('required', 'title')">El título
+                debe tener mínimo 4 caracteres</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" style="width: fit-content;">
+            <mat-label>Categoría</mat-label>
+            <mat-select matNativeControl [(ngModel)]="selectedCategory" name="car" formControlName="category">
+                <mat-option value="" selected>-Categoria-</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{category.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error class="errorMsg" *ngIf="categoryControl.hasError('required')">El campo es obligatorio</mat-error>
+        </mat-form-field>
+
+        <div class="fileInputContainer" style="margin-bottom: 3%;">
+            <input #fileUpload formControlName="image" class="inputFile" type="file" (change)="fileChangeEvent($event)"
+                style="display: none;">
+            <button mat-raised-button color="primary" (click)="fileUpload.click()">
+                Subir Imagen
+            </button>
+            {{fileName || 'Seleccionar imagen'}}
+            <mat-error class="errorMsg" *ngIf="imageControl.hasError('required') && infoRequired">El campo es obligatorio</mat-error>
+        </div>
+
+        <div style="margin-bottom: 3%;">
+            <ckeditor [editor]="Editor" data="<p>Ingresa tu novedad!</p>" formControlName="text"></ckeditor>
+            <mat-error class="errorMsg" *ngIf="textControl.hasError('required') && infoRequired">El campo es obligatorio</mat-error>
+        </div>
+
+        <div class="sectionBtn" style="text-align: center;">
+            <button mat-raised-button color="primary" style="width: fit-content;" (click)="saveOrEdit()">Enviar</button>
+        </div>
+
+    </form>
+</div>

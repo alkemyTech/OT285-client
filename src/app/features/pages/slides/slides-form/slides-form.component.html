@@ -78,3 +78,42 @@
     </div>
   </form>
 </div>
+
+<div class="container-buton">
+  <button class="button-create" type="button" mat-raised-button color="primary" (click)="navigateCreate()">Crear</button>
+</div>
+  
+<h2 class="title-slides">Listado Slides</h2>
+
+<table  class="table mat-elevation-z9 table-slides">
+ <tr>
+
+    <th> No. </th>
+    <th> Title </th>
+    <th> Image </th>
+    <th> Order </th>
+    <th> Edit </th>
+    <th> Delete </th>
+
+  </tr>
+ 
+  <tr *ngFor="let miArray of mySlides; let i = index">
+
+    <td>{{i+1}}</td>
+    <td>{{miArray.title}}</td>
+    <td><img class="image-slide" src={{miArray.image}} alt=""></td>
+    <td>{{miArray.order}}</td>
+    <td>
+      <button class="accionButton" mat-raised-button color="primary"><mat-icon>edit</mat-icon>Editar
+        </button>
+    </td>
+    <td>
+      <button class="accionButton" mat-raised-button color="accent" (click)="deleteSlide(i)"><mat-icon>delete</mat-icon>Eliminar
+        </button>
+    </td>
+
+  </tr>
+  
+</table>
+<br>
+<br>

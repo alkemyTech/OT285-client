@@ -17,11 +17,11 @@ export class UsersService {
     return this.privateApi.post(this.route, obj);
   }
 
-  getUser(id: string): any {
+  getUser(id: number): any {
     return this.privateApi.get(this.route, id);
   }
 
-  updateUser(id: string, obj: any): any {
+  updateUser(id: number, obj: any): any {
     return this.privateApi.put(this.route, id, obj);
   }
 

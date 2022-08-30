@@ -12,4 +12,6 @@ export class ActivitiesDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  TitleParent:string="Aquí sstá el título en minuscula, se debe ver en mayuscula"; //titulo a pasar al componente <app-heading></app-heading>
+
 }

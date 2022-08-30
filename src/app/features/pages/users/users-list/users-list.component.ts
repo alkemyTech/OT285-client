@@ -32,13 +32,8 @@ export class UsersListComponent implements OnInit {
       name: 'Antonio Lopez',
       email: 'anjojalo1@gmail.com',
     },
-    {
-      name: 'Viviana Perez',
-      email: 'viviana.perez28@gmail.com'
-    }
   ];
   columns = ["name", "email", "accions"];
-
   deleting = false;
   userFlag = {};
   constructor(
@@ -56,18 +51,15 @@ export class UsersListComponent implements OnInit {
 
   }
   trueDelete(): void{
-    console.log('peticion para eliminar el usuario en el servidor');
     this.deleting = false;
     this.userFlag = {}
   }
   cancel(): void{
-    console.log('cancelada la eliminacion del usuario');
     this.deleting = false;
     this.userFlag = {}
   }
   create(): void {
-    console.log('redireccion a backoffice/users/create');
-    //this.router.navigate(['backoffice/users/create']);
+    this.router.navigate(['backoffice/users/create']);
   }
   
 }

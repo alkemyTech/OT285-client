@@ -1,20 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PublicApiServiceService {
+  apiUrl = "";
+  constructor(
+    private http: HttpClient
+  ) {}
 
-  apiUrl!: string //Aqui iria la url de la api
-
-  constructor(private http:HttpClient) { }
-
-  get<T>(route:string, id?:number): Observable<T>{
-
-    const url = route + (id ? '/'+id : '')//Falta la url base de la api al principio
-    return this.http.get<T>(url) 
+  get<T>(route: string, id?: number): Observable<T> {
+    const url = route + (id ? "/" + id : ""); //Falta la url base de la api al principio
+    return this.http.get<T>(url);
   }
 
   post<T>(url: string, obj: any): Observable<T> {

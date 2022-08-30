@@ -19,6 +19,7 @@ import { ThanksComponent } from './pages/donations/thanks/thanks.component';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { AboutUsComponent } from './pages/about/about-us/about-us.component';
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
+import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
 
 //Material
@@ -41,7 +42,8 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
     UsersListComponent,
     AboutUsComponent,
     UserFormComponent,
-    ActivitiesDetailComponent,    
+    ActivitiesPageComponent,
+    ActivitiesDetailComponent    
   ],
   exports: [
     ActivityFormComponent,

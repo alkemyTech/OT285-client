@@ -21,25 +21,27 @@ interface Activity {
 })
 export class ActivitiesService {
 
+  route:string = "activities";
+
   constructor(
     private PublicApiService: PublicApiServiceService,
     private PrivateApiService: PrivateApiServiceService
   ) { }
 
   getActivities(): Observable<any>{
-    return this.PublicApiService.get('activities')
+    return this.PublicApiService.get(this.route)
   }
 
   getActivityById(id:number): Observable<any>{
-    return this.PublicApiService.get('activities', id)
+    return this.PublicApiService.get(this.route, id)
   }
 
-  postActivity(Activity:Activity): Observable<any>{
-    return this.PrivateApiService.post('activities', Activity)
+  createActivity(Activity:Activity): Observable<any>{
+    return this.PrivateApiService.post(this.route, Activity)
   }
 
-  putActivity(Activity:Activity, ActivityId:number): Observable<any>{
-    return this.PrivateApiService.put('activities', ActivityId, Activity)
+  updateActivity(Activity:Activity, ActivityId:number): Observable<any>{
+    return this.PrivateApiService.put(this.route, ActivityId, Activity)
   }
 
   deleteActivity(ActivityId:number)/*: Observable<any>*/{

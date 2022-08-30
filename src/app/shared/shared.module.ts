@@ -9,10 +9,10 @@ import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
 
 @NgModule({
-  declarations: [
+  declarations: [    
     HeadingComponent,
-    CardComponent,
-    SliderComponent
+    CardComponent,   
+    SliderComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,7 @@ import { SliderComponent } from "./components/slider/slider.component";
     SliderComponent,
     FormsModule,
     HeadingComponent,
-    CardComponent
+    CardComponent,
   ]
 })
 export class SharedModule {}

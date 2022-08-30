@@ -13,5 +13,6 @@ export class ActivitiesDetailComponent implements OnInit {
   }
 
   TitleParent:string="Aquí sstá el título en minuscula, se debe ver en mayuscula"; //titulo a pasar al componente <app-heading></app-heading>
+  ImageParent:string='./assets/images/LOGO-SOMOS MAS.png';
 
 }

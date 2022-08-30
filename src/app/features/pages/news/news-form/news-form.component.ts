@@ -50,14 +50,14 @@ export class NewsFormComponent implements OnInit {
     {id: 'help' , name: 'Ayuda'},
   ]
 
-  fileChangeEvent(event: any) {
+  fileChangeEvent(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
       this.fileName = file.name;
     }
   }
 
-  saveOrEdit(){
+  saveOrEdit(): void{
     this.infoRequired = true;
     //Solicitud POST o PATCH
   }

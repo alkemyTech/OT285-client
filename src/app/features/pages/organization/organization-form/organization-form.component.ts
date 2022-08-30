@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
@@ -36,31 +36,31 @@ export class OrganizationFormComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.organizationForm = new FormGroup({
-      name: new FormControl('',[Validators.required,Validators.minLength(4)]),
-      image: new FormControl('',[Validators.required]),
-      shortText: new FormControl('',[Validators.required]),
-      longText: new FormControl('',[Validators.required]),
-      socialNetworks: new FormControl('',[Validators.required]),
-    })
+    this.organizationForm = this.formBuilder.group({      
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      image: ['', Validators.required],
+      shortText: ['', Validators.required],
+      longText: ['', Validators.required],
+      socialNetworks: ['', Validators.required]
+    });
   }
 
-  fileChangeEvent(event: any) {
+  fileChangeEvent(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
       this.fileName = file.name;
     }
   }
 
-  addUrl(url:string){
+  addUrl(url:string): void {
     this.urlArray.push(url)
     this.inputName.nativeElement.value = ' ';
   }
 
-  saveOrEdit(){
+  saveOrEdit(): void{
     this.infoRequired = true;
     //Solicitud POST o PATCH
   }

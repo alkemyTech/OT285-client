@@ -13,8 +13,14 @@ import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
 import { UsersListComponent } from "./pages/users/users-list/users-list.component";
 import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
+import { UserFormComponent } from "./pages/users/user-form/user-form.component";
+import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
 
 const routes: Routes = [
+  {
+    path: "usuarios",
+    component: UserFormComponent,
+  },
   {
     path: "miembros",
     component: MemberFormComponent,
@@ -41,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: "actividades",
-    component: ActivityFormComponent,
+    component: ActivitiesPageComponent,
   },
   {
     path: "backoffice/users",

@@ -9,15 +9,18 @@ import { CategoriesFormComponent } from "./pages/categories/categories-form/cate
 import { NewsFormComponent } from "./pages/news/news-form/news-form.component";
 import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
 import { TestimonialFormComponent } from "./pages/testimonials/testimonial-form/testimonial-form.component";
-import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { SharedModule } from "../shared/shared.module";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
+import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
 import { DonationComponent } from './pages/donations/donation/donation.component';
 import { ThanksComponent } from './pages/donations/thanks/thanks.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { AboutUsComponent } from './pages/about/about-us/about-us.component';
+import { UserFormComponent } from "./pages/users/user-form/user-form.component";
+import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
-
 
 //Material
 
@@ -30,14 +33,17 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    UserFormComponent,
     ContactComponent,
     DashboardComponent,
     OrganizationDataComponent,
+    MemberFormComponent,
     DonationComponent,
     ThanksComponent,
-    ActivitiesDetailComponent,
-    
+    UsersListComponent,
+    AboutUsComponent,
+    UserFormComponent,
+    ActivitiesPageComponent,
+    ActivitiesDetailComponent    
   ],
   exports: [
     ActivityFormComponent,
@@ -47,8 +53,9 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
     NewsFormComponent,
     SlidesFormComponent,
     TestimonialFormComponent,
-    UserFormComponent,
     OrganizationDataComponent,
+    RouterModule,
+    MemberFormComponent,
     RouterModule
   ],
   imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],

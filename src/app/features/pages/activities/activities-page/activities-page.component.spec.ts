@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemberFormComponent } from './member-form.component';
+import { ActivitiesPageComponent } from './activities-page.component';
 
-describe('MemberFormComponent', () => {
-  let component: MemberFormComponent;
-  let fixture: ComponentFixture<MemberFormComponent>;
+describe('ActivitiesPageComponent', () => {
+  let component: ActivitiesPageComponent;
+  let fixture: ComponentFixture<ActivitiesPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MemberFormComponent ]
+      declarations: [ ActivitiesPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MemberFormComponent);
+    fixture = TestBed.createComponent(ActivitiesPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -23,7 +23,7 @@ export class PrivateApiServiceService {
     return null
   }
 
-  get<T>(route: string, id: number | null): Observable<T> {
+  get<T>(route: string, id?: number | null): Observable<T> {
     const headers = this.getHeaders();
     const url = this.apiUrl + route + (id ? '/' + id : '');
     let apiCall: Observable<T>;

@@ -1,14 +1,14 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PrivateApiServiceService {
+  apiUrl!: string; //Aca iria la url de la api
 
-  apiUrl!: string //Aca iria la url de la api
-
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getHeaders(): HttpHeaders | null {
     const token = localStorage.getItem('token')
@@ -19,16 +19,15 @@ export class PrivateApiServiceService {
       })
       return headers
     }
-    return null
+    return null;
   }
 
-  put<T>(route: string, id: number, obj: any) {
-
-    const headers = this.getHeaders()
+  put<T>(route: string, id: number, obj: any): Observable<T> {
+    const headers = this.getHeaders();
+    let url = this.apiUrl + route + "/" + id;
     if (headers) {
-      let url = this.apiUrl + route + "/" + id
-      return this.http.put<T>( url, obj, { headers: headers } )
+      return this.http.put<T>(url, obj, { headers: headers });
     }
-    return null
+    return this.http.put<T>(url, obj);
   }
 }

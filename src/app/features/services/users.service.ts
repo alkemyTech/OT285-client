@@ -9,7 +9,12 @@ export class UsersService {
 
   constructor(private privateApi: PrivateApiServiceService) {}
 
-  getAllUsers(name?: string, role?: string, skip?: number, limit?: number) {
+  getAllUsers(
+    name?: string,
+    role?: string,
+    skip?: number,
+    limit?: number
+  ): any {
     this.privateApi.get(this.route).subscribe(
       (data) => {
         //Lista Completa
@@ -55,7 +60,7 @@ export class UsersService {
     );
   }
 
-  storeUser(obj: any) {
+  storeUser(obj: any): any {
     this.privateApi.post(this.route, obj).subscribe(
       (data) => {
         return data;
@@ -66,7 +71,7 @@ export class UsersService {
     );
   }
 
-  getUser(id: number) {
+  getUser(id: number): any {
     this.privateApi.get(this.route, id).subscribe(
       (data) => {
         return data;
@@ -77,7 +82,7 @@ export class UsersService {
     );
   }
 
-  updateUser(id: number, obj: any) {
+  updateUser(id: number, obj: any): any {
     let message: string;
     this.privateApi.put(this.route, id, obj).subscribe(
       (data) => {
@@ -89,7 +94,7 @@ export class UsersService {
     );
   }
 
-  deleteUser(id: number) {
+  deleteUser(id: number): any {
     let message: string;
     this.privateApi.delete(this.route, id).subscribe(
       (data) => {

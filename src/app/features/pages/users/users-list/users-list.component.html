@@ -18,18 +18,18 @@
             <td mat-cell *matCellDef="let user">
                 <div class="accionButtonContainer" *ngIf="user != userFlag">
                     <button class="accionButton" mat-raised-button color="primary" (click)="edit()">
-                        <mat-icon>edit</mat-icon>Editar
+                        <mat-icon>edit</mat-icon>
                     </button>
                     <button class="accionButton" mat-raised-button color="accent" (click)="delete(user)">
-                        <mat-icon>delete</mat-icon>Eliminar
+                        <mat-icon>delete</mat-icon>
                     </button>
                 </div>
                 <div class="accionButtonContainer" *ngIf="user == userFlag">
                     <button *ngIf="deleting" class="accionButton" mat-raised-button color="primary" (click)="trueDelete()">
-                        <mat-icon>done</mat-icon>Confirmar
+                        <mat-icon>done</mat-icon>
                     </button>
                     <button *ngIf="deleting" class="accionButton" mat-raised-button color="accent" (click)="cancel()">
-                        <mat-icon>close</mat-icon>Cancelar
+                        <mat-icon>close</mat-icon>
                     </button>
                 </div>
             </td>

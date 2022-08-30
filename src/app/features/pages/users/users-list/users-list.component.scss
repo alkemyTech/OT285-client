@@ -7,8 +7,14 @@
     margin: 20px 0;
     width: 100%;
 }
-th{
-    width: 33%;
+.mat-cell, .mat-header-cell {
+    vertical-align: middle;
+}
+.mat-column-accions{
+    text-align: center;
+    padding-left: 24px;
+    border-left: 2px solid currentColor;
+    width: 10%;
 }
 .accionButtonContainer{
     display: flex;

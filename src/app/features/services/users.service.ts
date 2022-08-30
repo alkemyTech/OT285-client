@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { PrivateApiServiceService } from "src/app/core/services/privateApiService.service";
 
 @Injectable({
@@ -9,24 +10,24 @@ export class UsersService {
 
   constructor(private privateApi: PrivateApiServiceService) {}
 
-  getAllUsers(): any {
+  getAllUsers(): Observable<any> {
     return this.privateApi.get(this.route);
   }
 
-  storeUser(obj: any): any {
+  saveUser(obj: any): Observable<any> {
     return this.privateApi.post(this.route, obj);
   }
 
-  getUser(id: number): any {
+  getUser(id: number): Observable<any> {
     return this.privateApi.get(this.route, id);
   }
 
-  updateUser(id: number, obj: any): any {
+  updateUser(id: number, obj: any): Observable<any> {
     return this.privateApi.put(this.route, id, obj);
   }
 
   /*
-    deleteUser(id: number): any {
+    deleteUser(id: number): Observable<any> {
     let message: string;
      return this.privateApi.delete(this.route, id)
   }

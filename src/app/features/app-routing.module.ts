@@ -18,10 +18,7 @@ import { ActivitiesPageComponent } from "./pages/activities/activities-page/acti
 import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
 
 const routes: Routes = [
-  {
-    path: "usuarios",
-    component: UserFormComponent,
-  },
+
   {
     path: "miembros",
     component: MemberFormComponent,
@@ -53,6 +50,10 @@ const routes: Routes = [
   {
     path: "backoffice/users",
     component: UsersListComponent,
+  },
+  {
+    path: "backoffice/users/create",
+    component: UserFormComponent,
   },
   {
     path: "backoffice/organization",

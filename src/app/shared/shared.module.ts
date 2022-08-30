@@ -14,7 +14,6 @@ import { ListComponent } from "./components/list/list.component";
     HeadingComponent,
     CardComponent,   
     SliderComponent,
-    ListComponent  
   ],
   imports: [
     CommonModule,
@@ -32,7 +31,6 @@ import { ListComponent } from "./components/list/list.component";
     FormsModule,
     HeadingComponent,
     CardComponent,
-    ListComponent
   ]
 })
 export class SharedModule {}

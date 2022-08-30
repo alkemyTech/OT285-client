@@ -7,7 +7,6 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
-import { ListComponent } from "./components/list/list.component";
 
 @NgModule({
   declarations: [    

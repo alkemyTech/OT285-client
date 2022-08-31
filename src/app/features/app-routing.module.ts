@@ -16,6 +16,7 @@ import { MemberFormComponent } from "./pages/members/member-form/member-form.com
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
 import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
+import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: "actividades",
     component: ActivitiesPageComponent,
+  },
+  {
+    path: "backoffice/home",
+    component: HomeFormComponent,
   },
   {
     path: "backoffice/users",

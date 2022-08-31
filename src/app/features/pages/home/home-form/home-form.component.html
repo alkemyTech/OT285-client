@@ -1,1 +1,41 @@
-<p>home-form works!</p>
+<div class="form-container">
+    <h1>Editar home</h1>
+
+    <form [formGroup]="form">
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="" formControlName="welcomeText">
+            <mat-error *ngIf="form.controls.welcomeText.hasError('minlength') && !form.controls.welcomeText.hasError('required')">
+                El texto debe ser de minimo 20 caracteres
+            </mat-error>
+            <mat-error *ngIf="form.controls.welcomeText.hasError('required')">
+                Un texto es <strong>requerido</strong>
+            </mat-error>
+        </mat-form-field>
+        
+        <div *ngFor="let slide of home.slides">
+            <mat-label>Links de redes sociales</mat-label>
+            slide:
+            <input type="text" [value]="slide.text">
+            <div class="fileInputContainer">
+                <input hidden #fileUpload class="file-input" type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpg">
+                <button mat-raised-button color="primary" (click)="fileUpload.click(); form.controls.slides.markAsTouched()" >
+                    Subir Imagen
+                </button>
+                {{fileName || 'Ninguna imagen subida'}}
+                <img [src]="slide.image">
+                <mat-error *ngIf="form.controls.slides.hasError('required') && form.controls.slides.touched">
+                    Debes elegir una imagen
+                  </mat-error>
+                  <mat-error *ngIf="form.controls.slides.hasError('InvalidType') && !form.controls.slides.hasError('required')">
+                    La imagen debe ser formato .jpg o .png
+                </mat-error>
+            </div>
+        </div>
+
+        <div class="section-buttons">
+            <button mat-raised-button color="primary" (click)="send()" [disabled]="form.invalid">Enviar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</div>

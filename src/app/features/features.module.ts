@@ -21,6 +21,7 @@ import { AboutUsComponent } from './pages/about/about-us/about-us.component';
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
+import { HomeFormComponent } from './pages/home/home-form/home-form.component';
 
 //Material
 
@@ -43,7 +44,8 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
     AboutUsComponent,
     UserFormComponent,
     ActivitiesPageComponent,
-    ActivitiesDetailComponent    
+    ActivitiesDetailComponent,
+    HomeFormComponent    
   ],
   exports: [
     ActivityFormComponent,

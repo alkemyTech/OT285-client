@@ -57,6 +57,10 @@ const routes: Routes = [
     component:ActivitiesListComponent
   },
   {
+    path:'backoffice/activities/create',
+    component:ActivityFormComponent
+  },
+  {
     path: "backoffice/users",
     component: UsersListComponent,
   },

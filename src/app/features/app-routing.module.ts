@@ -16,6 +16,7 @@ import { MemberFormComponent } from "./pages/members/member-form/member-form.com
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
 import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
+import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.component";
 import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
 
 const routes: Routes = [
@@ -72,8 +73,12 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: "backoffice/Slides",
+    path: "backoffice/slides/create",
     component: SlidesFormComponent,
+  },
+  {
+    path: "backoffice/slides",
+    component: SlidesListComponent,
   },
   {
     path: "actividades/:id",

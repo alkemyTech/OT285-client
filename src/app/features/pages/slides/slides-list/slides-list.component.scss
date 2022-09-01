@@ -1,0 +1,42 @@
+.imageTableSlide{
+    width: 50px;
+    height: 50px;
+}
+
+.buttonCreate{
+    margin-top: 50px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.content{
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+}
+.table{
+    margin: 20px 0;
+    width: 100%;
+}
+.mat-cell, .mat-header-cell {
+    vertical-align: middle;
+}
+.mat-column-Editar-Eliminar{
+    text-align: center;
+    padding-left: 24px;
+    border-left: 2px solid currentColor;
+    width: 10%;
+}
+
+.mat-column-Title, .mat-column-Image, .mat-column-Order{
+    text-align: left;
+    padding-left: 24px;
+    width: 30%;
+   
+}
+
+
+.accionButtonContainer{
+    display: flex;
+    gap: 10px;
+}

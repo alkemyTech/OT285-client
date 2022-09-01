@@ -22,6 +22,7 @@ import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
 import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
+import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
 import { HomeFormComponent } from './pages/home/home-form/home-form.component';
 
 //Material
@@ -47,6 +48,7 @@ import { HomeFormComponent } from './pages/home/home-form/home-form.component';
     ActivitiesPageComponent,
     ActivitiesDetailComponent,
     SlidesListComponent,
+    ActivitiesListComponent,
     HomeFormComponent    
   ],
   exports: [

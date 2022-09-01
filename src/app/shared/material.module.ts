@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
-import { MatSelectModule } from '@angular/material/select';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from "@angular/material/select";
+import { MatChipsModule } from "@angular/material/chips";
 import { MatTableModule } from "@angular/material/table";
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
-
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [],
@@ -20,6 +20,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatSelectModule,
     MatChipsModule,
     MatTableModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -30,6 +31,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatSelectModule,
     MatChipsModule,
     MatTableModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MaterialModule {}

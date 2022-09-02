@@ -8,5 +8,6 @@
 </div>
 
 
-
-<app-skeleton></app-skeleton>
+<div class="cards">
+    <app-skeleton [options]="{component:'card'}" *ngFor="let actividad of actividades"></app-skeleton>
+</div>

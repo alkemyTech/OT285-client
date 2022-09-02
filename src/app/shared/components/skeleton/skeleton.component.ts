@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+interface options{
+  component:"card" | "cardImageLeft"
+}
 
 @Component({
   selector: 'app-skeleton',
@@ -6,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skeleton.component.scss']
 })
 export class SkeletonComponent implements OnInit {
+
+  @Input() options!:options;
 
   constructor() { }
 

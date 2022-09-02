@@ -1,1 +1,25 @@
-<div class="skeleton skeleton-card"></div>
+
+<!-- Card modo vertical -->
+<mat-card class="card-vertical" *ngIf="options.component=='card'">
+    
+    <div class="skeleton skeleton-title"></div>
+    
+    <div class="skeleton skeleton-image"></div>
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text"></div>
+
+</mat-card>
+
+<!-- Card modo horizontal -->
+<mat-card class="card-horizontal" *ngIf="options.component=='cardImageLeft'">
+    <div class="skeleton skeleton-image"></div>
+    <div class="align-skeletons">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+    </div>
+
+</mat-card>
+

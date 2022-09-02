@@ -71,10 +71,10 @@ export class PrivateApiServiceService {
   delete<T>(route: string, id: number): Observable<T> {
     const headers = this.getHeaders();
     let url = this.apiUrl + route + "/" + id;
-      if(headers){
-        return this.http.delete<T>(url, {headers: headers});
-        }else{
-      return this.http.delete<T>(url);
-      }
+    if(headers){
+      return this.http.delete<T>(url, {headers: headers});
+    }else{
+    return this.http.delete<T>(url);
+    }
   }
 }

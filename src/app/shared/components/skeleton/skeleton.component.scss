@@ -72,3 +72,26 @@
     margin: 25px;
     flex: 1 0 21%;
 } 
+
+
+//Form
+.skeleton-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skeleton-form{
+    width: 80%;
+    height: 50px;
+}
+
+.skeleton-file{
+    width: 50%;
+    height: 50px;
+}
+
+.skeleton-description{
+    width: 100%;
+    height: 800px;
+}

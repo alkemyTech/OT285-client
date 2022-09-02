@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SkeletonComponent implements OnInit {
 
-  @Input() component!: "card" | "cardImageLeft"
+  @Input() component!: "card" | "cardImageLeft" | "text" | "image"
 
   constructor() { }
 

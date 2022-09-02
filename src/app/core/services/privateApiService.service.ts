@@ -59,7 +59,7 @@ export class PrivateApiServiceService {
     return apiCall;
   }
 
-  put<T>(route: string, id: number, obj: any): Observable<T> {
+  put<T>(route: string, id: number, obj: {}): Observable<T> {
     const headers: HttpHeaders | null = this.getHeaders();
     let url: string = this.apiUrl + route + "/" + id;
     let apiCall: Observable<T>;

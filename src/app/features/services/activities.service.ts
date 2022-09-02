@@ -1,20 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Activity } from 'src/app/core/models/activity';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
-
-interface Activity {
-  id: number;
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-  user_id: number;
-  category_id: number;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string;
-}
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,28 @@
+.content{
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+img{
+    width: 280px;
+}
+.table{
+    margin: 20px 0;
+    width: 100%;
+}
+.mat-cell, .mat-header-cell {
+    vertical-align: middle;
+}
+
+
+.mat-column-acciones{
+    text-align: center;
+    padding-left: 24px;
+    border-left: 2px solid currentColor;
+    width: 10%;
+}
+.accionButtonContainer{
+    display: flex;
+    gap: 10px;
+}

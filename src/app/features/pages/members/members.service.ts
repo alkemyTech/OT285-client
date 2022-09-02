@@ -1,51 +1,35 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Member } from "src/app/core/models/member";
+import { PrivateApiServiceService } from "src/app/core/services/privateApiService.service";
 
-interface Member{
-  id?: number
-  name:	string
-  image:	string
-  description?:	string
-  facebookUrl?:	string
-  linkedinUrl?:	string
-  created_at?:	string
-  updated_at?:	string
-  deleted_at?:	string
-}
-interface MembersRes{
-  success:	boolean
-  data:	Member[]
-  message:	string
-}
-interface memberRes{
-  success:	boolean
-  data:	Member
-  message:	string
+interface MemberRes {
+  success: boolean;
+  data: Member[] | Member;
+  message: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class MembersService {
+  route = "members";
 
-  route = 'members';
+  constructor(private apiService: PrivateApiServiceService) {}
 
-  constructor(
-    private apiService: PrivateApiServiceService
-  ) {}
-
-  get(id?: number): Observable<memberRes>{
-    return this.apiService.get(this.route, id)
+  getMember(id?: number): Observable<MemberRes> {
+    return this.apiService.get(this.route, id);
   }
-  post(data: Member): Observable<memberRes>{
-    return this.apiService.post(this.route, data)
+  getAllMembers(): Observable<MemberRes> {
+    return this.apiService.get(this.route);
   }
-  put(id: number, data: Member): Observable<memberRes>{
+  createMember(data: Member): Observable<MemberRes> {
+    return this.apiService.post(this.route, data);
+  }
+  updateMemberData(id: number, data: Member): Observable<MemberRes> {
     return this.apiService.put(this.route, id, data);
   }
-  delete(id: number): Observable<memberRes>{
+  deleteMember(id: number): Observable<MemberRes> {
     return this.apiService.delete(this.route, id);
   }
-
 }

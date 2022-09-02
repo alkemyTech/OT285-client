@@ -18,6 +18,7 @@ import { ActivitiesPageComponent } from "./pages/activities/activities-page/acti
 import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
 import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.component";
 import { ActivitiesListComponent } from "./pages/activities/activities-list/activities-list.component";
+import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path:'backoffice/activities/create',
     component:ActivityFormComponent
+  },
+  {
+    path: "backoffice/home",
+    component: HomeFormComponent,
   },
   {
     path: "backoffice/users",

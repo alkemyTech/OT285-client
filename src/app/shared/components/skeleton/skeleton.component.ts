@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-interface options{
-  component:"card" | "cardImageLeft"
-}
 
 @Component({
   selector: 'app-skeleton',
@@ -11,7 +8,7 @@ interface options{
 })
 export class SkeletonComponent implements OnInit {
 
-  @Input() options!:options;
+  @Input() component!: "card" | "cardImageLeft"
 
   constructor() { }
 

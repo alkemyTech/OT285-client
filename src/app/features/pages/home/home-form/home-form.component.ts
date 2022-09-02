@@ -36,6 +36,11 @@ export class HomeFormComponent implements OnInit {
     welcomeText: ["", [Validators.required, Validators.minLength(20)]],
     slides: this.fb.array([]),
   });
+
+  get slides() {
+    return this.form.controls["slides"] as FormArray;
+  }
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -68,8 +73,5 @@ export class HomeFormComponent implements OnInit {
   }
   toGroup(abs: AbstractControl): FormGroup {
     return abs as FormGroup;
-  }
-  get slides() {
-    return this.form.controls["slides"] as FormArray;
   }
 }

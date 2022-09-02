@@ -27,3 +27,13 @@
 <div *ngIf="component=='text'" class="skeleton skeleton-text"></div>
 
 <div *ngIf="component=='image'" class="skeleton skeleton-image"></div>
+
+
+<div class="skeleton-table mat-elevation-z8" *ngIf="component=='table'">
+    <div class="skeleton skeleton-text" *ngFor="let item of [].constructor(16)"></div>
+</div>
+
+
+<div *ngIf="component=='form'">
+
+</div>

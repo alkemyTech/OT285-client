@@ -23,7 +23,10 @@ import { ActivitiesPageComponent } from './pages/activities/activities-page/acti
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
 import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
 
-//Material
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './pages/auth/state/auth.reducers';
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./pages/auth/state/auth.effects";
 
 @NgModule({
   declarations: [
@@ -45,7 +48,7 @@ import { SlidesListComponent } from './pages/slides/slides-list/slides-list.comp
     UserFormComponent,
     ActivitiesPageComponent,
     ActivitiesDetailComponent,
-    SlidesListComponent    
+    SlidesListComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -60,7 +63,14 @@ import { SlidesListComponent } from './pages/slides/slides-list/slides-list.comp
     MemberFormComponent,
     RouterModule
   ],
-  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    RouterModule,
+    SharedModule,
+    StoreModule.forFeature('auth',authReducer),
+    EffectsModule.forFeature([AuthEffects])
+  ],
   providers: [CurrencyPipe]
 })
 export class FeaturesModule {}

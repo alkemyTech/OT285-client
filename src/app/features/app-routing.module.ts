@@ -19,6 +19,7 @@ import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/
 import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.component";
 import { ActivitiesListComponent } from "./pages/activities/activities-list/activities-list.component";
 import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
+import { HomepageComponent } from "./pages/home/homepage/homepage/homepage.component";
 
 const routes: Routes = [
   {
@@ -93,7 +94,10 @@ const routes: Routes = [
     path: "actividades/:id",
     component:ActivitiesDetailComponent,
   },
-
+  {
+    path: "home",
+    component: HomepageComponent
+  },
   {
     path: "",
     redirectTo: "actividades",

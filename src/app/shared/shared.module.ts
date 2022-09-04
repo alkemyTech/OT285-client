@@ -7,7 +7,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
-import { SpinnerComponent } from "./components/spinner/spinner/spinner.component";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
 
 @NgModule({
   declarations: [

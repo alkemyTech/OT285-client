@@ -1,0 +1,54 @@
+<div class="form-container">
+    <h1>Editar pagina Home</h1>
+
+    <form [formGroup]="form">
+        <mat-form-field class="input-form" appearance="fill">
+            <mat-label>Texto de bienvenida</mat-label>
+            <textarea matInput name="" id="" formControlName="welcomeText"></textarea>
+            <mat-error *ngIf="form.controls.welcomeText.hasError('minlength') && !form.controls.welcomeText.hasError('required')">
+                El texto debe ser de minimo 20 caracteres
+            </mat-error>
+            <mat-error *ngIf="form.controls.welcomeText.hasError('required')">
+                Un texto es requerido
+            </mat-error>
+        </mat-form-field>
+        
+        <ng-container formArrayName="slides">
+            <div class="slidesBox">
+                <h1>Slides para el slider</h1>
+                <div class="slideBox" *ngFor="let slide of slides.controls; let i = index">
+                    <ng-container [formGroup]="toGroup(slide)">
+                        <div>
+                            <mat-form-field class="input-form" appearance="fill">
+                                <mat-label>Slide text</mat-label>
+                                <input matInput type="text" formControlName="text">
+                                <mat-error *ngIf="toGroup(slide).controls.text.hasError('required')">
+                                    Texto requerido
+                                </mat-error>
+                            </mat-form-field>
+
+                        </div>
+                        <div>
+                            <input hidden #fileUpload class="file-input" type="file" (change)="fileChangeEvent($event, toGroup(slide))" accept="image/png, image/jpg">
+                            <button mat-raised-button color="primary" (click)="fileUpload.click(); toGroup(slide).controls.image.markAsTouched()">
+                                Subir Imagen
+                            </button>
+                            {{slide.value.image.name || 'Ninguna imagen subida'}}
+                            <mat-error *ngIf="toGroup(slide).controls.image.hasError('required') && toGroup(slide).controls.image.touched">
+                                Debes subir una imagen
+                            </mat-error>
+                            <mat-error *ngIf="toGroup(slide).controls.image.hasError('InvalidType') && !toGroup(slide).controls.image.hasError('required') && toGroup(slide).controls.image.touched">
+                                Solo puedes usar imagenes con formato png o jpg
+                            </mat-error>
+
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+        <div class="section-buttons">
+            <button mat-raised-button color="primary" (click)="send()" [disabled]="form.invalid">Actualizar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</div>

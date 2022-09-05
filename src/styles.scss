@@ -36,5 +36,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .error-color {
     color: #f44336
 }
+
+.snack-success {
+    background-color: #43ac5a;
+    color: white;
+}
+
+.snack-error {
+    background-color: #dd493e;
+    color: white;
+}
+
+.snack-info {
+    background-color: grey;
+    color: white;
+}
+
+.mat-simple-snackbar-action  {
+    color: white;
+  }
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

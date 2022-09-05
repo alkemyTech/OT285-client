@@ -11,11 +11,11 @@ export class AuthService {
 
   constructor(private privateApiService: PrivateApiServiceService, private publicApiService:PublicApiServiceService) { }
 
-  signIn<T>(registerForm: Auth): Observable<T>{
+  signIn<AuthResponse>(registerForm: Auth): Observable<AuthResponse>{
     return this.publicApiService.post('register', registerForm)
   }
 
-  logIn<T>(loginForm: Auth): Observable<T>{    
+  logIn<AuthResponse>(loginForm: Auth): Observable<AuthResponse>{    
     return this.publicApiService.post('login', loginForm)
   }
 
@@ -23,7 +23,7 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  getData<T>(): Observable<T>{
+  getData<AuthResponse>(): Observable<AuthResponse>{
     return this.privateApiService.get('auth/me')
   }
 }

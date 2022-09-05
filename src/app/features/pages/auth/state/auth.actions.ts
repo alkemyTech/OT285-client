@@ -1,16 +1,15 @@
 import { createAction, props } from "@ngrx/store";
-import { LogInSuccess } from "src/app/core/models/log-in-success";
 import { Auth } from "src/app/core/models/auth";
-import { SignInSuccess } from "src/app/core/models/sign-in-success";
+import { AuthResponse } from "src/app/core/models/auth-response";
 
 export const logIn = createAction(
     '[Auth] Log In',
-    props<{ form : Auth }>()
+    props<{ data : Auth }>()
 );
 
 export const logInSuccess = createAction(
     '[Auth] Log In Succes',
-    props<{ data : LogInSuccess }>()
+    props<{ data : AuthResponse }>()
 );
 
 export const logInError = createAction(
@@ -24,12 +23,12 @@ export const logOut = createAction(
 
 export const signIn = createAction(
     '[Auth] Sign In',
-    props<{ form : Auth }>()
+    props<{ data : Auth }>()
 );
 
 export const signInSuccess = createAction(
     '[Auth] Sign In Succes',
-    props<{ data : SignInSuccess }>()
+    props<{ data : AuthResponse }>()
 );
 
 export const signInError = createAction(

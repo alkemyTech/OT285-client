@@ -1,7 +1,7 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
 import * as UserActions from './auth.actions';
 
-export interface authState {
+export interface AuthState {
     name: string,
     email: string,
     password: string,
@@ -9,7 +9,7 @@ export interface authState {
     error: string | null
 };
 
-const initialState: authState = {
+const initialState: AuthState = {
     name: '',
     email: '',
     password: '',
@@ -17,31 +17,8 @@ const initialState: authState = {
     error: null
 }
 
-const getAuthFeatureState = createFeatureSelector<authState>('auth');
+const getAuthFeatureState = createFeatureSelector<AuthState>('auth');
 
-// TICKET PIDE GUARDAR TOKEN EN STORAGE
-// Probe utilizando el selector getToken, guardaria el token en localStorage y funciona... o deberia realizarlo en effects(?); 
-/* 
-En el componente login-form dentro del metodo 
-    login(){
-        let body: LoginForm = {
-            email: this.logingForm.controls['email'].value,
-            password: this.logingForm.controls['password'].value,
-        };
-
-        this.store.dispatch(UserActions.logIn(
-        { form: body }
-        )) 
-
-        this.store.select(getToken).subscribe(
-            token => {
-                if (token){
-                    localStorage.setItem('token',token)
-                }        
-            }
-        )
-    }
-*/
 export const getToken = createSelector(
     getAuthFeatureState,
     state => state.token
@@ -52,16 +29,14 @@ export const getError = createSelector(
     state => state.error
 )
 
-// Selectors for name/email/password data (??)
-
-export const authReducer = createReducer<authState>(
+export const authReducer = createReducer<AuthState>(
     initialState,
-    on(UserActions.logIn, (state): authState => {    
+    on(UserActions.logIn, (state): AuthState => {    
         return {
         ...state,
         };
     }),
-    on(UserActions.logInSuccess, (state, action): authState => {  
+    on(UserActions.logInSuccess, (state, action): AuthState => {  
         return {
         ...state,
         name: action.data.data.user.name,
@@ -70,13 +45,13 @@ export const authReducer = createReducer<authState>(
         token: action.data.data.token,
         };
     }),
-    on(UserActions.logInError, (state, action): authState => {    
+    on(UserActions.logInError, (state, action): AuthState => {    
         return {
         ...state,
         error: action.error
         };
     }),
-    on(UserActions.logOut, (state): authState => {    
+    on(UserActions.logOut, (state): AuthState => {    
         return {
         ...state,
         name: '',
@@ -85,12 +60,12 @@ export const authReducer = createReducer<authState>(
         token: null
         };
     }),
-    on(UserActions.signIn, (state): authState => {    
+    on(UserActions.signIn, (state): AuthState => {    
         return {
         ...state,
         };
     }),
-    on(UserActions.signInSuccess, (state, action): authState => {    
+    on(UserActions.signInSuccess, (state, action): AuthState => {    
         return {
         ...state,
         name: action.data.data.user.name,
@@ -99,7 +74,7 @@ export const authReducer = createReducer<authState>(
         token: action.data.data.token,
         };
     }),
-    on(UserActions.signInError, (state, action): authState => {    
+    on(UserActions.signInError, (state, action): AuthState => {    
         console.log('original state: '+ JSON.stringify(state))
         return {
         ...state,

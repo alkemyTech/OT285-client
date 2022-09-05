@@ -14,7 +14,7 @@ export class AuthEffects {
         return this.actions$
         .pipe(
             ofType(AuthActions.logIn),
-            concatMap((action) => this.authService.logIn(action.form)
+            concatMap((action) => this.authService.logIn(action.data)
                 .pipe(
                     map((data:any) => AuthActions.logInSuccess({data})),                   
                     catchError(error => of(AuthActions.logInError({error})))
@@ -27,7 +27,7 @@ export class AuthEffects {
         return this.actions$
         .pipe(
             ofType(AuthActions.signIn),            
-            concatMap((action) => this.authService.signIn(action.form)
+            concatMap((action) => this.authService.signIn(action.data)
                 .pipe(
                     map((data:any) => AuthActions.signInSuccess({data})),
                     catchError(error => of(AuthActions.signInError({error})))

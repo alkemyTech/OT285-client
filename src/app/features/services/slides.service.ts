@@ -19,11 +19,11 @@ export class SlidesService {
     return this.privateApiService.get(this.route, id);
   };
 
-  postSlide<T>(body:{}): Observable<T>{
+  createSlide<T>(body:{}): Observable<T>{
     return this.privateApiService.post(this.route, body);
   };
 
-  putSlide<T>(id: number, body:{}): Observable<T>{
+  updateSlide<T>(id: number, body:{}): Observable<T>{
     return this.privateApiService.put(this.route, id, body);
   };
 

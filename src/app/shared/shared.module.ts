@@ -7,6 +7,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
+import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
     HeadingComponent,
     CardComponent,
     SliderComponent,
+    SkeletonComponent,
     SpinnerComponent,
   ],
   imports: [
@@ -32,6 +34,7 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
     FormsModule,
     HeadingComponent,
     CardComponent,
+    SkeletonComponent,
     SpinnerComponent,
   ],
 })

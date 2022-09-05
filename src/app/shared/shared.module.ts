@@ -8,13 +8,15 @@ import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
 
 @NgModule({
-  declarations: [    
+  declarations: [
     HeadingComponent,
-    CardComponent,   
+    CardComponent,
     SliderComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { SkeletonComponent } from "./components/skeleton/skeleton.component";
     FormsModule,
     HeadingComponent,
     CardComponent,
-    SkeletonComponent
-  ]
+    SkeletonComponent,
+    SpinnerComponent,
+  ],
 })
 export class SharedModule {}

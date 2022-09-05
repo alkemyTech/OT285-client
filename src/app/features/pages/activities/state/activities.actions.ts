@@ -7,6 +7,11 @@ export const loadActivities = createAction(
 
 
 export const loadActivitiesSuccess = createAction(
-    '[Activities] Load Success',
-    props<{ activities: Activity[] }>()
+  '[Activities] Load Success',
+  props<{ activities: Activity[] }>()
+);
+
+export const loadActivitiesFailure = createAction(
+  '[Activities] Load Fail',
+  props<{ error: string }>()
 );

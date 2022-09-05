@@ -23,15 +23,8 @@ export class ActivitiesEffects {
         ofType(ActivitiesActions.loadActivities),
         mergeMap(() => this.ActivitiesService.getActivities()
           .pipe(
-            map(activities =>{ 
-                console.log(activities)
-                return ActivitiesActions.loadActivitiesSuccess({activities : activities.data})
-             } ),
-            // catchError(error => 
-            //     // of(ProductActions.loadProductsFailure({ error })
-            //     console.log(error)
-            //     return 
-            // ))
+            map(activities => ActivitiesActions.loadActivitiesSuccess({activities : activities.data})),
+            catchError(error => of(ActivitiesActions.loadActivitiesFailure({ error : error.message })))
           )
         )
       );

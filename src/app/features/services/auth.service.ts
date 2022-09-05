@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoginForm } from 'src/app/core/models/login-form';
-import { RegisterForm } from 'src/app/core/models/register-form';
+import { Auth } from 'src/app/core/models/auth';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
 
@@ -11,11 +10,11 @@ export class AuthService {
 
   constructor(private privateApiService: PrivateApiServiceService, private publicApiService:PublicApiServiceService) { }
 
-  signIn(registerForm:RegisterForm){
+  signIn(registerForm: Auth){
     return this.publicApiService.post('register', registerForm)
   }
 
-  logIn(loginForm:LoginForm){    
+  logIn(loginForm: Auth){    
     return this.publicApiService.post('login', loginForm)
   }
 

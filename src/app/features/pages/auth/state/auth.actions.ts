@@ -1,12 +1,11 @@
 import { createAction, props } from "@ngrx/store";
 import { LogInSuccess } from "src/app/core/models/log-in-success";
-import { LoginForm } from "src/app/core/models/login-form";
-import { RegisterForm } from "src/app/core/models/register-form";
+import { Auth } from "src/app/core/models/auth";
 import { SignInSuccess } from "src/app/core/models/sign-in-success";
 
 export const logIn = createAction(
     '[Auth] Log In',
-    props<{ form : LoginForm }>()
+    props<{ form : Auth }>()
 );
 
 export const logInSuccess = createAction(
@@ -25,7 +24,7 @@ export const logOut = createAction(
 
 export const signIn = createAction(
     '[Auth] Sign In',
-    props<{ form : RegisterForm }>()
+    props<{ form : Auth }>()
 );
 
 export const signInSuccess = createAction(

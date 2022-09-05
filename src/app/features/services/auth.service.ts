@@ -23,6 +23,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  setToken(token: string): void {
+    return localStorage.setItem('token', token)
+  }
+
   getData<AuthResponse>(): Observable<AuthResponse>{
     return this.privateApiService.get('auth/me')
   }

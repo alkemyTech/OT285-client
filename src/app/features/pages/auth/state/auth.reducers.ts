@@ -31,11 +31,6 @@ export const getError = createSelector(
 
 export const authReducer = createReducer<AuthState>(
     initialState,
-    on(UserActions.logIn, (state): AuthState => {    
-        return {
-        ...state,
-        };
-    }),
     on(UserActions.logInSuccess, (state, action): AuthState => {  
         return {
         ...state,
@@ -58,11 +53,6 @@ export const authReducer = createReducer<AuthState>(
         email: '',
         password: '',
         token: null
-        };
-    }),
-    on(UserActions.signIn, (state): AuthState => {    
-        return {
-        ...state,
         };
     }),
     on(UserActions.signInSuccess, (state, action): AuthState => {    

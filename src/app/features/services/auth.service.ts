@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Auth } from 'src/app/core/models/auth';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
@@ -10,11 +11,11 @@ export class AuthService {
 
   constructor(private privateApiService: PrivateApiServiceService, private publicApiService:PublicApiServiceService) { }
 
-  signIn(registerForm: Auth){
+  signIn<T>(registerForm: Auth): Observable<T>{
     return this.publicApiService.post('register', registerForm)
   }
 
-  logIn(loginForm: Auth){    
+  logIn<T>(loginForm: Auth): Observable<T>{    
     return this.publicApiService.post('login', loginForm)
   }
 
@@ -22,7 +23,7 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  getData(){
+  getData<T>(): Observable<T>{
     return this.privateApiService.get('auth/me')
   }
 }

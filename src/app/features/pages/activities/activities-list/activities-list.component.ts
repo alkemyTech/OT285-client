@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Activity } from 'src/app/core/models/activity';
+import { getActivitiesList, State } from '../state/activities.reducer';
+import * as ActivitiesActions from '../state/activities.actions';
 
 @Component({
   selector: 'app-activities-list',
@@ -45,9 +50,17 @@ export class ActivitiesListComponent implements OnInit {
   activityFlag = {};
 
   deleteConfirm = false;
-  constructor() { }
+
+  activities$!: Observable<Activity[]>;
+
+  constructor(private store:Store<State>) { }
 
   ngOnInit(): void {
+    debugger;
+    this.activities$ = this.store.select(getActivitiesList);
+    this.activities$.subscribe(console.log)
+    //dispatch action to load activities
+    this.store.dispatch(ActivitiesActions.loadActivities());
   }
   editActivity(): void {
     console.log('Redigir al router de modificar actividad'); 

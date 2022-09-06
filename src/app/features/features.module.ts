@@ -24,6 +24,9 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
 import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
 import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
 import { HomeFormComponent } from './pages/home/home-form/home-form.component';
+import { MemberslistComponent } from './pages/members/memberslist/memberslist.component';
+
+
 
 //Material
 
@@ -49,7 +52,8 @@ import { HomeFormComponent } from './pages/home/home-form/home-form.component';
     ActivitiesDetailComponent,
     SlidesListComponent,
     ActivitiesListComponent,
-    HomeFormComponent    
+    HomeFormComponent,
+    MemberslistComponent,  
   ],
   exports: [
     ActivityFormComponent,

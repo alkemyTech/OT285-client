@@ -23,13 +23,14 @@ export class AuthEffects {
         )
     });
 
-    logInSucces$ = createEffect(() => {
-        return this.actions$
+    logInSucces$ = createEffect(() =>
+        this.actions$
         .pipe(
             ofType(AuthApiActions.logInSuccess),
-            tap(action => localStorage.setItem('token', action.res.data.token))
-        )
-    });
+            tap(action => this.authService.setToken(action.res.data.token))
+
+        ), { dispatch: false }
+    );
 
     signIn$ = createEffect(() => {
         return this.actions$

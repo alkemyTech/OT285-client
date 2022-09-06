@@ -17,7 +17,7 @@ export class SlidesEffects {
       ofType(SlidesActions.loadSlides),
       mergeMap(() =>
         this.slidesService.getSlide().pipe(
-          map((slides) => SlidesActions.loadSlidesSuccess({ slides })),
+          map((slides: any) => SlidesActions.loadSlidesSuccess({ slides })),
           catchError((error) => of(SlidesActions.loadSlidesFailure({ error })))
         )
       )

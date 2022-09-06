@@ -1,52 +1,79 @@
 <div class="content">
-    <div class="buttonCreate">
-      <button mat-raised-button color="primary" (click)="createSlide()">Crear</button>
-    </div>
+  <div class="buttonCreate">
+    <button mat-raised-button color="primary" (click)="goToCreateSlide()">
+      Crear
+    </button>
+  </div>
 
-  
-    
+  <table
+    mat-table
+    [dataSource]="(slidesList$ | async) || []"
+    class="table mat-elevation-z8"
+  >
+    <ng-container class="form-container" matColumnDef="Title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
 
-      <table mat-table [dataSource]="slidesList" class="table mat-elevation-z8 ">
+    <ng-container matColumnDef="Image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td class="imageTableSlide" mat-cell *matCellDef="let element">
+        <img [src]="element.image" />
+      </td>
+    </ng-container>
 
-          <ng-container class="form-container" matColumnDef="Title">
-            <th mat-header-cell *matHeaderCellDef> Title </th>
-            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-          </ng-container>
+    <ng-container matColumnDef="Order">
+      <th mat-header-cell *matHeaderCellDef>Order</th>
+      <td mat-cell *matCellDef="let element">{{ element.order }}</td>
+    </ng-container>
 
-          <ng-container matColumnDef="Image">
-            <th mat-header-cell *matHeaderCellDef> Image </th>
-            <td class="imageTableSlide" mat-cell *matCellDef="let element">  <img [src]="element.image"/> </td>
-          </ng-container>
+    <ng-container matColumnDef="Editar/Eliminar">
+      <th class="botones-table-slide" mat-header-cell *matHeaderCellDef>
+        Actions
+      </th>
+      <td class="botones-table-slide" mat-cell *matCellDef="let user">
+        <div class="accionButtonContainer" *ngIf="user != userFlag">
+          <button
+            class="accionButton"
+            mat-raised-button
+            color="primary"
+            (click)="editListSlide()"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            class="accionButton"
+            mat-raised-button
+            color="accent"
+            (click)="deleteListSlide(user)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div class="accionButtonContainer" *ngIf="user == userFlag">
+          <button
+            *ngIf="deleting"
+            class="accionButton"
+            mat-raised-button
+            color="primary"
+            (click)="trueDelete()"
+          >
+            <mat-icon>done</mat-icon>
+          </button>
+          <button
+            *ngIf="deleting"
+            class="accionButton"
+            mat-raised-button
+            color="accent"
+            (click)="cancel()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
 
-
-          <ng-container matColumnDef="Order">
-              <th mat-header-cell *matHeaderCellDef> Order </th>
-              <td mat-cell *matCellDef="let element"> {{element.order}} </td>
-            </ng-container>
-
-          <ng-container  matColumnDef="Editar/Eliminar">
-              <th  class="botones-table-slide" mat-header-cell *matHeaderCellDef> Actions </th>
-              <td class="botones-table-slide"  mat-cell *matCellDef="let user">
-                  <div class="accionButtonContainer" *ngIf="user != userFlag">
-                    <button class="accionButton" mat-raised-button color="primary" (click)="editListSlide()">
-                      <mat-icon>edit</mat-icon>
-                  </button>
-                  <button class="accionButton" mat-raised-button color="accent" (click)="deleteListSlide(user)">
-                      <mat-icon>delete</mat-icon>
-                  </button>
-              </div>
-              <div class="accionButtonContainer" *ngIf="user == userFlag">
-                  <button *ngIf="deleting" class="accionButton" mat-raised-button color="primary" (click)="trueDelete()">
-                      <mat-icon>done</mat-icon>
-                  </button>
-                  <button *ngIf="deleting" class="accionButton" mat-raised-button color="accent" (click)="cancel()">
-                      <mat-icon>close</mat-icon>
-                  </button>
-                  </div>
-              </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="columns"></tr>
-          <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-        </table>
-
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+</div>

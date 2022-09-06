@@ -28,7 +28,10 @@ import { MemberslistComponent } from './pages/members/memberslist/memberslist.co
 
 
 
-//Material
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './pages/auth/state/auth.reducers';
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./pages/auth/state/auth.effects";
 
 @NgModule({
   declarations: [
@@ -68,7 +71,14 @@ import { MemberslistComponent } from './pages/members/memberslist/memberslist.co
     MemberFormComponent,
     RouterModule
   ],
-  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    RouterModule,
+    SharedModule,
+    StoreModule.forFeature('auth',authReducer),
+    EffectsModule.forFeature([AuthEffects])
+  ],
   providers: [CurrencyPipe]
 })
 export class FeaturesModule {}

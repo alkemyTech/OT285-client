@@ -30,7 +30,7 @@ export class HomepageComponent implements OnInit {
     }
   ];
 
-  callEndPoint(){
+  callEndPoint(): string{
     return this.textWelcomeHomePage='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, delectus consectetur ut praesentium quas, dicta non dolorem animi nobis distinctio ducimus in eaque aspernatur quasi aliquid omnis odio vero tempora! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, delectus consectetur ut praesentium quas, dicta non dolorem animi nobis distinctio ducimus in eaque aspernatur quasi aliquid omnis odio vero tempora!'
     ;
   }

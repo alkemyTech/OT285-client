@@ -7,7 +7,7 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { MEMBERS_REDUCERS } from "./features/pages/members/memberslist/state/app.state";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +16,7 @@ import { MEMBERS_REDUCERS } from "./features/pages/members/memberslist/state/app
     CoreModule,
     FeaturesModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot(MEMBERS_REDUCERS),
+    StoreModule.forRoot({},{}),
     EffectsModule.forRoot([]),
   ],
   providers: [],

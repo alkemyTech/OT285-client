@@ -1,4 +1,4 @@
 import { createFeatureSelector } from "@ngrx/store";
-import { MemberRes } from "./members.interface";
+import { MemberRes } from "../../../../../core/models/members.interface";
 
 export const selectMembers = createFeatureSelector<ReadonlyArray<MemberRes>>('items');

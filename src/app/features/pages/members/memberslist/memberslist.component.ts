@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
-import { arraysAreNotAllowedMsg } from '@ngrx/store/src/models';
 import { Observable } from 'rxjs';
-import { Member } from 'src/app/core/models/member';
 import { MembersService } from '../members.service';
 import { retrievedItemList } from './state/members.actions';
-import { MemberRes } from './state/members.interface';
 import { selectMembers } from './state/members.selectors';
 
 @Component({
@@ -34,6 +30,7 @@ export class MemberslistComponent implements OnInit {
     this.servicehttp.getAllMembers().subscribe((res)=>{
       let parseLetter=JSON.stringify(res);
         let pareJson=JSON.parse(parseLetter);
+        console.log(pareJson);
       this.store.dispatch(retrievedItemList({items : pareJson.data}))
     })
   }

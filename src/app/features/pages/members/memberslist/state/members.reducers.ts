@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { addItem, retrievedItemList } from "./members.actions";
-import { MemberRes } from "./members.interface";
+import { MemberRes } from "../../../../../core/models/members.interface";
 
 //paso 1
 export const initialState: ReadonlyArray<MemberRes> = [];

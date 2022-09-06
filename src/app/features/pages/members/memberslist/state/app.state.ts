@@ -1,5 +1,5 @@
 import { ActionReducerMap } from "@ngrx/store";
-import { MemberRes } from "./members.interface";
+import { MemberRes } from "../../../../../core/models/members.interface";
 import { MembersReducer } from "./members.reducers";
 
 export interface AppState {
@@ -10,3 +10,5 @@ export interface AppState {
   export const MEMBERS_REDUCERS: ActionReducerMap<AppState>={
       items: MembersReducer
   }
+
+  

@@ -14,19 +14,22 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
-import { DonationComponent } from './pages/donations/donation/donation.component';
-import { ThanksComponent } from './pages/donations/thanks/thanks.component';
-import { UsersListComponent } from './pages/users/users-list/users-list.component';
-import { AboutUsComponent } from './pages/about/about-us/about-us.component';
+import { DonationComponent } from "./pages/donations/donation/donation.component";
+import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
+import { UsersListComponent } from "./pages/users/users-list/users-list.component";
+import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
-import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
-import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
-import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
-import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
-import { HomeFormComponent } from './pages/home/home-form/home-form.component';
+import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
+import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
+import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.component";
+import { ActivitiesListComponent } from "./pages/activities/activities-list/activities-list.component";
+import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
+import { StoreModule } from "@ngrx/store";
+import { usersReducer } from "./pages/users/state/users.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { UsersEffects } from "./pages/users/state/users.effects";
 
 //Material
-
 @NgModule({
   declarations: [
     ActivityFormComponent,
@@ -49,7 +52,7 @@ import { HomeFormComponent } from './pages/home/home-form/home-form.component';
     ActivitiesDetailComponent,
     SlidesListComponent,
     ActivitiesListComponent,
-    HomeFormComponent    
+    HomeFormComponent,
   ],
   exports: [
     ActivityFormComponent,
@@ -62,9 +65,16 @@ import { HomeFormComponent } from './pages/home/home-form/home-form.component';
     OrganizationDataComponent,
     RouterModule,
     MemberFormComponent,
-    RouterModule
+    RouterModule,
   ],
-  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
-  providers: [CurrencyPipe]
+  imports: [
+    CommonModule, 
+    AppRoutingModule, 
+    RouterModule, 
+    SharedModule,
+    StoreModule.forFeature('users', usersReducer),
+    EffectsModule.forFeature([UsersEffects])
+  ],
+  providers: [CurrencyPipe],
 })
 export class FeaturesModule {}

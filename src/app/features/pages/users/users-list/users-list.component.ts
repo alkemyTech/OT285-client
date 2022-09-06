@@ -1,12 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-users-list",
   templateUrl: "./users-list.component.html",
   styleUrls: ["./users-list.component.scss"],
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnInit, OnDestroy {
   users = [
     {
       name: 'Carolina Laborde',
@@ -36,14 +38,25 @@ export class UsersListComponent implements OnInit {
   columns = ["name", "email", "accions"];
   deleting = false;
   userFlag = {};
+  storeSub = new Subscription;
   constructor(
-    private router: Router
+    private router: Router,
+    private store: Store<any>
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.storeSub = this.store.select('users').subscribe((res)=>{
+      console.log(res);
+      
+    })
+  }
+  ngOnDestroy(): void {
+      this.storeSub.unsubscribe();
+  }
 
   edit(): void {
-    console.log('edit'); 
+    console.log('edit');
+    this.store.dispatch({type: 'mostrar usuarios'})
   }
   delete(user: {}): void {
     this.userFlag = user;

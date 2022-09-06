@@ -12,7 +12,7 @@ export class PublicApiServiceService {
   constructor(private http: HttpClient) {}
 
   get<T>(route: string, id?: number): Observable<T> {
-    const url = route + (id ? "/" + id : ""); //Falta la url base de la api al principio
+    const url = this.apiUrl + route + (id ? "/" + id : ""); //Falta la url base de la api al principio
     return this.http.get<T>(url);
   }
 

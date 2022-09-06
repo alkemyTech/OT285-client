@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "src/app/features/services/auth.service";
-import * as AuthActions from "./auth.actions";
+import { AuthApiActions, AuthPageActions  } from "./actions";
 import { catchError, map, concatMap, tap } from "rxjs/operators"
 import { of } from "rxjs";
 
@@ -13,24 +13,32 @@ export class AuthEffects {
     logIn$ = createEffect(() => {
         return this.actions$
         .pipe(
-            ofType(AuthActions.logIn),
+            ofType(AuthPageActions.logIn),
             concatMap((action) => this.authService.logIn(action.data)
                 .pipe(
-                    map((data:any) => AuthActions.logInSuccess({data})),                   
-                    catchError(error => of(AuthActions.logInError({error})))
+                    map((res:any) => AuthApiActions.logInSuccess({res})),                   
+                    catchError(error => of(AuthApiActions.logInError({error})))
                 )
             )
+        )
+    });
+
+    logInSucces$ = createEffect(() => {
+        return this.actions$
+        .pipe(
+            ofType(AuthApiActions.logInSuccess),
+            tap(action => localStorage.setItem('token', action.res.data.token))
         )
     });
 
     signIn$ = createEffect(() => {
         return this.actions$
         .pipe(
-            ofType(AuthActions.signIn),            
+            ofType(AuthPageActions.signIn),            
             concatMap((action) => this.authService.signIn(action.data)
                 .pipe(
-                    map((data:any) => AuthActions.signInSuccess({data})),
-                    catchError(error => of(AuthActions.signInError({error})))
+                    map((data:any) => AuthApiActions.signInSuccess({data})),
+                    catchError(error => of(AuthApiActions.signInError({error})))
                 )
             )
         )

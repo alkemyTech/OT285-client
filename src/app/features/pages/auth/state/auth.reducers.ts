@@ -1,5 +1,5 @@
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
-import * as UserActions from './auth.actions';
+import { AuthApiActions, AuthPageActions  } from "./actions";
 
 export interface AuthState {
     name: string,
@@ -31,22 +31,22 @@ export const getError = createSelector(
 
 export const authReducer = createReducer<AuthState>(
     initialState,
-    on(UserActions.logInSuccess, (state, action): AuthState => {  
+    on(AuthApiActions.logInSuccess, (state, action): AuthState => {  
         return {
         ...state,
-        name: action.data.data.user.name,
-        email: action.data.data.user.email,
-        password: action.data.data.user.password,
-        token: action.data.data.token,
+        name: action.res.data.user.name,
+        email: action.res.data.user.email,
+        password: action.res.data.user.password,
+        token: action.res.data.token,
         };
     }),
-    on(UserActions.logInError, (state, action): AuthState => {    
+    on(AuthApiActions.logInError, (state, action): AuthState => {    
         return {
         ...state,
         error: action.error
         };
     }),
-    on(UserActions.logOut, (state): AuthState => {    
+    on(AuthPageActions.logOut, (state): AuthState => {    
         return {
         ...state,
         name: '',
@@ -55,7 +55,7 @@ export const authReducer = createReducer<AuthState>(
         token: null
         };
     }),
-    on(UserActions.signInSuccess, (state, action): AuthState => {    
+    on(AuthApiActions.signInSuccess, (state, action): AuthState => {    
         return {
         ...state,
         name: action.data.data.user.name,
@@ -64,7 +64,7 @@ export const authReducer = createReducer<AuthState>(
         token: action.data.data.token,
         };
     }),
-    on(UserActions.signInError, (state, action): AuthState => {    
+    on(AuthApiActions.signInError, (state, action): AuthState => {    
         console.log('original state: '+ JSON.stringify(state))
         return {
         ...state,

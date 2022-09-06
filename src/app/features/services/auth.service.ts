@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Auth } from 'src/app/core/models/auth';
+import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
 
@@ -11,11 +11,11 @@ export class AuthService {
 
   constructor(private privateApiService: PrivateApiServiceService, private publicApiService:PublicApiServiceService) { }
 
-  signIn<AuthResponse>(registerForm: Auth): Observable<AuthResponse>{
+  signIn<AuthResponse>(registerForm: User): Observable<AuthResponse>{
     return this.publicApiService.post('register', registerForm)
   }
 
-  logIn<AuthResponse>(loginForm: Auth): Observable<AuthResponse>{    
+  logIn<AuthResponse>(loginForm: User): Observable<AuthResponse>{    
     return this.publicApiService.post('login', loginForm)
   }
 

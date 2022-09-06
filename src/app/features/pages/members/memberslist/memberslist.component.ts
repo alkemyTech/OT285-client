@@ -32,9 +32,9 @@ export class MemberslistComponent implements OnInit {
 
   getMembers2(): void{
     this.servicehttp.getAllMembers().subscribe((res)=>{
-      let myVar=JSON.stringify(res);
-        let myJson=JSON.parse(myVar);
-      this.store.dispatch(retrievedItemList({items : myJson.data}))
+      let parseLetter=JSON.stringify(res);
+        let pareJson=JSON.parse(parseLetter);
+      this.store.dispatch(retrievedItemList({items : pareJson.data}))
     })
   }
 

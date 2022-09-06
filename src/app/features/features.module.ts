@@ -25,7 +25,10 @@ import { SlidesListComponent } from './pages/slides/slides-list/slides-list.comp
 import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
 import { HomeFormComponent } from './pages/home/home-form/home-form.component';
 
-//Material
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './pages/auth/state/auth.reducers';
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./pages/auth/state/auth.effects";
 
 @NgModule({
   declarations: [
@@ -64,7 +67,14 @@ import { HomeFormComponent } from './pages/home/home-form/home-form.component';
     MemberFormComponent,
     RouterModule
   ],
-  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    RouterModule,
+    SharedModule,
+    StoreModule.forFeature('auth',authReducer),
+    EffectsModule.forFeature([AuthEffects])
+  ],
   providers: [CurrencyPipe]
 })
 export class FeaturesModule {}

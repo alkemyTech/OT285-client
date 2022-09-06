@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -12,7 +12,7 @@ export class PublicApiServiceService {
   constructor(private http: HttpClient) {}
 
   get<T>(route: string, id?: number): Observable<T> {
-    const url = this.apiUrl + route + (id ? "/" + id : ""); //Falta la url base de la api al principio
+    const url = this.apiUrl + route + (id ? "/" + id : "");
     return this.http.get<T>(url);
   }
 

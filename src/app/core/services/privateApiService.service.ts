@@ -35,7 +35,7 @@ export class PrivateApiServiceService {
     return apiCall;
   }
 
-  patch<T>(route: string, data: {}, id?: string): Observable<T> | null {
+  patch<T>(route: string, data: {}, id?: number): Observable<T> | null {
     const headers: HttpHeaders | null = this.getHeaders();
     const url: string = this.apiUrl + "/" + route + (id ? "/" + id : "");
 
@@ -59,22 +59,28 @@ export class PrivateApiServiceService {
     return apiCall;
   }
 
-  put<T>(route: string, id: number, obj: any): Observable<T> {
-    const headers = this.getHeaders();
-    let url = this.apiUrl + route + "/" + id;
-    if (headers) {
-      return this.http.put<T>(url, obj, { headers: headers });
-    }
-    return this.http.put<T>(url, obj);
+  put<T>(route: string, id: number, obj: {}): Observable<T> {
+    const headers: HttpHeaders | null = this.getHeaders();
+    let url: string = this.apiUrl + route + "/" + id;
+    let apiCall: Observable<T>;
+
+    headers 
+      ? apiCall = this.http.put<T>(url, obj, { headers: headers })
+      : apiCall = this.http.put<T>(url, obj)
+
+    return apiCall;
   }
+    
   
   delete<T>(route: string, id: number): Observable<T> {
-    const headers = this.getHeaders();
-    let url = this.apiUrl + route + "/" + id;
-    if(headers){
-      return this.http.delete<T>(url, {headers: headers});
-    }else{
-    return this.http.delete<T>(url);
-    }
+    const headers: HttpHeaders | null = this.getHeaders();
+    let url: string = this.apiUrl + route + "/" + id;
+    let apiCall: Observable<T>;
+
+    headers
+      ? apiCall = this.http.delete<T>(url, {headers: headers})
+      : apiCall = this.http.delete<T>(url);
+
+    return apiCall;
   }
 }

@@ -7,12 +7,18 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HeadingComponent } from "./components/heading/heading.component";
 import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
+import { SkeletonComponent } from "./components/skeleton/skeleton.component";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
+import { ProgressComponent } from "./components/progress/progress.component";
 
 @NgModule({
-  declarations: [    
+  declarations: [
     HeadingComponent,
-    CardComponent,   
+    CardComponent,
     SliderComponent,
+    SkeletonComponent,
+    SpinnerComponent,
+    ProgressComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +36,9 @@ import { SliderComponent } from "./components/slider/slider.component";
     FormsModule,
     HeadingComponent,
     CardComponent,
-  ]
+    SkeletonComponent,
+    SpinnerComponent,
+    ProgressComponent
+  ],
 })
 export class SharedModule {}

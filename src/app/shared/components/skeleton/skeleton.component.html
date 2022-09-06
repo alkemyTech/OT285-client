@@ -1,0 +1,37 @@
+
+<!-- Card modo vertical -->
+<mat-card class="card-vertical" *ngIf="component=='card'">
+    
+    <div class="skeleton skeleton-title"></div>
+    <div class="skeleton skeleton-image"></div>
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text"></div>
+
+</mat-card>
+
+<!-- Card modo horizontal -->
+<mat-card class="card-horizontal" *ngIf="component=='cardImageLeft'">
+    <div class="skeleton skeleton-image"></div>
+    <div class="align-skeletons">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+    </div>
+
+</mat-card>
+
+<div class="skeleton-table mat-elevation-z8" *ngIf="component=='table'">
+    <div class="skeleton skeleton-text" *ngFor="let item of [].constructor(16)"></div>
+</div>
+
+<div class="skeleton-form-container" *ngIf="component=='form'">
+    <div class="skeleton skeleton-form"></div>
+    <div class="skeleton skeleton-file"></div>
+    <div class="skeleton skeleton-description"></div>
+</div>
+
+<div *ngIf="component=='text'" class="skeleton skeleton-text"></div>
+
+<div *ngIf="component=='image'" class="skeleton skeleton-image"></div>

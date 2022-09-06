@@ -36,17 +36,14 @@ export class SlidesListComponent implements OnInit {
     this.deleting = true;
   }
   trueDelete(): void {
-    console.log("peticion para eliminar el usuario en el servidor");
     this.deleting = false;
     this.userFlag = {};
   }
   cancel(): void {
-    console.log("cancelada la eliminacion del usuario");
     this.deleting = false;
     this.userFlag = {};
   }
-  createSlide(): void {
-    console.log("redireccion a backoffice/slides/create");
+  goToCreateSlide(): void {
     this.router.navigate(["backoffice/slides/create"]);
   }
 }

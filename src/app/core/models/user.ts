@@ -14,6 +14,7 @@ export interface User{
     longitude?:	number
     address?: string
     profile_image?:	string
+    description?: string
 }
 export interface UserRes{
     success: boolean

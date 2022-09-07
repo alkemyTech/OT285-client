@@ -19,17 +19,19 @@ import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
 import { UsersListComponent } from "./pages/users/users-list/users-list.component";
 import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
-import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
-import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
-import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.component";
-import { ActivitiesListComponent } from "./pages/activities/activities-list/activities-list.component";
-import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
-import { StoreModule } from "@ngrx/store";
-import { usersReducer } from "./pages/users/state/users.reducer";
+import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
+import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
+import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
+import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
+import { HomeFormComponent } from './pages/home/home-form/home-form.component';
+
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './pages/auth/state/auth.reducers';
 import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./pages/auth/state/auth.effects";
+import { usersReducer } from "./pages/users/state/users.reducer";
 import { UserEffects } from "./pages/users/state/users.effects";
 
-//Material
 @NgModule({
   declarations: [
     ActivityFormComponent,
@@ -68,13 +70,14 @@ import { UserEffects } from "./pages/users/state/users.effects";
     RouterModule,
   ],
   imports: [
-    CommonModule, 
-    AppRoutingModule, 
-    RouterModule, 
+    CommonModule,
+    AppRoutingModule,
+    RouterModule,
     SharedModule,
+    StoreModule.forFeature('auth',authReducer),
     StoreModule.forFeature('users', usersReducer),
-    EffectsModule.forFeature([UserEffects])
+    EffectsModule.forFeature([AuthEffects, UserEffects])
   ],
-  providers: [CurrencyPipe],
+  providers: [CurrencyPipe]
 })
 export class FeaturesModule {}

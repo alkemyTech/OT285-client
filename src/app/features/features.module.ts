@@ -27,7 +27,7 @@ import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
 import { StoreModule } from "@ngrx/store";
 import { usersReducer } from "./pages/users/state/users.reducer";
 import { EffectsModule } from "@ngrx/effects";
-import { UsersEffects } from "./pages/users/state/users.effects";
+import { UserEffects } from "./pages/users/state/users.effects";
 
 //Material
 @NgModule({
@@ -73,7 +73,7 @@ import { UsersEffects } from "./pages/users/state/users.effects";
     RouterModule, 
     SharedModule,
     StoreModule.forFeature('users', usersReducer),
-    EffectsModule.forFeature([UsersEffects])
+    EffectsModule.forFeature([UserEffects])
   ],
   providers: [CurrencyPipe],
 })

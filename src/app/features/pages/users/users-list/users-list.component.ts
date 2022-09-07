@@ -1,62 +1,34 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { Subscription } from "rxjs";
+import { Observable, Subscription } from "rxjs";
+import { User } from "src/app/core/models/user";
+import { UsersService } from "src/app/features/services/users.service";
+import * as userActions from "../state/users.actions";
+import { getUsersState } from "../state/users.reducer";
 
 @Component({
   selector: "app-users-list",
   templateUrl: "./users-list.component.html",
   styleUrls: ["./users-list.component.scss"],
 })
-export class UsersListComponent implements OnInit, OnDestroy {
-  users = [
-    {
-      name: 'Carolina Laborde',
-      email: 'carolina.laborde@gmail.com',
-    },
-    {
-      name: 'Gastón Machado',
-      email: 'gastonmachado056@gmail.com',
-    },
-    {
-      name: 'Nahuel Barreiro',
-      email: 'nahuelbarreiro@gmail.com',
-    },
-    {
-      name: 'Lucio Cocuccio',
-      email: 'lucio.cocuccio@i2t-sa.com.ar',
-    },
-    {
-      name: 'Diego Otranto',
-      email: 'diegui98@live.com.ar',
-    },
-    {
-      name: 'Antonio Lopez',
-      email: 'anjojalo1@gmail.com',
-    },
-  ];
+export class UsersListComponent implements OnInit {
+  users$!: Observable<User[]>;
   columns = ["name", "email", "accions"];
   deleting = false;
   userFlag = {};
-  storeSub = new Subscription;
   constructor(
     private router: Router,
-    private store: Store<any>
+    private store: Store<any>,
+    private uS: UsersService
   ) {}
 
   ngOnInit(): void {
-    this.storeSub = this.store.select('users').subscribe((res)=>{
-      console.log(res);
-      
-    })
+    this.users$ = this.store.select(getUsersState);
+    this.store.dispatch(userActions.loadUsers());
   }
-  ngOnDestroy(): void {
-      this.storeSub.unsubscribe();
-  }
-
   edit(): void {
     console.log('edit');
-    this.store.dispatch({type: 'mostrar usuarios'})
   }
   delete(user: {}): void {
     this.userFlag = user;

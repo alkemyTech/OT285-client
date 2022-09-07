@@ -1,13 +1,37 @@
-import { createAction, createReducer, on } from "@ngrx/store";
-import * as userActions from './users.actions';
+import {
+  createFeatureSelector,
+  createReducer,
+  createSelector,
+  on,
+} from "@ngrx/store";
+import { User } from "src/app/core/models/user";
+import * as userActions from "./users.actions";
 
+interface UserState {
+  show: boolean;
+  users: User[]
+}
+
+const initialState: UserState = {
+  show: true,
+  users: []
+};
+
+const getUserFeatureState = createFeatureSelector<UserState>("users");
+
+export const getUsersState = createSelector(
+  getUserFeatureState,
+  (state) => {console.log('getenReducer', state); return state.users}
+);
 
 export const usersReducer = createReducer(
-    { show: true},
-    on(userActions.getUsers, (state, actions) => {
-        return {
-            ...state,
-            users: actions
-        }
-    })
-)
+  initialState,
+  on(userActions.loadUsersSuccess, (state, action) => {
+    console.log('loadsuccesenReducer');
+    
+    return {
+      ...state,
+      users: action.users,
+    };
+  })
+);

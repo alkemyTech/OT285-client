@@ -21,6 +21,71 @@ import { ActivitiesListComponent } from "./pages/activities/activities-list/acti
 import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
 
 const routes: Routes = [
+  {
+    path: "nosotros",
+    loadChildren: () =>
+      import("./pages/about/about.module").then((m) => m.AboutModule),
+  },
+  {
+    path: "actividades",
+    loadChildren: () =>
+      import("./pages/activities-page/activities-page.module").then(
+        (m) => m.ActivitiesPageModule
+      ),
+  },
+  {
+    path: "usuarios",
+    loadChildren: () =>
+      import("./pages/users/users.module").then((m) => m.UsersModule),
+  },
+  {
+    path: "miembros",
+    loadChildren: () =>
+      import("./pages/members/members.module").then((m) => m.MembersModule),
+  },
+  {
+    path: "donar",
+    loadChildren: () =>
+      import("./pages/donations/donations.module").then(
+        (m) => m.DonationsModule
+      ),
+  },
+  {
+    path: "categorias",
+    loadChildren: () =>
+      import("./pages/categories/categories.module").then(
+        (m) => m.CategoriesModule
+      ),
+  },
+  {
+    path: "registro",
+    loadChildren: () =>
+      import("./pages/auth/auth.module").then((m) => m.AuthModule),
+  },
+  {
+    path: "backoffice/home",
+    loadChildren: () =>
+      import("./pages/home/home.module").then((m) => m.HomeModule),
+  },
+  {
+    path: "backoffice/slides",
+    loadChildren: () =>
+      import("./pages/slides/slides.module").then((m) => m.SlidesModule),
+  },
+  {
+    path: "backoffice/organization",
+    loadChildren: () =>
+      import("./pages/organization/organization.module").then(
+        (m) => m.OrganizationModule
+      ),
+  },
+  {
+    path: "backoffice/activities",
+    loadChildren: () =>
+      import("./pages/activities/activities.module").then(
+        (m) => m.ActivitiesModule
+      ),
+  },
   // {
   //   path: "usuarios",
   //   component: UserFormComponent,
@@ -50,8 +115,8 @@ const routes: Routes = [
   //   component: LoginFormComponent,
   // },
   // {
-  //   path: "actividades",
-  //   component: ActivitiesPageComponent,
+  //  path: "actividades",
+  //  component: ActivitiesPageComponent,
   // },
   // {
   //   path:'backoffice/activities',

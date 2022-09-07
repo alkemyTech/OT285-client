@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TestimonialFormComponent } from './testimonial-form/testimonial-form.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:'',
+    component:TestimonialFormComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

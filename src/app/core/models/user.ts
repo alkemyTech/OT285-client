@@ -1,3 +1,5 @@
+import { Response } from "./response"
+
 export interface User{
     id?: number
     name: string
@@ -16,8 +18,4 @@ export interface User{
     profile_image?:	string
     description?: string
 }
-export interface UserRes{
-    success: boolean
-    data: User[]
-    message: string
-}
+export type UserResponse = Response<User>;

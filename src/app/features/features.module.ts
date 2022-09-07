@@ -73,10 +73,7 @@ import { UserEffects } from "./pages/users/state/users.effects";
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    SharedModule,
-    StoreModule.forFeature('auth',authReducer),
-    StoreModule.forFeature('users', usersReducer),
-    EffectsModule.forFeature([AuthEffects, UserEffects])
+    SharedModule
   ],
   providers: [CurrencyPipe]
 })

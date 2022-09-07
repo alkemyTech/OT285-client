@@ -5,31 +5,43 @@ import {
   on,
 } from "@ngrx/store";
 import { User } from "src/app/core/models/user";
-import * as userActions from "./users.actions";
+import * as userApiActions from "./actions/users-api.actions";
 
 interface UserState {
   show: boolean;
-  users: User[]
+  users: User[];
+  error: string;
 }
 
 const initialState: UserState = {
   show: true,
-  users: []
+  users: [],
+  error: '',
 };
 
 const getUserFeatureState = createFeatureSelector<UserState>("users");
 
-export const getUsersState = createSelector(
+export const getUsers = createSelector(
   getUserFeatureState,
   (state) => state.users
+);
+export const getError = createSelector(
+  getUserFeatureState,
+  (state) => state.error
 );
 
 export const usersReducer = createReducer(
   initialState,
-  on(userActions.loadUsersSuccess, (state, action) => {
+  on(userApiActions.loadUsersSuccess, (state, action) => {
     return {
       ...state,
       users: action.users,
+    };
+  }),
+  on(userApiActions.loadUsersFailure, (state, action) => {
+    return {
+      ...state,
+      error: action.error,
     };
   })
 );

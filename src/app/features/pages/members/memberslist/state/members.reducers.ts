@@ -7,10 +7,6 @@ export const initialState: ReadonlyArray<MemberRes> = [];
 
 export const MembersReducer = createReducer(
   initialState,
-  on(addItem, (oldState, { item })=>{
-    return [...oldState, ...[item]]
-  }),
-
   on(retrievedItemList, (oldState, { items})=>{
     return [...oldState, ...items]
   })

@@ -34,6 +34,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./pages/auth/state/auth.effects";
 import { MEMBERS_REDUCERS } from "./pages/members/memberslist/state/app.state";
 import { MembersReducer } from "./pages/members/memberslist/state/members.reducers";
+import { MembersEffects } from "./pages/members/memberslist/state/members.effects";
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { MembersReducer } from "./pages/members/memberslist/state/members.reduce
     SharedModule,
     StoreModule.forFeature('auth',authReducer),
     StoreModule.forFeature('items',  MembersReducer),
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature([AuthEffects]),
+    EffectsModule.forFeature([MembersEffects])
   ],
   providers: [CurrencyPipe]
 })

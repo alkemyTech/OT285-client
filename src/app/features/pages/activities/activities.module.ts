@@ -5,6 +5,10 @@ import { ActivitiesRoutingModule } from './activities-routing.module';
 import { ActivitiesListComponent } from './activities-list/activities-list.component';
 import { ActivityFormComponent } from './activity-form/activity-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { activitiesReducer } from './state/activities.reducer';
+import { ActivitiesEffects } from './state/activities.effects';
 
 
 @NgModule({
@@ -15,7 +19,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     ActivitiesRoutingModule,
-    SharedModule
+    SharedModule,  
+    StoreModule.forFeature('activities',activitiesReducer),
+    EffectsModule.forFeature([ActivitiesEffects])
   ]
 })
 export class ActivitiesModule { }

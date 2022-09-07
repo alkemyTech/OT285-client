@@ -21,14 +21,12 @@ const getUserFeatureState = createFeatureSelector<UserState>("users");
 
 export const getUsersState = createSelector(
   getUserFeatureState,
-  (state) => {console.log('getenReducer', state); return state.users}
+  (state) => state.users
 );
 
 export const usersReducer = createReducer(
   initialState,
   on(userActions.loadUsersSuccess, (state, action) => {
-    console.log('loadsuccesenReducer');
-    
     return {
       ...state,
       users: action.users,

@@ -12,7 +12,7 @@ export class MembersEffects {
     ofType('[Members List] Add Members'),
     mergeMap(() => this.httpService.getAllMembers()
       .pipe(
-        map(items => ({ type: '[Members List/API] Retrieve Members Succes', items : items.data })),
+        map(members => ({ type: '[Members List/API] Retrieve Members Succes', items : members.data })),
         catchError(() => EMPTY)
       ))
     )

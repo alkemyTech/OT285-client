@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addItem, retrievedItemList } from "./members.actions";
+import { callApi, retrievedItemList } from "./members.actions";
 import { MemberRes } from "../../../../../core/models/members.interface";
 
 //paso 1

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MembersService } from '../members.service';
-import { addItem, retrievedItemList } from './state/members.actions';
+import { callApi, retrievedItemList } from './state/members.actions';
 import { selectMembers } from './state/members.selectors';
 
 @Component({
@@ -18,7 +18,7 @@ export class MemberslistComponent implements OnInit {
   constructor(private store:Store) { }
 
   ngOnInit(): void {
-    this.store.dispatch(addItem())
+    this.store.dispatch(callApi())
     this.listItems$ = this.store.select(selectMembers) 
   }
 }

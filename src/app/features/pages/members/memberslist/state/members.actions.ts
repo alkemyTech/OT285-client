@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { MemberRes } from "../../../../../core/models/members.interface";
 
-export const addItem = createAction(
+export const callApi = createAction(
     '[Members List] Add Members'
   );
    

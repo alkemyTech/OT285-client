@@ -14,96 +14,96 @@ import { UsersListComponent } from "./pages/users/users-list/users-list.componen
 import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
-import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
+import { ActivitiesPageComponent } from "./pages/activities-page/activities-page.component";
 import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
 import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.component";
 import { ActivitiesListComponent } from "./pages/activities/activities-list/activities-list.component";
 import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
 
 const routes: Routes = [
-  {
-    path: "usuarios",
-    component: UserFormComponent,
-  },
-  {
-    path: "miembros",
-    component: MemberFormComponent,
-  },
-  {
-    path: "nosotros",
-    component: AboutUsComponent,
-  },
-  {
-    path: "gracias",
-    component: ThanksComponent,
-  },
-  {
-    path: "donar",
-    component: DonationComponent,
-  },
-  {
-    path: "registro",
-    component: RegisterFormComponent,
-  },
-  {
-    path: "login",
-    component: LoginFormComponent,
-  },
-  {
-    path: "actividades",
-    component: ActivitiesPageComponent,
-  },
-  {
-    path:'backoffice/activities',
-    component:ActivitiesListComponent
-  },
-  {
-    path:'backoffice/activities/create',
-    component:ActivityFormComponent
-  },
-  {
-    path: "backoffice/home",
-    component: HomeFormComponent,
-  },
-  {
-    path: "backoffice/users",
-    component: UsersListComponent,
-  },
-  {
-    path: "backoffice/organization",
-    component: OrganizationDataComponent,
-  },
-  {
-    path: "categorias",
-    component: CategoriesFormComponent,
-  },
-  {
-    path: "backoffice",
-    component: DashboardComponent,
-  },
-  {
-    path: "backoffice/slides/create",
-    component: SlidesFormComponent,
-  },
-  {
-    path: "backoffice/slides",
-    component: SlidesListComponent,
-  },
-  {
-    path: "actividades/:id",
-    component:ActivitiesDetailComponent,
-  },
+  // {
+  //   path: "usuarios",
+  //   component: UserFormComponent,
+  // },
+  // {
+  //   path: "miembros",
+  //   component: MemberFormComponent,
+  // },
+  // {
+  //   path: "nosotros",
+  //   component: AboutUsComponent,
+  // },
+  // {
+  //   path: "gracias",
+  //   component: ThanksComponent,
+  // },
+  // {
+  //   path: "donar",
+  //   component: DonationComponent,
+  // },
+  // {
+  //   path: "registro",
+  //   component: RegisterFormComponent,
+  // },
+  // {
+  //   path: "login",
+  //   component: LoginFormComponent,
+  // },
+  // {
+  //   path: "actividades",
+  //   component: ActivitiesPageComponent,
+  // },
+  // {
+  //   path:'backoffice/activities',
+  //   component:ActivitiesListComponent
+  // },
+  // {
+  //   path:'backoffice/activities/create',
+  //   component:ActivityFormComponent
+  // },
+  // {
+  //   path: "backoffice/home",
+  //   component: HomeFormComponent,
+  // },
+  // {
+  //   path: "backoffice/users",
+  //   component: UsersListComponent,
+  // },
+  // {
+  //   path: "backoffice/organization",
+  //   component: OrganizationDataComponent,
+  // },
+  // {
+  //   path: "categorias",
+  //   component: CategoriesFormComponent,
+  // },
+  // {
+  //   path: "backoffice",
+  //   component: DashboardComponent,
+  // },
+  // {
+  //   path: "backoffice/slides/create",
+  //   component: SlidesFormComponent,
+  // },
+  // {
+  //   path: "backoffice/slides",
+  //   component: SlidesListComponent,
+  // },
+  // {
+  //   path: "actividades/:id",
+  //   component:ActivitiesDetailComponent,
+  // },
 
-  {
-    path: "",
-    redirectTo: "actividades",
-    pathMatch: "full",
-  },
-  {
-    path: "**",
-    redirectTo: "actividades",
-    pathMatch: "full",
-  }
+  // {
+  //   path: "",
+  //   redirectTo: "actividades",
+  //   pathMatch: "full",
+  // },
+  // {
+  //   path: "**",
+  //   redirectTo: "actividades",
+  //   pathMatch: "full",
+  // }
 ];
 
 @NgModule({

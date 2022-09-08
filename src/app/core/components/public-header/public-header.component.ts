@@ -11,6 +11,8 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
+  logged:boolean = false;
+
   navLinks:link[] = [
     {
       name:'Inicio',

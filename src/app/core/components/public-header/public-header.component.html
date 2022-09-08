@@ -15,10 +15,13 @@
 
   </div>
    <span class="example-spacer"></span>
-   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-     <mat-icon>favorite</mat-icon>
-   </button>
-   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+   <span *ngIf="!logged">
+
+       <button mat-button style="margin-right: 15px;" routerLink="/auth/login">
+            Log in
+        </button>
+        <button mat-raised-button color="primary" routerLink="/auth/registro">
+            Registrate
+        </button>
+    </span>
  </mat-toolbar>

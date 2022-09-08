@@ -24,6 +24,7 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
 import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
 import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
 import { HomeFormComponent } from './pages/home/home-form/home-form.component';
+import { HomepageComponent } from './pages/home/homepage/homepage/homepage.component';
 import { MemberslistComponent } from './pages/members/members-list/members-list.component';
 
 @NgModule({
@@ -49,6 +50,7 @@ import { MemberslistComponent } from './pages/members/members-list/members-list.
     SlidesListComponent,
     ActivitiesListComponent,
     HomeFormComponent,
+    HomepageComponent,
     MemberslistComponent,  
   ],
   exports: [

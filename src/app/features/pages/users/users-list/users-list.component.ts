@@ -28,10 +28,6 @@ export class UsersListComponent implements OnInit {
     this.users$ = this.store.select(getUsers);
     this.errorMessage$ = this.store.select(getError);
     this.store.dispatch(userPageActions.loadUsers());
-    this.errorMessage$.subscribe((res)=>{
-      console.log(res);
-      
-    })
   }
   edit(): void {
     console.log('edit');

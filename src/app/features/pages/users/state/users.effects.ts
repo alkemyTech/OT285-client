@@ -17,7 +17,7 @@ export class UserEffects {
           .getAllUsers()
           .pipe(
             map((res) => userApiActions.loadUsersSuccess({ users: res.data })),
-            catchError((res)=> of(userApiActions.loadUsersFailure({error: res.message})))
+            catchError((err)=> of(userApiActions.loadUsersFailure({error: err.message})))
           )
       )
     );

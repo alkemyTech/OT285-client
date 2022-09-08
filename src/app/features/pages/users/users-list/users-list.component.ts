@@ -1,11 +1,9 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { Observable, Subscription } from "rxjs";
+import { Observable } from "rxjs";
 import { User } from "src/app/core/models/user";
-import { UsersService } from "src/app/features/services/users.service";
 import * as userPageActions from "../state/actions/users-page.actions";
-import * as userApiActions from "../state/actions/users-api.actions";
 import { getError, getUsers } from "../state/users.reducer";
 
 @Component({
@@ -28,10 +26,6 @@ export class UsersListComponent implements OnInit {
     this.users$ = this.store.select(getUsers);
     this.errorMessage$ = this.store.select(getError);
     this.store.dispatch(userPageActions.loadUsers());
-    this.errorMessage$.subscribe((res)=>{
-      console.log(res);
-      
-    })
   }
   edit(): void {
     console.log('edit');

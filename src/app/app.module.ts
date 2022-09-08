@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,7 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
     CoreModule,
     FeaturesModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({},{}),
     EffectsModule.forRoot([]),
   ],
   providers: [],

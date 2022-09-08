@@ -1,3 +1,5 @@
+import { Response } from "./response"
+
 export interface Member{
     id?: number
     name: string
@@ -10,3 +12,5 @@ export interface Member{
     deleted_at?: string
     links?: string[]
 }
+
+export type MemberResponse = Response<Member>;

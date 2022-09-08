@@ -1,116 +1,111 @@
-import { ActivityFormComponent } from "./pages/activities/activity-form/activity-form.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
-import { DashboardComponent } from "./pages/dashboard/dashboard.component";
-import { CategoriesFormComponent } from "./pages/categories/categories-form/categories-form.component";
-import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
-import { RegisterFormComponent } from "./pages/auth/register-form/register-form.component";
-import { LoginFormComponent } from "./pages/auth/login-form/login-form.component";
-import { SlidesFormComponent } from "./pages/slides/slides-form/slides-form.component";
-import { DonationComponent } from "./pages/donations/donation/donation.component";
-import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
-import { UsersListComponent } from "./pages/users/users-list/users-list.component";
-import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
-import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
-import { UserFormComponent } from "./pages/users/user-form/user-form.component";
-import { ActivitiesPageComponent } from "./pages/activities/activities-page/activities-page.component";
-import { ActivitiesDetailComponent } from "./pages/activities/activities-detail/activities-detail.component";
-import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.component";
-import { ActivitiesListComponent } from "./pages/activities/activities-list/activities-list.component";
-import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
-import { HomepageComponent } from "./pages/home/homepage/homepage/homepage.component";
-import { MemberslistComponent } from "./pages/members/members-list/members-list.component";
+import { HomepageComponent } from "./pages/homepage/homepage.component";
+
 
 const routes: Routes = [
+
   {
-    path: "usuarios",
-    component: UserFormComponent,
-  },
-  {
-    path: "miembros",
-    component: MemberFormComponent,
+    path:'home',
+    component:HomepageComponent
   },
   {
     path: "nosotros",
-    component: AboutUsComponent,
-  },
-  {
-    path: "gracias",
-    component: ThanksComponent,
-  },
-  {
-    path: "donar",
-    component: DonationComponent,
-  },
-  {
-    path: "registro",
-    component: RegisterFormComponent,
-  },
-  {
-    path: "login",
-    component: LoginFormComponent,
+    loadChildren: () =>
+      import("./pages/about/about.module").then((m) => m.AboutModule),
   },
   {
     path: "actividades",
-    component: ActivitiesPageComponent,
+    loadChildren: () =>
+      import("./pages/activities-page/activities-page.module").then(
+        (m) => m.ActivitiesPageModule
+      ),
   },
   {
-    path:'backoffice/activities',
-    component:ActivitiesListComponent
+    path: "miembros",
+    loadChildren: () =>
+      import("./pages/members/members.module").then((m) => m.MembersModule),
   },
   {
-    path:'backoffice/activities/create',
-    component:ActivityFormComponent
-  },
-  {
-    path: "backoffice/home",
-    component: HomeFormComponent,
-  },
-  {
-    path: "backoffice/users",
-    component: UsersListComponent,
-  },
-  {
-    path: "backoffice/organization",
-    component: OrganizationDataComponent,
+    path: "donar",
+    loadChildren: () =>
+      import("./pages/donations/donations.module").then(
+        (m) => m.DonationsModule
+      ),
   },
   {
     path: "categorias",
-    component: CategoriesFormComponent,
+    loadChildren: () =>
+      import("./pages/categories/categories.module").then(
+        (m) => m.CategoriesModule
+      ),
   },
   {
-    path: "backoffice",
-    component: DashboardComponent,
+    path: "auth",
+    loadChildren: () =>
+      import("./pages/auth/auth.module").then((m) => m.AuthModule),
   },
   {
-    path: "backoffice/slides/create",
-    component: SlidesFormComponent,
+    path: "contacto",
+    loadChildren: () =>
+      import("./pages/contact/contact.module").then((m) => m.ContactModule),
   },
   {
-    path: "backoffice/slides",
-    component: SlidesListComponent,
+    path: "news",
+    loadChildren: () =>
+      import("./pages/news/news.module").then((m) => m.NewsModule),
   },
+ 
+
   {
-    path: "actividades/:id",
-    component:ActivitiesDetailComponent,
-  },
-  {
-    path: "backoffice/members",
-    component: MemberslistComponent
-  },
-  {
-    path: "home",
-    component: HomepageComponent
+    path:'backoffice',
+    children:[
+      {
+        path:'',
+        loadChildren: () =>
+          import("./pages/dashboard/dashboard.module").then((m) => m.DashboardModule),
+      },
+      {
+        path: "activities",
+        loadChildren: () =>
+          import("./pages/activities/activities.module").then(
+            (m) => m.ActivitiesModule
+          ),
+      },
+      {
+        path: "users",
+        loadChildren: () =>
+          import("./pages/users/users.module").then((m) => m.UsersModule),
+      },
+
+      {
+        path: "organization",
+        loadChildren: () =>
+          import("./pages/organization/organization.module").then(
+            (m) => m.OrganizationModule
+          ),
+      },
+      {
+        path: "home",
+        loadChildren: () =>
+          import("./pages/home/home.module").then((m) => m.HomeModule),
+      },
+      {
+        path: "slides",
+        loadChildren: () =>
+          import("./pages/slides/slides.module").then((m) => m.SlidesModule),
+      },
+    ]
   },
   {
     path: "",
-    redirectTo: "actividades",
+    redirectTo: "home",
     pathMatch: "full",
   },
   {
     path: "**",
-    redirectTo: "actividades",
+    redirectTo: "home",
     pathMatch: "full",
   }
 ];

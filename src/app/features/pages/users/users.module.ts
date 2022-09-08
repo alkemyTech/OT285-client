@@ -7,8 +7,8 @@ import { UsersListComponent } from "./users-list/users-list.component";
 import { SharedModule } from "src/app/shared/shared.module";
 import { StoreModule } from "@ngrx/store";
 import { usersReducer } from "./state/users.reducer";
-import { UserEffects } from "./state/users.effects";
 import { EffectsModule } from "@ngrx/effects";
+import { UsersEffects } from "./state/users.effects";
 
 @NgModule({
   declarations: [UsersListComponent, UserFormComponent],
@@ -17,7 +17,7 @@ import { EffectsModule } from "@ngrx/effects";
     UsersRoutingModule, 
     SharedModule,
     StoreModule.forFeature('users',usersReducer),
-    EffectsModule.forFeature([UserEffects])
+    EffectsModule.forFeature([UsersEffects])
   ],
   exports: [UsersListComponent, UserFormComponent],
 })

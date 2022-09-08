@@ -1,9 +1,15 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
+import { HomepageComponent } from "./pages/homepage/homepage.component";
 
 
 const routes: Routes = [
+
+  {
+    path:'home',
+    component:HomepageComponent
+  },
   {
     path: "nosotros",
     loadChildren: () =>
@@ -94,12 +100,12 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "actividades",
+    redirectTo: "home",
     pathMatch: "full",
   },
   {
     path: "**",
-    redirectTo: "actividades",
+    redirectTo: "home",
     pathMatch: "full",
   }
 ];

@@ -20,6 +20,7 @@ import { SlidesListComponent } from "./pages/slides/slides-list/slides-list.comp
 import { ActivitiesListComponent } from "./pages/activities/activities-list/activities-list.component";
 import { HomeFormComponent } from "./pages/home/home-form/home-form.component";
 import { HomepageComponent } from "./pages/home/homepage/homepage/homepage.component";
+import { MemberslistComponent } from "./pages/members/members-list/members-list.component";
 
 const routes: Routes = [
   {
@@ -93,6 +94,10 @@ const routes: Routes = [
   {
     path: "actividades/:id",
     component:ActivitiesDetailComponent,
+  },
+  {
+    path: "backoffice/members",
+    component: MemberslistComponent
   },
   {
     path: "home",

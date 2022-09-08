@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { User } from "src/app/core/models/user";
+import * as userPageActions from "../state/actions/users-page.actions";
+import { getError, getUsers } from "../state/users.reducer";
 
 @Component({
   selector: "app-users-list",
@@ -7,43 +12,23 @@ import { Router } from "@angular/router";
   styleUrls: ["./users-list.component.scss"],
 })
 export class UsersListComponent implements OnInit {
-  users = [
-    {
-      name: 'Carolina Laborde',
-      email: 'carolina.laborde@gmail.com',
-    },
-    {
-      name: 'Gastón Machado',
-      email: 'gastonmachado056@gmail.com',
-    },
-    {
-      name: 'Nahuel Barreiro',
-      email: 'nahuelbarreiro@gmail.com',
-    },
-    {
-      name: 'Lucio Cocuccio',
-      email: 'lucio.cocuccio@i2t-sa.com.ar',
-    },
-    {
-      name: 'Diego Otranto',
-      email: 'diegui98@live.com.ar',
-    },
-    {
-      name: 'Antonio Lopez',
-      email: 'anjojalo1@gmail.com',
-    },
-  ];
+  users$!: Observable<User[]>;
+  errorMessage$!: Observable<string>;
   columns = ["name", "email", "accions"];
   deleting = false;
   userFlag = {};
   constructor(
-    private router: Router
+    private router: Router,
+    private store: Store<any>
   ) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    this.users$ = this.store.select(getUsers);
+    this.errorMessage$ = this.store.select(getError);
+    this.store.dispatch(userPageActions.loadUsers());
+  }
   edit(): void {
-    console.log('edit'); 
+    console.log('edit');
   }
   delete(user: {}): void {
     this.userFlag = user;

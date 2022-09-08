@@ -14,10 +14,10 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
-import { DonationComponent } from './pages/donations/donation/donation.component';
-import { ThanksComponent } from './pages/donations/thanks/thanks.component';
-import { UsersListComponent } from './pages/users/users-list/users-list.component';
-import { AboutUsComponent } from './pages/about/about-us/about-us.component';
+import { DonationComponent } from "./pages/donations/donation/donation.component";
+import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
+import { UsersListComponent } from "./pages/users/users-list/users-list.component";
+import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
@@ -25,8 +25,7 @@ import { SlidesListComponent } from './pages/slides/slides-list/slides-list.comp
 import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
 import { HomeFormComponent } from './pages/home/home-form/home-form.component';
 import { HomepageComponent } from './pages/home/homepage/homepage/homepage.component';
-
-//Material
+import { MemberslistComponent } from './pages/members/members-list/members-list.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +50,8 @@ import { HomepageComponent } from './pages/home/homepage/homepage/homepage.compo
     SlidesListComponent,
     ActivitiesListComponent,
     HomeFormComponent,
-    HomepageComponent    
+    HomepageComponent,
+    MemberslistComponent,  
   ],
   exports: [
     ActivityFormComponent,
@@ -64,9 +64,14 @@ import { HomepageComponent } from './pages/home/homepage/homepage/homepage.compo
     OrganizationDataComponent,
     RouterModule,
     MemberFormComponent,
-    RouterModule
+    RouterModule,
   ],
-  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    RouterModule,
+    SharedModule
+  ],
   providers: [CurrencyPipe]
 })
 export class FeaturesModule {}

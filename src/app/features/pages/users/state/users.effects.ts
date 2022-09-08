@@ -6,7 +6,7 @@ import * as userPageActions from "./actions/users-page.actions";
 import { mergeMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 @Injectable()
-export class UserEffects {
+export class UsersEffects {
   constructor(private actions$: Actions, private userService: UsersService) {}
 
   loadUsers$ = createEffect(() => {
@@ -17,7 +17,7 @@ export class UserEffects {
           .getAllUsers()
           .pipe(
             map((res) => userApiActions.loadUsersSuccess({ users: res.data })),
-            catchError((res)=> of(userApiActions.loadUsersFailure({error: res.message})))
+            catchError((err)=> of(userApiActions.loadUsersFailure({error: err.message})))
           )
       )
     );

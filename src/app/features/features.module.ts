@@ -24,13 +24,7 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
 import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
 import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
 import { HomeFormComponent } from './pages/home/home-form/home-form.component';
-
-import { StoreModule } from '@ngrx/store';
-import { authReducer } from './pages/auth/state/auth.reducers';
-import { EffectsModule } from "@ngrx/effects";
-import { AuthEffects } from "./pages/auth/state/auth.effects";
-import { usersReducer } from "./pages/users/state/users.reducer";
-import { UserEffects } from "./pages/users/state/users.effects";
+import { MemberslistComponent } from './pages/members/members-list/members-list.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +49,7 @@ import { UserEffects } from "./pages/users/state/users.effects";
     SlidesListComponent,
     ActivitiesListComponent,
     HomeFormComponent,
+    MemberslistComponent,  
   ],
   exports: [
     ActivityFormComponent,

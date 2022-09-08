@@ -29,14 +29,9 @@ import { MemberslistComponent } from './pages/members/memberslist/memberslist.co
 
 
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './pages/auth/state/auth.reducers';
 import { EffectsModule } from "@ngrx/effects";
-import { AuthEffects } from "./pages/auth/state/auth.effects";
-import { usersReducer } from "./pages/users/state/users.reducer";
-import { UserEffects } from "./pages/users/state/users.effects";
-import { MEMBERS_REDUCERS } from "./pages/members/memberslist/state/app.state";
-import { MembersReducer } from "./pages/members/memberslist/state/members.reducers";
-import { MembersEffects } from "./pages/members/memberslist/state/members.effects";
+import { MembersReducer } from "./pages/members/state/members.reducers";
+import { MembersEffects } from "./pages/members/state/members.effects";
 
 @NgModule({
   declarations: [
@@ -80,11 +75,7 @@ import { MembersEffects } from "./pages/members/memberslist/state/members.effect
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    SharedModule,
-    StoreModule.forFeature('auth',authReducer),
-    StoreModule.forFeature('items',  MembersReducer),
-    EffectsModule.forFeature([AuthEffects]),
-    EffectsModule.forFeature([MembersEffects])
+    SharedModule
   ],
   providers: [CurrencyPipe]
 })

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { MembersService } from '../members.service';
-import { callApi, retrievedItemList } from './state/members.actions';
-import { selectMembers } from './state/members.selectors';
+import { Member } from 'src/app/core/models/member';
+import { loadMembers } from '../state/actions/members-page.actions';
+import { getError, getMembers } from '../state/members.reducers';
 
 @Component({
   selector: 'app-memberslist',
@@ -11,14 +11,15 @@ import { selectMembers } from './state/members.selectors';
   styleUrls: ['./memberslist.component.scss']
 })
 export class MemberslistComponent implements OnInit {
-
-  listItems$: Observable<any> = new Observable()
+  members$!: Observable<Member[]>;
+  errorMessage$!: Observable<string>;
   columns = ["Title", "Order", "Image", "Description", "Linkedin", "FacebookUrl", "Created_at"];
   
   constructor(private store:Store) { }
 
   ngOnInit(): void {
-    this.store.dispatch(callApi())
-    this.listItems$ = this.store.select(selectMembers) 
+    this.store.dispatch(loadMembers())
+    this.members$ = this.store.select(getMembers) 
+    this.errorMessage$ = this.store.select(getError)
   }
 }

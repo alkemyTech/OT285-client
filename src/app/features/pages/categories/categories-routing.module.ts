@@ -4,7 +4,7 @@ import { CategoriesFormComponent } from './categories-form/categories-form.compo
 
 const routes: Routes = [
   {
-    path:'',
+    path:'create',
     component:CategoriesFormComponent
   }
 ];

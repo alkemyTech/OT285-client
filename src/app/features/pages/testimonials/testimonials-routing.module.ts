@@ -4,7 +4,7 @@ import { TestimonialFormComponent } from './testimonial-form/testimonial-form.co
 
 const routes: Routes = [
   {
-    path:'',
+    path:'create',
     component:TestimonialFormComponent
   }
 ];

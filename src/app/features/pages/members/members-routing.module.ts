@@ -4,7 +4,7 @@ import { MemberFormComponent } from './member-form/member-form.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'create',
     component:MemberFormComponent
   }
 ];

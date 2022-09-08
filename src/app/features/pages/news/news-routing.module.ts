@@ -4,7 +4,7 @@ import { NewsFormComponent } from './news-form/news-form.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'create',
     component:NewsFormComponent
   }
 ];

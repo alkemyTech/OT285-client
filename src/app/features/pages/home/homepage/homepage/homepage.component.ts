@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  textWelcomeHomePage:string="";
+  textWelcomeHomePage:string ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, delectus consectetur ut praesentium quas, dicta non dolorem animi nobis distinctio ducimus in eaque aspernatur quasi aliquid omnis odio vero tempora! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, delectus consectetur ut praesentium quas, dicta non dolorem animi nobis distinctio ducimus in eaque aspernatur quasi aliquid omnis odio vero tempora!';
 
   novedades:Card[] = [
     {
@@ -30,10 +30,6 @@ export class HomepageComponent implements OnInit {
     }
   ];
 
-  callEndPoint(): string{
-    return this.textWelcomeHomePage='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, delectus consectetur ut praesentium quas, dicta non dolorem animi nobis distinctio ducimus in eaque aspernatur quasi aliquid omnis odio vero tempora! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, delectus consectetur ut praesentium quas, dicta non dolorem animi nobis distinctio ducimus in eaque aspernatur quasi aliquid omnis odio vero tempora!'
-    ;
-  }
 
 
 

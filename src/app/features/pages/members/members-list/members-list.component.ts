@@ -6,9 +6,9 @@ import { loadMembers } from '../state/actions/members-page.actions';
 import { getError, getMembers } from '../state/members.reducers';
 
 @Component({
-  selector: 'app-memberslist',
-  templateUrl: './memberslist.component.html',
-  styleUrls: ['./memberslist.component.scss']
+  selector: 'app-members-list',
+  templateUrl: './members-list.component.html',
+  styleUrls: ['./members-list.component.scss']
 })
 export class MemberslistComponent implements OnInit {
   members$!: Observable<Member[]>;

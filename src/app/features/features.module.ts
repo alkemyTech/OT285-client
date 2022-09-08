@@ -24,14 +24,7 @@ import { ActivitiesDetailComponent } from './pages/activities/activities-detail/
 import { SlidesListComponent } from './pages/slides/slides-list/slides-list.component';
 import { ActivitiesListComponent } from './pages/activities/activities-list/activities-list.component';
 import { HomeFormComponent } from './pages/home/home-form/home-form.component';
-import { MemberslistComponent } from './pages/members/memberslist/memberslist.component';
-
-
-
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from "@ngrx/effects";
-import { MembersReducer } from "./pages/members/state/members.reducers";
-import { MembersEffects } from "./pages/members/state/members.effects";
+import { MemberslistComponent } from './pages/members/members-list/members-list.component';
 
 @NgModule({
   declarations: [

@@ -14,10 +14,10 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { OrganizationDataComponent } from "./pages/organization/organization-data/organization-data.component";
 import { MemberFormComponent } from "./pages/members/member-form/member-form.component";
-import { DonationComponent } from './pages/donations/donation/donation.component';
-import { ThanksComponent } from './pages/donations/thanks/thanks.component';
-import { UsersListComponent } from './pages/users/users-list/users-list.component';
-import { AboutUsComponent } from './pages/about/about-us/about-us.component';
+import { DonationComponent } from "./pages/donations/donation/donation.component";
+import { ThanksComponent } from "./pages/donations/thanks/thanks.component";
+import { UsersListComponent } from "./pages/users/users-list/users-list.component";
+import { AboutUsComponent } from "./pages/about/about-us/about-us.component";
 import { UserFormComponent } from "./pages/users/user-form/user-form.component";
 import { ActivitiesPageComponent } from './pages/activities/activities-page/activities-page.component';
 import { ActivitiesDetailComponent } from './pages/activities/activities-detail/activities-detail.component';
@@ -32,6 +32,8 @@ import { StoreModule } from '@ngrx/store';
 import { authReducer } from './pages/auth/state/auth.reducers';
 import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./pages/auth/state/auth.effects";
+import { usersReducer } from "./pages/users/state/users.reducer";
+import { UserEffects } from "./pages/users/state/users.effects";
 import { MEMBERS_REDUCERS } from "./pages/members/memberslist/state/app.state";
 import { MembersReducer } from "./pages/members/memberslist/state/members.reducers";
 import { MembersEffects } from "./pages/members/memberslist/state/members.effects";
@@ -72,7 +74,7 @@ import { MembersEffects } from "./pages/members/memberslist/state/members.effect
     OrganizationDataComponent,
     RouterModule,
     MemberFormComponent,
-    RouterModule
+    RouterModule,
   ],
   imports: [
     CommonModule,

@@ -1,50 +1,59 @@
 <div class="content">
-        <button mat-raised-button color="primary" routerLink="/backoffice/activities/create">Crear</button>
+  <button mat-raised-button color="primary" routerLink="/backoffice/activities/create">Crear</button>
 
-      <table mat-table [dataSource]="(activities$ | async) || []" class="table mat-elevation-z8">
+  <table *ngIf="activities$ | async as activities" mat-table [dataSource]="activities" class="table mat-elevation-z8">
 
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
 
-        <ng-container matColumnDef="image">
-          <th mat-header-cell *matHeaderCellDef> Imagen </th>
-          <td class="imageTableSlide" mat-cell *matCellDef="let element"> <img [src]="element.image"/> </td>
-        </ng-container>
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> Imagen </th>
+      <td class="imageTableSlide" mat-cell *matCellDef="let element"> <img [src]="element.image"/> </td>
+    </ng-container>
 
-        <ng-container matColumnDef="createdAt">
-            <th mat-header-cell *matHeaderCellDef> Fecha de creación </th>
-            <td mat-cell *matCellDef="let element"> {{element.created_at | date: 'dd/MM/yyyy'}} </td>
-          </ng-container>
+    <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> Fecha de creación </th>
+        <td mat-cell *matCellDef="let element"> {{element.created_at | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
 
-        <ng-container matColumnDef="acciones">
-            <th mat-header-cell *matHeaderCellDef> Acciones </th>
-            <td mat-cell *matCellDef="let activity">
-                <div class="accionButtonContainer" *ngIf="activity != activityFlag" >
-                    <button class="accionButton" mat-raised-button color="primary" (click)="editActivity()">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button class="accionButton" mat-raised-button color="accent" (click)="deleteActivity(activity)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
-                <div class="accionButtonContainer" *ngIf="activity == activityFlag">
-                    <button  class="accionButton" mat-raised-button color="primary" (click)="confirmDelete()" >
-                        <mat-icon>done</mat-icon>
-                    </button>
-                    <button  class="accionButton" mat-raised-button color="accent" (click)="cancel()">
-                        <mat-icon>close</mat-icon>
-                    </button>
-                </div>
-            </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-      </table>
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let activity">
+            <div class="accionButtonContainer" *ngIf="activity != activityFlag" >
+                <button class="accionButton" mat-raised-button color="primary" (click)="editActivity()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button class="accionButton" mat-raised-button color="accent" (click)="deleteActivity(activity)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            <div class="accionButtonContainer" *ngIf="activity == activityFlag">
+                <button  class="accionButton" mat-raised-button color="primary" (click)="confirmDelete()" >
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button  class="accionButton" mat-raised-button color="accent" (click)="cancel()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="loading bar">
+      <td mat-footer-cell *matFooterCellDef colspan="4">
+        <app-progress *ngIf="!loadedTable" [mode]="'indeterminate'"></app-progress>
+      </td>
+    </ng-container>
 
-      <div *ngIf="errorMessage$ | async as errorMessage">
-        Error: {{errorMessage}}
-      </div>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    <tr  mat-footer-row *matFooterRowDef="['loading bar']" class="footerTr"></tr>
+    
+    
+  </table>
+
+  <div *ngIf="errorMessage$ | async as errorMessage">
+    Error: {{errorMessage}}
+  </div>
 </div>

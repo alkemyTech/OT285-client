@@ -2,10 +2,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
-import { SidebarComponent } from "../core/components/sidebar/sidebar.component";
 
 const routes: Routes = [
-  { path: "test", component: SidebarComponent },
   {
     path: "home",
     component: HomepageComponent,

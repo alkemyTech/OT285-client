@@ -29,13 +29,18 @@
   </div>
 
    <span class="example-spacer"></span>
-   <span *ngIf="!logged">
-
+   <span *ngIf="!(logged$ | async)">
        <button mat-button style="margin-right: 15px;" routerLink="/auth/login">
             Log in
         </button>
         <button mat-raised-button color="primary" routerLink="/auth/registro">
             Registrate
         </button>
+    </span>
+
+    <span *ngIf="logged$ | async">
+      <button mat-button (click)="logout()">
+        Salir
+      </button>
     </span>
  </mat-toolbar>

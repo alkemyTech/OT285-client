@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { isUserLogged } from 'src/app/features/pages/auth/state/auth.reducers';
+import { State } from 'src/app/state/app.state';
 
 interface link{
   name:string;
@@ -11,10 +15,9 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
-
   mobile:boolean = false;
 
-  logged:boolean = false;
+  logged$!: Observable<boolean>;
 
   navLinks:link[] = [
     {
@@ -48,10 +51,17 @@ export class PublicHeaderComponent implements OnInit {
   ]
 
   constructor(
+    private store:Store<State>
   ) { }
 
   ngOnInit(): void {
     this.mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) //Check if is mobile
+
+    this.logged$ = this.store.select(isUserLogged) //check if user is logged
+  }
+
+  logout(){
+    console.log('Hacer el log out')
   }
 
 }

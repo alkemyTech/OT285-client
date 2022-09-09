@@ -11,13 +11,13 @@ export class FooterComponent implements OnInit {
   ongData = {
     name: 'ONG - Somos Más',
     logo: 'http://ongapi.alkemy.org/storage/oqhHt6tOMb.png',
-    redirectTo: 'backoffice/home'
+    redirectTo: 'home'
   }
 
   navegacion = [
     {
       name: 'Noticias',
-      redirectTo: 'somewhere...'
+      redirectTo: 'news'
     },
     {
       name: 'Actividades',
@@ -40,7 +40,7 @@ export class FooterComponent implements OnInit {
     },
     {
       name: 'Contacto',
-      redirectTo: 'somewhere...'
+      redirectTo: 'contacto'
     },
   ]
 

@@ -10,6 +10,7 @@ import { SliderComponent } from "./components/slider/slider.component";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { ProgressComponent } from "./components/progress/progress.component";
+import { CoreModule } from "../core/core.module";
 
 @NgModule({
   declarations: [
@@ -27,11 +28,13 @@ import { ProgressComponent } from "./components/progress/progress.component";
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
+    CoreModule
   ],
   exports: [
     MaterialModule,
     CKEditorModule,
     ReactiveFormsModule,
+    CoreModule,
     SliderComponent,
     FormsModule,
     HeadingComponent,

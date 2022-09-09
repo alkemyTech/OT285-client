@@ -2,13 +2,13 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
-
+import { SidebarComponent } from "../core/components/sidebar/sidebar.component";
 
 const routes: Routes = [
-
+  { path: "test", component: SidebarComponent },
   {
-    path:'home',
-    component:HomepageComponent
+    path: "home",
+    component: HomepageComponent,
   },
   {
     path: "nosotros",
@@ -56,15 +56,21 @@ const routes: Routes = [
     loadChildren: () =>
       import("./pages/news/news.module").then((m) => m.NewsModule),
   },
- 
 
   {
-    path:'backoffice',
-    children:[
+    path: "backoffice",
+    children: [
       {
-        path:'',
+        path: "",
         loadChildren: () =>
-          import("./pages/dashboard/dashboard.module").then((m) => m.DashboardModule),
+          import("./pages/dashboard/dashboard.module").then(
+            (m) => m.DashboardModule
+          ),
+      },
+      {
+        path: "home",
+        loadChildren: () =>
+          import("./pages/home/home.module").then((m) => m.HomeModule),
       },
       {
         path: "activities",
@@ -87,16 +93,11 @@ const routes: Routes = [
           ),
       },
       {
-        path: "home",
-        loadChildren: () =>
-          import("./pages/home/home.module").then((m) => m.HomeModule),
-      },
-      {
         path: "slides",
         loadChildren: () =>
           import("./pages/slides/slides.module").then((m) => m.SlidesModule),
       },
-    ]
+    ],
   },
   {
     path: "",
@@ -107,7 +108,7 @@ const routes: Routes = [
     path: "**",
     redirectTo: "home",
     pathMatch: "full",
-  }
+  },
 ];
 
 @NgModule({

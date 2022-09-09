@@ -23,14 +23,14 @@ $instagram: #e4405f;
 $twitter: #55acee;
 $pinterest: #bd081c;
 
-.redes-container {
+.social-media-container {
   display: flex;
   padding-top: 50px;
   align-items: center;
   justify-content: center; 
 }
 
-.redes-container ul li {
+.social-media-container ul li {
   display: inline-block;
   margin: 0 0 0 40px;
   width: 50px;
@@ -38,7 +38,7 @@ $pinterest: #bd081c;
   text-align: center;
 }
 
-.redes-container ul li a {
+.social-media-container ul li a {
   display: block;
   padding: 0 10px;
   background: #333;
@@ -49,26 +49,26 @@ $pinterest: #bd081c;
   transition: .2s;
 }
 
-.redes-container ul:hover a {
+.social-media-container ul:hover a {
   filter: blur(2px);
 }
 
-.redes-container ul li a:hover {
+.social-media-container ul li a:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, .4);
   filter: none;
 }
 
-.redes-container ul li .facebook:hover {
+.social-media-container ul li .facebook:hover {
   background: $facebook;
 }
-.redes-container ul li .instagram:hover {
+.social-media-container ul li .instagram:hover {
   background: $instagram;
 }
-.redes-container ul li .twitter:hover {
+.social-media-container ul li .twitter:hover {
   background: $twitter;
 }
-.redes-container ul li .pinterest:hover {
+.social-media-container ul li .pinterest:hover {
   background: $pinterest;
 }
 

@@ -11,6 +11,9 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
+
+  mobile:boolean = false;
+
   logged:boolean = false;
 
   navLinks:link[] = [
@@ -44,9 +47,11 @@ export class PublicHeaderComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
+    this.mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) //Check if is mobile
   }
 
 }

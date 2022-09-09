@@ -1,6 +1,21 @@
-<mat-toolbar >
+<mat-toolbar >  
+
+    <!-- Menu mobile -->
+  <span *ngIf="mobile">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item *ngFor="let link of navLinks"  [routerLink]="'/' + link.routerlink">
+        {{link.name}}
+      </button>
+    </mat-menu>
+  </span>
+
    <span>Somos Más</span>
-   <div class="nav-buttons">
+
+   <!-- Menu desktop -->
+   <div *ngIf="!mobile" class="nav-buttons">
     <a 
         mat-button 
         *ngFor="let link of navLinks" 
@@ -11,9 +26,8 @@
     >
         {{link.name}}
     </a>
-
-
   </div>
+
    <span class="example-spacer"></span>
    <span *ngIf="!logged">
 

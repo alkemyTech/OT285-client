@@ -1,5 +1,5 @@
 import { createAction } from "@ngrx/store";
 
 export const loadUsers = createAction(
-    'Cargar usuarios'
+    '[Users API] Load users list'
 )

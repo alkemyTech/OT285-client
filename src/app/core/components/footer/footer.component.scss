@@ -1,3 +1,5 @@
+@import "../../../../styles/_breakpoints.scss";
+
 .toolBar {  
   display: flex;
   flex-wrap: wrap;
@@ -25,7 +27,7 @@ $pinterest: #bd081c;
 
 .redes-container {
   display: flex;
-  padding-top: 50px;
+  padding-top: 20px;
   align-items: center;
   justify-content: center; 
 }
@@ -75,4 +77,52 @@ $pinterest: #bd081c;
 .label{
   font-size: 18px;
   margin-left: 7px!important;  
+}
+
+@media (max-width: map-get($breakpoints, xs)) {   
+  .btn-responsive, h2, li.label{
+    display: none!important;    
+  }
+  ul {
+    margin: 20px auto;
+    padding: 0;
+  }
+  .redes-container ul li {
+    margin: 0 5px;    
+  }
+  .redes-container {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: map-get($breakpoints, s)) {   
+  h2, li.label {
+    display: none!important;    
+  }
+  .btn-responsive, mat-toolbar {
+    padding: 0;
+  }
+  ul {
+    margin: 20px auto;
+    padding: 0;
+  }
+  .redes-container ul li {
+    margin: 0 5px;    
+  }
+  .redes-container {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: map-get($breakpoints, l)) {   
+  h2 {
+    display: none!important;    
+  }
+  .btn-responsive, mat-toolbar {
+    padding: 0;
+  } 
+}
+
+@media (max-width: map-get($breakpoints, xl)) {  
+  
 }

@@ -31,6 +31,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./pages/auth/state/auth.effects";
 import { usersReducer } from "./pages/users/state/users.reducer";
 import { UserEffects } from "./pages/users/state/users.effects";
+import { CoreModule } from "../core/core.module";
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { UserEffects } from "./pages/users/state/users.effects";
     CommonModule,
     AppRoutingModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [CurrencyPipe]
 })

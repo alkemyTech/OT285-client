@@ -35,13 +35,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: "categorias",
-    loadChildren: () =>
-      import("./pages/categories/categories.module").then(
-        (m) => m.CategoriesModule
-      ),
-  },
-  {
     path: "auth",
     loadChildren: () =>
       import("./pages/auth/auth.module").then((m) => m.AuthModule),
@@ -65,6 +58,13 @@ const routes: Routes = [
         path:'',
         loadChildren: () =>
           import("./pages/dashboard/dashboard.module").then((m) => m.DashboardModule),
+      },
+      {
+        path: "categories",
+        loadChildren: () =>
+          import("./pages/categories/categories.module").then(
+            (m) => m.CategoriesModule
+          ),
       },
       {
         path: "activities",

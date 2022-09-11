@@ -20,10 +20,15 @@ export class SidebarComponent implements OnInit {
     //Busco las rutas del backoffice
     for (let i = 0; i < this.routes.length; i++) {
       if (this.routes[i].path == "backoffice") {
-        this.routes = this.routes[i].children;
+        let backofficeRoutes;
+        backofficeRoutes = this.routes[i].children;
+
+        //Saco la ruta "backoffice" ya que su path vacio genera conflicto y lo hardcodeo ya que siempre sera constante
+        if (backofficeRoutes[0].path == "") {
+          backofficeRoutes.splice(0, 1);
+        }
+        this.routes = backofficeRoutes;
       }
     }
-    //Saco la ruta "backoffice" ya que su path vacio genera conflicto y lo hardcodeo ya que siempre sera constante
-    this.routes.splice(0, 1);
   }
 }

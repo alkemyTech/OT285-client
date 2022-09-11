@@ -42,7 +42,7 @@ export class CategoriesListComponent implements OnInit {
     this.deleting = false;
     this.categoryFlag = {}
   }
-  create(): void {
+  redirectToCreateForm(): void {
     this.router.navigate(['backoffice/categories/create']);
   }
 

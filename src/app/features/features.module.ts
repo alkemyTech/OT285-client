@@ -21,7 +21,6 @@ import { StoreModule } from "@ngrx/store";
     AppRoutingModule,
     RouterModule, 
     SharedModule,
-    CoreModule,
     StoreModule.forFeature('auth',authReducer),
     EffectsModule.forFeature([AuthEffects])
   ],

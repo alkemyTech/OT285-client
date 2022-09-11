@@ -29,6 +29,11 @@ export const getError = createSelector(
     state => state.error
 )
 
+export const isUserLogged = createSelector(
+    getAuthFeatureState,
+    state => state?.token !== null
+)
+
 export const authReducer = createReducer<AuthState>(
     initialState,
     on(AuthApiActions.logInSuccess, (state, action): AuthState => {  

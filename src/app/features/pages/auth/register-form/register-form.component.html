@@ -64,12 +64,34 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-button (click)="openDialog()">
-      Leer Términos y Condiciones
-    </button>
+    <div class="form-field">
+      <button
+        [ngClass]="{
+          'error-color': TermsOfServiceTouched && !TermsOfServiceResult
+        }"
+        mat-button
+        (click)="openDialog()"
+      >
+        Leer Términos y Condiciones
+        <mat-checkbox
+          *ngIf="TermsOfServiceResult"
+          [checked]="TermsOfServiceResult"
+          disabled
+          class="example-margin"
+          style="padding-left: 10px"
+        ></mat-checkbox>
+      </button>
+    </div>
 
     <div class="section-buttons">
-      <button type="submit" mat-flat-button color="primary">Enviar</button>
+      <button
+        type="submit"
+        [disabled]="!TermsOfServiceResult"
+        mat-flat-button
+        color="primary"
+      >
+        Enviar
+      </button>
       <button type="reset" (click)="onReset()" mat-flat-button color="warn">
         Reset
       </button>

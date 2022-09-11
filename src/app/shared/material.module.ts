@@ -13,6 +13,7 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [],
@@ -31,6 +32,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatToolbarModule,
     MatMenuModule,
     MatDialogModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -47,6 +49,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatToolbarModule,
     MatMenuModule,
     MatDialogModule,
+    MatCheckboxModule,
   ],
 })
 export class MaterialModule {}

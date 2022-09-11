@@ -10,6 +10,8 @@ import { MustMatch } from "src/app/shared/validators/pass-match.validator";
 })
 export class RegisterFormComponent implements OnInit {
   registerForm!: FormGroup;
+  TermsOfServiceResult!: boolean;
+  TermsOfServiceTouched: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {}
 
@@ -58,13 +60,19 @@ export class RegisterFormComponent implements OnInit {
 
   onReset(): void {
     this.registerForm.reset();
+    this.TermsOfServiceResult = false;
+    this.TermsOfServiceTouched = false;
   }
 
   openDialog() {
+    this.TermsOfServiceTouched = true;
     const dialogRef = this.dialog.open(TermsOfServiceComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      if (result == undefined) {
+        result = false;
+      }
+      this.TermsOfServiceResult = result;
     });
   }
 }

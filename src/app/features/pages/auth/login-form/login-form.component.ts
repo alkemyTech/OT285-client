@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/features/services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,12 +15,24 @@ export class LoginFormComponent implements OnInit {
     'password': new FormControl('', Validators.required)
   });
 
-  constructor() { }
+  constructor(
+    private AuthService:AuthService,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   login(): void{
     console.log(this.logingForm);
+  }
+
+
+  loginWithGoogle(){
+    this.AuthService.loginWithGoogle()
+    .then(() => {
+      this.router.navigate(['/home']) //redirigir a la pagina correspondiente
+    })
+    .catch((e) => console.log(e.message)); //falta implementar alerta en caso de error
   }
 }

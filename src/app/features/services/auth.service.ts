@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
@@ -9,7 +10,11 @@ import { PublicApiServiceService } from 'src/app/core/services/publicApiService.
 })
 export class AuthService {
 
-  constructor(private privateApiService: PrivateApiServiceService, private publicApiService:PublicApiServiceService) { }
+  constructor(
+    private privateApiService: PrivateApiServiceService, 
+    private publicApiService:PublicApiServiceService,
+    private auth: Auth
+    ) { }
 
   signIn<AuthResponse>(registerForm: User): Observable<AuthResponse>{
     return this.publicApiService.post('register', registerForm)
@@ -29,5 +34,9 @@ export class AuthService {
 
   getData<AuthResponse>(): Observable<AuthResponse>{
     return this.privateApiService.get('auth/me')
+  }
+
+  loginWithGoogle() {
+    return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 }

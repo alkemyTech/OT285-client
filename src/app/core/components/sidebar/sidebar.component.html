@@ -1,9 +1,9 @@
 <mat-sidenav-container class="sidebar-container">
   <mat-sidenav #sidenav mode="side" [(opened)]="opened"
     ><mat-list>
-      <mat-list-item><a href="/backoffice">backoffice</a></mat-list-item>
+      <mat-list-item><a routerLink="/backoffice">backoffice</a></mat-list-item>
       <mat-list-item *ngFor="let route of routes"
-        ><a [href]="['/backoffice/' + route.path]">
+        ><a [routerLink]="['/backoffice/' + route.path]">
           {{ route.path }}
         </a></mat-list-item
       >

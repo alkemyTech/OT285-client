@@ -1,7 +1,7 @@
 <mat-toolbar >  
 
     <!-- Menu mobile -->
-  <span *ngIf="mobile">
+  <span id="menu">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
@@ -15,7 +15,7 @@
    <span>Somos Más</span>
 
    <!-- Menu desktop -->
-   <div *ngIf="!mobile" class="nav-buttons">
+   <div class="nav-buttons">
     <a 
         mat-button 
         *ngFor="let link of navLinks" 

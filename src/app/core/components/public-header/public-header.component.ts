@@ -15,8 +15,6 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
-  mobile:boolean = false;
-
   logged$!: Observable<boolean>;
 
   navLinks:link[] = [
@@ -55,8 +53,6 @@ export class PublicHeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) //Check if is mobile
-
     this.logged$ = this.store.select(isUserLogged) //check if user is logged
   }
 

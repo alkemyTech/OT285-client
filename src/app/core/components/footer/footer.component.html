@@ -1,10 +1,10 @@
 <mat-toolbar class="toolBar">          
-  <button class="btn-responsive" mat-button *ngFor="let Item of navegacion" (click)="redirectTo(Item.redirectTo)">{{Item.name}} </button>
+  <button class="btn-responsive" mat-button *ngFor="let Item of navBar" (click)="redirectTo(Item.redirectTo)">{{Item.name}} </button>
   <div class="flex" (click)="redirectTo(ongData.redirectTo)">
     <img class="logo" src={{ongData.logo}} alt="">
     <h2 > {{ongData.name | uppercase}} </h2>
   </div>
-  <button class="btn-responsive" mat-button *ngFor="let Item of social" (click)="redirectTo(Item.redirectTo)">{{Item.name}} </button>
+  <button class="btn-responsive" mat-button *ngFor="let Item of socialLinks" (click)="redirectTo(Item.redirectTo)">{{Item.name}} </button>
 </mat-toolbar>
 <div class="social-media-container">
   <ul>

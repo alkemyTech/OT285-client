@@ -82,4 +82,10 @@ export const authReducer = createReducer<AuthState>(
         userData:action.userData
         };
     }),
+    on(AuthApiActions.NotAuthenticated, (state, action): AuthState => {    
+        return {
+        ...state,
+        userData:null
+        };
+    }),
 );

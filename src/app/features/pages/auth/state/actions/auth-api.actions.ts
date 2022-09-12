@@ -27,6 +27,5 @@ export const Authenticated = createAction(
     props<{userData: User }>()
 )
 export const NotAuthenticated = createAction(
-    '[Auth Page] Not Authenticated',
-    props<{userData: null}>()
+    '[Auth Page] Not Authenticated'
 )

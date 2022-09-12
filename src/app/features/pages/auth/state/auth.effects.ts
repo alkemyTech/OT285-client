@@ -4,7 +4,7 @@ import { AuthService } from "src/app/features/services/auth.service";
 import { AuthApiActions, AuthPageActions  } from "./actions";
 import { catchError, map, concatMap, tap, mergeMap, exhaustMap, switchMap, take, delay } from "rxjs/operators"
 import { of } from "rxjs";
-import { User, UserCredential } from "@angular/fire/auth";
+import { AuthError, User, UserCredential } from "@angular/fire/auth";
 import { Router } from "@angular/router";
 
 @Injectable()
@@ -50,24 +50,31 @@ export class AuthEffects {
     getUser = createEffect(
         () => this.actions$.pipe(
             ofType(AuthPageActions.getAuthenticationData),
-            switchMap(() => this.authService.getUserData()),
-            map((authData) => {
-                console.log(authData)
-                const userData =  authData
-                if(userData){
-                    this.router.navigate(['/home'])
-                    return AuthApiActions.Authenticated({userData:userData})
-                }
-                return AuthApiActions.NotAuthenticated({userData : null})       
-            })
+            switchMap(() => this.authService.getUserData()
+            .pipe(
+                map((authData) => {
+                    console.log(authData)
+                    const userData =  authData
+                    if(userData){
+                        this.router.navigate(['/home'])
+                        return AuthApiActions.Authenticated({userData:userData})
+                    }
+                    return AuthApiActions.NotAuthenticated()       
+                }),
+                catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
+            )),
+            
         )
       );
 
       logInWithGoogle$ = createEffect(
         () => this.actions$.pipe(
             ofType(AuthPageActions.logInWithGoogle),
-            switchMap(() => this.authService.loginWithGoogle()),
-            map( () => AuthPageActions.getAuthenticationData())
+            switchMap(() => this.authService.loginWithGoogle().pipe(
+                map( () => AuthPageActions.getAuthenticationData()),
+                catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
+            )),
+            
         )
       )
  }

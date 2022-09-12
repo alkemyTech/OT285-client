@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
     redirectTo: 'home'
   }
 
-  navegacion = [
+  navBar = [
     {
       name: 'Noticias',
       redirectTo: 'news'
@@ -29,7 +29,7 @@ export class FooterComponent implements OnInit {
     }
   ]
 
-  social = [
+  socialLinks = [
     {
       name: 'Testimonios',
       redirectTo: 'somewhere...'

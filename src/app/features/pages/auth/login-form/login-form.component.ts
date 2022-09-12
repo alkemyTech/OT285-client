@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserCredential } from '@angular/fire/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/features/services/auth.service';
@@ -28,9 +29,9 @@ export class LoginFormComponent implements OnInit {
   }
 
 
-  loginWithGoogle(){
+  loginWithGoogle(): void{
     this.AuthService.loginWithGoogle()
-    .then((UserData) => {
+    .then((UserData:UserCredential) => {
       console.log(UserData) //Data del usuario
       this.router.navigate(['/home']) //redirigir a la pagina correspondiente
     })

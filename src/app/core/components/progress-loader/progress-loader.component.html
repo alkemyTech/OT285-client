@@ -1,4 +1,4 @@
-<mat-progress-bar
+<mat-progress-bar *ngIf="loaderService.isLoading | async"
   [color]="color"
   [mode]="mode"
   [value]="value"

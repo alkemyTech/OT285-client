@@ -69,7 +69,8 @@
         [ngClass]="{
           'error-color': TermsOfServiceTouched && !TermsOfServiceResult
         }"
-        mat-button
+        mat-stroked-button
+        color="basic"
         (click)="openDialog()"
       >
         Leer Términos y Condiciones
@@ -81,6 +82,9 @@
           style="padding-left: 10px"
         ></mat-checkbox>
       </button>
+      <mat-error *ngIf="TermsOfServiceTouched && !TermsOfServiceResult">
+        Es necesario Aceptar los Términos y Condiciones.
+      </mat-error>
     </div>
 
     <div class="section-buttons">

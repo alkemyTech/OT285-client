@@ -12,6 +12,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
@@ -31,6 +33,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatProgressBarModule,
     MatToolbarModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
     MatDialogModule,
     MatCheckboxModule,
   ],
@@ -48,6 +52,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatProgressBarModule,
     MatToolbarModule,
     MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
     MatDialogModule,
     MatCheckboxModule,
   ],

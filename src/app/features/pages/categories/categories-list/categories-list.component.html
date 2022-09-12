@@ -1,7 +1,7 @@
 <div class="content">
     <button mat-raised-button color="primary" (click)="redirectToCreateForm()">Crear nueva categoria</button>
 
-    <table mat-table [dataSource]="categories" class="table mat-elevation-z8">
+    <table *ngIf="categories$ | async as categories" mat-table [dataSource]="categories" class="table mat-elevation-z8">
 
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -37,5 +37,8 @@
       
         <tr mat-header-row *matHeaderRowDef="columns"></tr>
         <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-      </table>
+    </table>
+    <div *ngIf="errorMessage$ | async as errorMessage">
+        Error: {{errorMessage}}
+    </div>
 </div>

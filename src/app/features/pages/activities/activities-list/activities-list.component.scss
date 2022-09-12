@@ -14,8 +14,6 @@ img{
 .mat-cell, .mat-header-cell {
     vertical-align: middle;
 }
-
-
 .mat-column-acciones{
     text-align: center;
     padding-left: 24px;
@@ -25,4 +23,10 @@ img{
 .accionButtonContainer{
     display: flex;
     gap: 10px;
+}
+.footerTr{
+    height: 0;
+}
+.footerTr td{
+    padding: 0;
 }

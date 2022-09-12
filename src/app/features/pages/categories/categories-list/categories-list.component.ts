@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Category } from 'src/app/core/models/category';
+import * as categoriesPageActions from "../state/actions/categories-page.actions";
+import { getError, getCategories } from "../state/categories.reducer";
 
 @Component({
   selector: 'app-categories-list',
@@ -10,21 +15,15 @@ export class CategoriesListComponent implements OnInit {
   columns = ["name", "createdAt", "accions"];
   deleting = false;
   categoryFlag = {};
+  categories$!: Observable<Category[]>;
+  errorMessage$!: Observable<string>;
 
-  categories = [{
-    id: 0,
-    name: "string",
-    description: "string",
-    image: "string",
-    parent_category_id: 0,
-    created_at: "2022-09-10T06:34:25.038Z",
-    updated_at: "2022-09-10T06:34:25.038Z",
-    deleted_at: "2022-09-10T06:34:25.038Z"
-  }];
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store<any>) { }
 
   ngOnInit(): void {
+    this.categories$ = this.store.select(getCategories);
+    this.errorMessage$ = this.store.select(getError);
+    this.store.dispatch(categoriesPageActions.loadCategories());
   }
   edit(): void {
     console.log('edit');

@@ -9,7 +9,6 @@ import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
-import { ProgressComponent } from "./components/progress/progress.component";
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { ProgressComponent } from "./components/progress/progress.component";
     CardComponent,
     SliderComponent,
     SkeletonComponent,
-    SpinnerComponent,
-    ProgressComponent
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -37,8 +35,7 @@ import { ProgressComponent } from "./components/progress/progress.component";
     HeadingComponent,
     CardComponent,
     SkeletonComponent,
-    SpinnerComponent,
-    ProgressComponent
+    SpinnerComponent
   ],
 })
 export class SharedModule {}

@@ -30,7 +30,8 @@ export class LoginFormComponent implements OnInit {
 
   loginWithGoogle(){
     this.AuthService.loginWithGoogle()
-    .then(() => {
+    .then((UserData) => {
+      console.log(UserData) //Data del usuario
       this.router.navigate(['/home']) //redirigir a la pagina correspondiente
     })
     .catch((e) => console.log(e.message)); //falta implementar alerta en caso de error

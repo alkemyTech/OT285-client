@@ -5,14 +5,13 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { SharedModule } from "../shared/shared.module";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
-import { CoreModule } from "../core/core.module";
 
 @NgModule({
   declarations: [
     HomepageComponent
   ],
   exports: [RouterModule],
-  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule, CoreModule],
+  imports: [CommonModule, AppRoutingModule, RouterModule, SharedModule],
   providers: [CurrencyPipe],
 })
 export class FeaturesModule {}

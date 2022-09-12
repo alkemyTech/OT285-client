@@ -40,16 +40,8 @@
         </td>
     </ng-container>
     
-    <ng-container matColumnDef="loading bar">
-      <td mat-footer-cell *matFooterCellDef colspan="4">
-        <app-progress *ngIf="!loadedTable" [mode]="'indeterminate'"></app-progress>
-      </td>
-    </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-    <tr  mat-footer-row *matFooterRowDef="['loading bar']" class="footerTr"></tr>
-    
     
   </table>
 

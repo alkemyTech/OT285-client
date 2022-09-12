@@ -3,9 +3,9 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressBarMode } from '@angular/material/progress-bar';
 
 @Component({
-  selector: 'app-progress',
-  templateUrl: './progress.component.html',
-  styleUrls: ['./progress.component.scss']
+  selector: 'app-progress-bar',
+  templateUrl: './progress-bar.component.html',
+  styleUrls: ['./progress-bar.component.scss']
 })
 export class ProgressComponent implements OnInit {
   @Input()

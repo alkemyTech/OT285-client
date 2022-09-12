@@ -10,6 +10,7 @@ import { SliderComponent } from "./components/slider/slider.component";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { ProgressComponent } from "./components/progress/progress.component";
+import { GoogleMapsComponent } from "./components/google-maps/google-maps.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProgressComponent } from "./components/progress/progress.component";
     SliderComponent,
     SkeletonComponent,
     SpinnerComponent,
-    ProgressComponent
+    ProgressComponent,
+    GoogleMapsComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { ProgressComponent } from "./components/progress/progress.component";
     CardComponent,
     SkeletonComponent,
     SpinnerComponent,
-    ProgressComponent
+    ProgressComponent,
+    GoogleMapsComponent
   ],
 })
 export class SharedModule {}

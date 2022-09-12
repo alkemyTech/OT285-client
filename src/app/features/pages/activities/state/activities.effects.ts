@@ -8,13 +8,15 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as ActivitiesActions from './activities.actions';
 
 import { ActivitiesService } from 'src/app/features/services/activities.service';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 
 @Injectable()
 export class ActivitiesEffects {
 
   constructor(
     private actions$: Actions, 
-    private ActivitiesService:ActivitiesService
+    private ActivitiesService:ActivitiesService,
+    private snackBar: SnackBarService
     ) { }
 
   loadActivities$ = createEffect(() => {
@@ -24,7 +26,10 @@ export class ActivitiesEffects {
         mergeMap(() => this.ActivitiesService.getActivities()
           .pipe(
             map(activities => ActivitiesActions.loadActivitiesSuccess({activities : activities.data})),
-            catchError(error => of(ActivitiesActions.loadActivitiesFailure({ error : error.message })))
+            catchError(error => {
+              this.snackBar.error(error.message);
+              return of(ActivitiesActions.loadActivitiesFailure({ error : error.message }))
+            })
           )
         )
       );

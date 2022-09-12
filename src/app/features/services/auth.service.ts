@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState } from '@angular/fire/auth';
+import { from, Observable } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
@@ -13,7 +13,7 @@ export class AuthService {
   constructor(
     private privateApiService: PrivateApiServiceService, 
     private publicApiService:PublicApiServiceService,
-    private auth: Auth
+    private auth: Auth,
     ) { }
 
   signIn<AuthResponse>(registerForm: User): Observable<AuthResponse>{
@@ -36,7 +36,11 @@ export class AuthService {
     return this.privateApiService.get('auth/me')
   }
 
-  loginWithGoogle(): Promise<UserCredential> {
-    return signInWithPopup(this.auth, new GoogleAuthProvider());
+  loginWithGoogle(): Observable<UserCredential> {
+    return from(signInWithPopup(this.auth, new GoogleAuthProvider()));
+  }
+
+  getUserData(){
+    return authState(this.auth)
   }
 }

@@ -68,7 +68,7 @@
       <button
         type="button"
         [ngClass]="{
-          'error-color': TermsOfServiceTouched && !TermsOfServiceResult
+          'error-color': termsOfServiceTouched && !termsOfServiceResult
         }"
         mat-stroked-button
         color="basic"
@@ -76,14 +76,14 @@
       >
         Leer Términos y Condiciones
         <mat-checkbox
-          *ngIf="TermsOfServiceResult"
-          [checked]="TermsOfServiceResult"
+          *ngIf="termsOfServiceResult"
+          [checked]="termsOfServiceResult"
           disabled
           class="example-margin"
           style="padding-left: 10px"
         ></mat-checkbox>
       </button>
-      <mat-error *ngIf="TermsOfServiceTouched && !TermsOfServiceResult">
+      <mat-error *ngIf="termsOfServiceTouched && !termsOfServiceResult">
         Es necesario Aceptar los Términos y Condiciones.
       </mat-error>
     </div>
@@ -91,7 +91,7 @@
     <div class="section-buttons">
       <button
         type="submit"
-        [disabled]="!TermsOfServiceResult"
+        [disabled]="!termsOfServiceResult"
         mat-flat-button
         color="primary"
       >

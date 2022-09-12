@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MustMatch } from "src/app/shared/validators/pass-match.validator";
+import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.component";
 
 @Component({
   selector: "app-register-form",
@@ -10,8 +11,8 @@ import { MustMatch } from "src/app/shared/validators/pass-match.validator";
 })
 export class RegisterFormComponent implements OnInit {
   registerForm!: FormGroup;
-  TermsOfServiceResult!: boolean;
-  TermsOfServiceTouched: boolean = false;
+  termsOfServiceResult!: boolean;
+  termsOfServiceTouched: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {}
 
@@ -60,25 +61,19 @@ export class RegisterFormComponent implements OnInit {
 
   onReset(): void {
     this.registerForm.reset();
-    this.TermsOfServiceResult = false;
-    this.TermsOfServiceTouched = false;
+    this.termsOfServiceResult = false;
+    this.termsOfServiceTouched = false;
   }
 
-  openDialog() {
-    this.TermsOfServiceTouched = true;
+  openDialog(): void {
+    this.termsOfServiceTouched = true;
     const dialogRef = this.dialog.open(TermsOfServiceComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result == undefined) {
         result = false;
       }
-      this.TermsOfServiceResult = result;
+      this.termsOfServiceResult = result;
     });
   }
 }
-
-@Component({
-  selector: "terms-of-service",
-  templateUrl: "terms-of-service.component.html",
-})
-export class TermsOfServiceComponent {}

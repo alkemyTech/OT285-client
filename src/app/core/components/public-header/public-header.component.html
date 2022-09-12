@@ -1,0 +1,46 @@
+<mat-toolbar >  
+
+    <!-- Menu mobile -->
+  <span id="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item *ngFor="let link of navLinks"  [routerLink]="'/' + link.routerlink">
+        {{link.name}}
+      </button>
+    </mat-menu>
+  </span>
+
+   <span>Somos Más</span>
+
+   <!-- Menu desktop -->
+   <div class="nav-buttons">
+    <a 
+        mat-button 
+        *ngFor="let link of navLinks" 
+        [routerLink]="'/' + link.routerlink"
+        routerLinkActive  
+        #routerLink="routerLinkActive" 
+        [color]="routerLink.isActive ? 'primary' : ''"
+    >
+        {{link.name}}
+    </a>
+  </div>
+
+   <span class="example-spacer"></span>
+   <span *ngIf="!(logged$ | async)">
+       <button mat-button style="margin-right: 15px;" routerLink="/auth/login">
+            Log in
+        </button>
+        <button mat-raised-button color="primary" routerLink="/auth/registro">
+            Registrate
+        </button>
+    </span>
+
+    <span *ngIf="logged$ | async">
+      <button mat-button (click)="logout()">
+        Salir
+      </button>
+    </span>
+ </mat-toolbar>

@@ -4,18 +4,27 @@ import { NgModule } from "@angular/core";
 import { SharedModule } from "../shared/shared.module";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HttpService } from "./services/http.service";
+import { PublicHeaderComponent } from "./components/public-header/public-header.component";
+import { MaterialModule } from "../shared/material.module";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
+    PublicHeaderComponent, 
+    SidebarComponent,
     FooterComponent
   ],
-  imports: [
-    CommonModule,
+  imports: [    
+    CommonModule,   
     HttpClientModule,
-    SharedModule
+    MaterialModule,
+    RouterModule,
+    SharedModule,
   ],
   exports: [
-    FooterComponent
+    FooterComponent,
+    PublicHeaderComponent
   ],
   providers: [HttpService],
 })

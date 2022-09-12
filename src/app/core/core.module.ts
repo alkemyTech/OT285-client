@@ -6,6 +6,8 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { HttpService } from "./services/http.service";
 import { PublicHeaderComponent } from "./components/public-header/public-header.component";
 import { MaterialModule } from "../shared/material.module";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -19,13 +21,11 @@ import { MaterialModule } from "../shared/material.module";
     MaterialModule,
     RouterModule,
     SharedModule,
-  ,
-    SharedModule
   ],
   exports: [
-    FooterComponent
+    FooterComponent,
+    PublicHeaderComponent
   ],
   providers: [HttpService],
-  exports: [PublicHeaderComponent],
 })
 export class CoreModule {}

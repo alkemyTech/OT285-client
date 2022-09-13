@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as tt from '@tomtom-international/web-sdk-maps';
+import * as tto from '@tomtom-international/web-sdk-services';
 import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -12,21 +12,21 @@ import { environment } from 'src/environments/environment';
 
 export class GoogleMapsComponent implements OnInit {
 
+  @Output() newItemEvent = new EventEmitter<any>(); 
+
   title: string = 'google-maps';
   map: any;
   currentLat: number = 0;
   currentLon: number = 0;
 
-  ROOT_URL = 'https://api.tomtom.com/search/2/search/';
-  searchResults: any = [];  
+  query!: string;
+  marker: any;
+  lnglat?: {};
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.initLocationMap();
-  }
-
-  public ngAfterViewInit(): void {
   }
 
   private getCurrentPosition(): any {
@@ -82,43 +82,46 @@ export class GoogleMapsComponent implements OnInit {
     });
   }
 
-  setPlaceLocation(lat: number, lng: number, placeName: string): void {
-    this.map.flyTo({
-      center: {
-        lat: lat,
-        lng: lng,
-      },
-      zoom: 13,
-    });
+  handleResults(query: tto.FuzzySearchResponse): tto.FuzzySearchResult[] | undefined{
+    return query.results
+  }
 
-    const popup = new tt.Popup({
-      anchor: 'bottom',
-      offset: { bottom: [0, -40] },
-    }).setHTML(placeName);
-
-    const marker = new tt.Marker()
-      .setLngLat({
-        lat: lat,
-        lng: lng,
+  search(){
+    tto.services.fuzzySearch({
+      key: environment.tomtom.key,
+      query: this.query,
+      boundingBox: this.map.getBounds()
+    })
+      .then((response) => {
+        console.log(response)
+        let location = this.handleResults(response);
+        if (location) {
+          let lnglat = location[0].position
+          this.moveMap(lnglat)
+          let markerJSON = JSON.stringify(lnglat)
+          let marker = JSON.parse(markerJSON)
+          this.lnglat = marker
+          this.marker = new tt.Marker()
+            .setLngLat(marker)
+            .addTo(this.map)
+                   
+        }        
       })
-      .addTo(this.map);
-    marker.setPopup(popup).togglePopup();
- }
+  } 
+
+  moveMap(lnglat: {} | undefined){
+    this.map.flyTo({
+      center: lnglat,
+      zoom: 14
+    })
+  }
+
+  addNewEvent(value:any){
+    this.newItemEvent.emit(value)
+  }
+
+  print(){   
+    console.log('value',this.lnglat)
+    this.newItemEvent.emit(this.lnglat)
+  }  
 }
-
-
-  // getValue(value: string) {
-  //   this.http  
-  //     .get(  
-  //       this.ROOT_URL +  
-  //       `${value}.json?  
-  //       lat=${this.currentLat}&  
-  //       lon=${this.currentLon}&  
-  //       minFuzzyLevel=1&  
-  //       maxFuzzyLevel=2&  
-  //       view=Unified&  
-  //       relatedPois=off&  
-  //       key=${environment.tomtom.key}`  
-  //       )  
-  //     .subscribe((data: any) => (this.searchResults = data['results']));  
-  // }

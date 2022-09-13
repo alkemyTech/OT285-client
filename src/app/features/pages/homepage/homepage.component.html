@@ -12,6 +12,10 @@
 <div class="cards-homepage-novelty">
     <app-card [options]="novedad" *ngFor="let novedad of novedades"></app-card>    
 </div>
-<app-google-maps></app-google-maps>
+<app-google-maps (newItemEvent)="addItem($event)"></app-google-maps>
+<div *ngIf="data">
+    <h1>{{ data.lat }}</h1>
+    <h1>{{ data.lng }}</h1>
 
+</div>
 

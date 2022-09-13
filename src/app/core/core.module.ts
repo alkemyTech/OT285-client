@@ -11,13 +11,15 @@ import { ProgressLoaderInterceptorService } from "./interceptor/progress-loader-
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
+import { BackofficeComponent } from './components/backoffice/backoffice.component';
 
 @NgModule({
   declarations: [
     PublicHeaderComponent, 
     SidebarComponent, 
     ProgressLoaderComponent,
-    FooterComponent
+    FooterComponent,
+    BackofficeComponent
   ],
   imports: [    
     CommonModule,   
@@ -29,7 +31,8 @@ import { FooterComponent } from "./components/footer/footer.component";
   exports: [
     FooterComponent,
     PublicHeaderComponent,
-    ProgressLoaderComponent
+    ProgressLoaderComponent,
+    BackofficeComponent
   ],
   providers: [
     HttpService,

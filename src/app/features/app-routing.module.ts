@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
+import { BackofficeComponent } from "../core/components/backoffice/backoffice.component";
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
 
   {
     path: "backoffice",
+    component:BackofficeComponent,
     children: [
       {
         path: "",

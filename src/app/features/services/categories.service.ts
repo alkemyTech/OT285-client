@@ -11,7 +11,7 @@ export class CategoriesService {
 
   constructor(private privateApiService: PrivateApiServiceService) { }
 
-  getAllCategories(): Observable<CategoryResponse> {
+  getAllCategories(): Observable<any> {
     return this.privateApiService.get(this.route);
   }
 

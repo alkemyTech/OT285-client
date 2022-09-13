@@ -53,7 +53,6 @@ export class AuthEffects {
             switchMap(() => this.authService.getUserData()
             .pipe(
                 map((authData) => {
-                    console.log(authData)
                     const userData =  authData
                     if(userData){
                         this.router.navigate(['/home'])

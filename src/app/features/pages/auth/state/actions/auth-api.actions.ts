@@ -23,9 +23,9 @@ export const signInError = createAction(
 );
 
 export const Authenticated = createAction(
-    '[Auth Page] Authenticated',
+    '[Auth API] Authenticated',
     props<{userData: User }>()
 )
 export const NotAuthenticated = createAction(
-    '[Auth Page] Not Authenticated'
+    '[Auth API] Not Authenticated'
 )

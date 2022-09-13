@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
@@ -40,7 +40,7 @@ export class AuthService {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider()));
   }
 
-  getUserData(){
+  getUserData(): Observable<userData | null>{
     return authState(this.auth)
   }
 }

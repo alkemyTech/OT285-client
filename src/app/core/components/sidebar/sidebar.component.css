@@ -11,7 +11,3 @@ a {
   color: black;
   text-transform: capitalize;
 }
-
-mat-sidenav-content{
-  width: calc(100% - 123px);
-}

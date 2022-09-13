@@ -14,3 +14,11 @@ export const signIn = createAction(
     '[Auth Page] Sign In',
     props<{ data : User }>()
 );
+
+export const logInWithGoogle = createAction(
+    '[Auth Page] Log In with Google'
+)
+
+export const getAuthenticationData = createAction(
+    '[Auth Page] Get User Data from google'
+)

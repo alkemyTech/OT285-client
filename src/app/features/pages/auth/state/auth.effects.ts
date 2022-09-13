@@ -2,13 +2,15 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "src/app/features/services/auth.service";
 import { AuthApiActions, AuthPageActions  } from "./actions";
-import { catchError, map, concatMap, tap } from "rxjs/operators"
+import { catchError, map, concatMap, tap, mergeMap, exhaustMap, switchMap, take, delay } from "rxjs/operators"
 import { of } from "rxjs";
+import { AuthError, User, UserCredential } from "@angular/fire/auth";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthEffects {
 
-    constructor(private actions$: Actions, private authService: AuthService){}
+    constructor(private actions$: Actions, private authService: AuthService, private router:Router){}
     
     logIn$ = createEffect(() => {
         return this.actions$
@@ -44,4 +46,34 @@ export class AuthEffects {
             )
         )
     });
-}
+
+    getUser = createEffect(
+        () => this.actions$.pipe(
+            ofType(AuthPageActions.getAuthenticationData),
+            switchMap(() => this.authService.getUserData()
+            .pipe(
+                map((authData) => {
+                    const userData =  authData
+                    if(userData){
+                        this.router.navigate(['/home'])
+                        return AuthApiActions.Authenticated({userData:userData})
+                    }
+                    return AuthApiActions.NotAuthenticated()       
+                }),
+                catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
+            )),
+            
+        )
+      );
+
+      logInWithGoogle$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(AuthPageActions.logInWithGoogle),
+            switchMap(() => this.authService.loginWithGoogle().pipe(
+                map( () => AuthPageActions.getAuthenticationData()),
+                catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
+            )),
+            
+        )
+      )
+ }

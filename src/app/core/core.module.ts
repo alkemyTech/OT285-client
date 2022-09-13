@@ -11,6 +11,7 @@ import { ProgressLoaderInterceptorService } from "./interceptor/progress-loader-
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
+import { HeaderComponent } from "./components/header/header.component";
 import { LayoutComponent } from "./components/layout/layout.component";
 
 @NgModule({
@@ -19,6 +20,7 @@ import { LayoutComponent } from "./components/layout/layout.component";
     SidebarComponent,
     ProgressLoaderComponent,
     FooterComponent,
+    HeaderComponent,
     LayoutComponent,
   ],
   imports: [
@@ -32,6 +34,7 @@ import { LayoutComponent } from "./components/layout/layout.component";
     FooterComponent,
     PublicHeaderComponent,
     ProgressLoaderComponent,
+    HeaderComponent,
     SidebarComponent,
     LayoutComponent,
   ],

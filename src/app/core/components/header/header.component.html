@@ -1,20 +1,11 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon">
+<mat-toolbar color="primary" class="mat-elevation-z3">
+    <button mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
     <span class="title" [routerLink]="['backoffice/home']">Logo ONG</span>
     <button *ngFor="let item of items" [routerLink]="item.route" routerLinkActive="active" mat-button>{{item.name}}</button>
     <span class="spacer"></span>
-    <button *ngIf="!isLogged" mat-button>
-        <mat-icon>login</mat-icon>
-        Log in
-    </button>
-    <button *ngIf="!isLogged" mat-button class="register">
-        Registrate
-    </button>
-    <button *ngIf="isLogged" mat-button>
-        <mat-icon>logout</mat-icon>
+    <button mat-button class="border">
         Log out
     </button>
-
 </mat-toolbar>

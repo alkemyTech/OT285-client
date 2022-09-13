@@ -29,14 +29,9 @@ export class HeaderComponent implements OnInit {
       route: 'backoffice/slides'
     },
   ]
-  isLogged = false;
   constructor() { }
 
   ngOnInit(): void {
-    const token = localStorage.getItem("token");
-    if(token){
-      this.isLogged = true;
-    }
   }
 
 

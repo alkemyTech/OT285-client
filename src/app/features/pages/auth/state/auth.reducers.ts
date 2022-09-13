@@ -1,3 +1,4 @@
+import { User } from "@angular/fire/auth";
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
 import { AuthApiActions, AuthPageActions  } from "./actions";
 
@@ -6,7 +7,8 @@ export interface AuthState {
     email: string,
     password: string,
     token: string | null,
-    error: string | null
+    error: string | null,
+    userData:User | null
 };
 
 const initialState: AuthState = {
@@ -14,7 +16,8 @@ const initialState: AuthState = {
     email: '',
     password: '',
     token: null,
-    error: null
+    error: null,
+    userData: null
 }
 
 const getAuthFeatureState = createFeatureSelector<AuthState>('auth');
@@ -74,6 +77,20 @@ export const authReducer = createReducer<AuthState>(
         return {
         ...state,
         error: action.error
+        };
+    }),
+    on(AuthApiActions.Authenticated, (state, action): AuthState => {    
+
+        console.log(action)
+        return {
+        ...state,
+        userData:action.userData
+        };
+    }),
+    on(AuthApiActions.NotAuthenticated, (state, action): AuthState => {    
+        return {
+        ...state,
+        userData:null
         };
     }),
 );

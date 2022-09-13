@@ -1,7 +1,6 @@
-<app-public-header></app-public-header>
-
+<app-header (OpenCloseSidebar)="sidebar = !sidebar"></app-header>
 <div class="contenedor">
 
-    <app-sidebar [opened]="true"></app-sidebar> 
+    <app-sidebar [opened]="sidebar"></app-sidebar> 
   
 </div>

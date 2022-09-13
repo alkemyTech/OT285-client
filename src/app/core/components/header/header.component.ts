@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSidebar(){
+  onSidebar() : void{
     this.OpenCloseSidebar.emit()
   }
 

@@ -3,6 +3,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types",
+  ],
     "types": []
   },
   "files": [

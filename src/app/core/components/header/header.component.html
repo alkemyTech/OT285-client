@@ -3,7 +3,6 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span class="title" [routerLink]="['backoffice/home']">Logo ONG</span>
-    <button *ngFor="let item of items" [routerLink]="item.route" routerLinkActive="active" mat-button>{{item.name}}</button>
     <span class="spacer"></span>
     <button mat-button class="border">
         Log out

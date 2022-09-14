@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,31 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  items = [
-    {
-      name: 'Usuarios',
-      route: 'backoffice/users'
-    },
-    {
-      name: 'Categorias',
-      route: 'backoffice/categories'
-    },
-    {
-      name: 'Actividades',
-      route: 'backoffice/activities'
-    },
-    {
-      name: 'Organizacion',
-      route: 'backoffice/organization'
-    },
-    {
-      name: 'Slides',
-      route: 'backoffice/slides'
-    },
-  ]
+
+  @Output() OpenCloseSidebar = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSidebar() : void{
+    this.OpenCloseSidebar.emit()
   }
 
 

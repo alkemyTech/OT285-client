@@ -13,6 +13,7 @@ import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { LayoutPublicComponent } from "./components/layout-public/layout-public.component";
+import { LayoutBackofficeComponent } from "./components/layout-backoffice/layout-backoffice.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LayoutPublicComponent } from "./components/layout-public/layout-public.
     FooterComponent,
     HeaderComponent,
     LayoutPublicComponent,
+    LayoutBackofficeComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ import { LayoutPublicComponent } from "./components/layout-public/layout-public.
     HeaderComponent,
     SidebarComponent,
     LayoutPublicComponent,
+    LayoutBackofficeComponent,
   ],
   providers: [
     HttpService,

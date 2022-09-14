@@ -77,33 +77,6 @@
         >
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field class="form-field" appearance="fill">
-      <mat-label>Latitud</mat-label>
-      <input
-        required
-        matInput
-        placeholder="Latitud"
-        type="number"
-        formControlName="latitude"
-      />
-      <mat-error *ngIf="f.latitude.errors">
-        <mat-error *ngIf="f.latitude.errors.required">Latitud requerida</mat-error>        
-      </mat-error>
-    </mat-form-field>  
-    <mat-form-field class="form-field" appearance="fill">
-      <mat-label>Longitud</mat-label>
-      <input
-        required
-        matInput
-        placeholder="Longitud"
-        type="number"
-        formControlName="longitude"
-      />
-      <mat-error *ngIf="f.longitude.errors">
-        <mat-error *ngIf="f.longitude.errors.required">Longitud requerida</mat-error>        
-      </mat-error>
-    </mat-form-field>    
     <div class="form-field">
       <button
         type="button"
@@ -126,6 +99,9 @@
       <mat-error *ngIf="termsOfServiceTouched && !termsOfServiceResult">
         Es necesario Aceptar los Términos y Condiciones.
       </mat-error>
+      <mat-error *ngIf="f.longitude.errors || f.latitude.errors">
+        Ubicacion requerida
+      </mat-error>
     </div>
     <div class="section-buttons">
       <button
@@ -141,9 +117,8 @@
       </button>
     </div>    
   </form>  
-  <div class="prueba">
-    <app-tomtom-maps (newItemEvent)="addItem($event)"></app-tomtom-maps>
-    
+  <div class="map-container">
+    <app-tomtom-maps (newItemEvent)="addItem($event)"></app-tomtom-maps>    
   </div> 
 </div>
 

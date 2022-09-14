@@ -23,6 +23,8 @@ export class TomTomMapsComponent implements OnInit {
   marker!: tt.Marker;
   lngLat!: any;
 
+  private debounceTimer?: NodeJS.Timeout;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -46,6 +48,16 @@ export class TomTomMapsComponent implements OnInit {
         observer.error();
       }
     });
+  }
+
+  onQueryChanged(query: string = ''){
+    if ( this.debounceTimer) clearTimeout(this.debounceTimer);
+    if (query.length>3){
+    this.debounceTimer = setTimeout(() => {
+      console.log(query)
+      this.search();
+    }, 1000)
+    }
   }
 
   private initLocationMap(): void {
@@ -73,8 +85,10 @@ export class TomTomMapsComponent implements OnInit {
           this.lngLat = this.marker.getLngLat();
           popup.setHTML("Estas aquí: <br>" + "Lat: " + this.lngLat.lat.toFixed(4) + "<br>" + "Lng: " + this.lngLat.lng.toFixed(4));
           this.marker.setPopup(popup).togglePopup();
+          this.sendValue();
         });
         this.marker.setPopup(popup).togglePopup();
+        this.sendValue();
     });
   }
 
@@ -108,7 +122,8 @@ export class TomTomMapsComponent implements OnInit {
             .addTo(this.map)      
           const popup = this.addPopUp(this.lngLat.lat, this.lngLat.lng)
           this.marker.setPopup(popup).togglePopup();
-          this.lngLat = this.marker.getLngLat();   
+          this.lngLat = this.marker.getLngLat();
+          this.sendValue()   
         } 
       })
   } 
@@ -120,11 +135,7 @@ export class TomTomMapsComponent implements OnInit {
     })
   }
 
-  addNewEvent(value:any){
-    this.newItemEvent.emit(value)
-  }
-
-  print(){   
+  sendValue(){   
     this.newItemEvent.emit(this.lngLat)
   }    
 }

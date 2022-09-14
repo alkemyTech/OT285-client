@@ -11,7 +11,7 @@ import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.com
 })
 export class RegisterFormComponent implements OnInit {
   
-  data:any;
+  locationData:any;
   registerForm!: FormGroup;
   termsOfServiceResult!: boolean;
   termsOfServiceTouched: boolean = false;
@@ -56,10 +56,10 @@ export class RegisterFormComponent implements OnInit {
   }
 
   addItem(newItem: any){
-    this.data = newItem
+    this.locationData = newItem
     this.registerForm.patchValue({
-      latitude: this.data.lat,
-      longitude: this.data.lng
+      latitude: this.locationData.lat,
+      longitude: this.locationData.lng
     });
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { LatLng } from "@tomtom-international/web-sdk-services";
 import { MustMatch } from "src/app/shared/validators/pass-match.validator";
 import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.component";
 
@@ -11,7 +12,7 @@ import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.com
 })
 export class RegisterFormComponent implements OnInit {
   
-  locationData:any;
+  locationData!: LatLng;
   registerForm!: FormGroup;
   termsOfServiceResult!: boolean;
   termsOfServiceTouched: boolean = false;
@@ -55,7 +56,7 @@ export class RegisterFormComponent implements OnInit {
     );    
   }
 
-  addItem(newItem: any){
+  addItem(newItem: LatLng){
     this.locationData = newItem
     this.registerForm.patchValue({
       latitude: this.locationData.lat,

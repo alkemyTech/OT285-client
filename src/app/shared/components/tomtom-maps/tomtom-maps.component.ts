@@ -3,6 +3,7 @@ import * as tt from '@tomtom-international/web-sdk-maps';
 import * as tto from '@tomtom-international/web-sdk-services';
 import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-tomtom-maps',
@@ -12,20 +13,20 @@ import { environment } from 'src/environments/environment';
 
 export class TomTomMapsComponent implements OnInit {
 
-  @Output() newItemEvent = new EventEmitter<any>(); 
+  @Output() newItemEvent = new EventEmitter<tto.LatLng>(); 
 
   title: string = 'tomtom-maps';
-  map: any;
+  map!: any;
   currentLat: number = 0;
   currentLon: number = 0;
 
   query!: string;
   marker!: tt.Marker;
-  lngLat!: any;
+  lngLat!: tto.LatLng;
 
   private debounceTimer?: NodeJS.Timeout;
 
-  constructor() { }
+  constructor(private snackBarService: SnackBarService) { }
 
   ngOnInit(): void {
     this.initLocationMap();
@@ -50,11 +51,10 @@ export class TomTomMapsComponent implements OnInit {
     });
   }
 
-  onQueryChanged(query: string = ''){
+  onQueryChanged(query: string = ''): void{
     if ( this.debounceTimer) clearTimeout(this.debounceTimer);
     if (query.length>3){
     this.debounceTimer = setTimeout(() => {
-      console.log(query)
       this.search();
     }, 1000)
     }
@@ -73,7 +73,7 @@ export class TomTomMapsComponent implements OnInit {
     this.getCurrentPosition().subscribe((position: any) => {
 
       this.moveMap({lat: position.latitude, lng: position.longitude});      
-      const popup = this.addPopUp(position.latitude, position.longitude);
+      const popup: tt.Popup = this.addPopUp(position.latitude, position.longitude);
       this.marker = new tt.Marker({draggable: true})
         .setLngLat({
           lat: position.latitude,
@@ -83,7 +83,9 @@ export class TomTomMapsComponent implements OnInit {
         this.lngLat = this.marker.getLngLat();
         this.marker.on('dragend', () => {
           this.lngLat = this.marker.getLngLat();
-          popup.setHTML("Estas aquí: <br>" + "Lat: " + this.lngLat.lat.toFixed(4) + "<br>" + "Lng: " + this.lngLat.lng.toFixed(4));
+          if (this.lngLat.lat && this.lngLat.lng){
+            popup.setHTML("Estas aquí: <br>" + "Lat: " + this.lngLat.lat.toFixed(4) + "<br>" + "Lng: " + this.lngLat.lng.toFixed(4));
+          }
           this.marker.setPopup(popup).togglePopup();
           this.sendValue();
         });
@@ -92,8 +94,8 @@ export class TomTomMapsComponent implements OnInit {
     });
   }
 
-  addPopUp(lat:number, lng:number): any{
-    const popup = new tt.Popup({
+  addPopUp(lat:number, lng:number): tt.Popup{
+    const popup: tt.Popup = new tt.Popup({
       anchor: "bottom",
       offset: { bottom: [0, -40] },
     }).setHTML("Estas aquí: <br>" + "Lat: " + lat.toFixed(4) + "<br>" + "Lng: " + lng.toFixed(4));
@@ -104,38 +106,48 @@ export class TomTomMapsComponent implements OnInit {
     return query.results
   }
 
-  search(){
+  search(): void{    
     tto.services.fuzzySearch({
       key: environment.tomtom.key,
       query: this.query,
       boundingBox: this.map.getBounds()
     })
       .then((response) => {
-        let location = this.handleResults(response);        
-        if (location && location[0]) { 
-          this.lngLat = location[0].position
-          console.log('ver',this.lngLat)
-          this.moveMap(this.lngLat)
-          this.marker
-            .remove()
-            .setLngLat(this.lngLat)
-            .addTo(this.map)      
-          const popup = this.addPopUp(this.lngLat.lat, this.lngLat.lng)
-          this.marker.setPopup(popup).togglePopup();
-          this.lngLat = this.marker.getLngLat();
-          this.sendValue()   
-        } 
-      })
+        try {
+          let location: tto.FuzzySearchResult[] | undefined = this.handleResults(response);        
+          if (location && location[0].position) { 
+            this.lngLat = location[0].position
+            this.moveMap(this.lngLat)
+            if (this.lngLat.lat && this.lngLat.lng){
+              this.marker
+              .remove()
+              .setLngLat({
+                lat: this.lngLat.lat,
+                lng: this.lngLat.lng,
+              })
+              .addTo(this.map)      
+            const popup: tt.Popup = this.addPopUp(this.lngLat.lat, this.lngLat.lng)
+            this.marker.setPopup(popup).togglePopup();
+            this.lngLat = this.marker.getLngLat();
+            this.sendValue()   
+            }          
+          } 
+        } catch (error) {
+        console.log("ERRRRRRRR")
+        this.snackBarService.error("Ubicacion no encontrada, Zoom Out e intente nuevamente")
+      }
+      })  
   } 
 
-  moveMap(lnglat: {} | undefined){
+  moveMap(lnglat: tto.LatLng): void{    
     this.map.flyTo({
       center: lnglat,
       zoom: 14
     })
   }
 
-  sendValue(){   
+  sendValue(): void{   
+    this.snackBarService.succes("Ubicacion encontrada y añadida al formulario")
     this.newItemEvent.emit(this.lngLat)
   }    
 }

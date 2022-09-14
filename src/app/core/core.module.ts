@@ -12,7 +12,7 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { LayoutComponent } from "./components/layout/layout.component";
+import { LayoutPublicComponent } from "./components/layout-public/layout-public.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { LayoutComponent } from "./components/layout/layout.component";
     ProgressLoaderComponent,
     FooterComponent,
     HeaderComponent,
-    LayoutComponent,
+    LayoutPublicComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +36,7 @@ import { LayoutComponent } from "./components/layout/layout.component";
     ProgressLoaderComponent,
     HeaderComponent,
     SidebarComponent,
-    LayoutComponent,
+    LayoutPublicComponent,
   ],
   providers: [
     HttpService,

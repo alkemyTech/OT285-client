@@ -1,6 +1,20 @@
 <div class="form-container">
   <form class="form-body" [formGroup]="registerForm" (ngSubmit)="register()">
     <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input
+        required
+        matInput
+        placeholder="Juan Jose Gonzalez"
+        type="text"
+        formControlName="name"
+      />
+      <mat-error *ngIf="f.name.errors">
+        <mat-error *ngIf="f.name.errors.required">Nombre requerido</mat-error>        
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
       <mat-label>Usuario</mat-label>
       <input
         required
@@ -64,6 +78,32 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Latitud</mat-label>
+      <input
+        required
+        matInput
+        placeholder="Latitud"
+        type="number"
+        formControlName="latitude"
+      />
+      <mat-error *ngIf="f.latitude.errors">
+        <mat-error *ngIf="f.latitude.errors.required">Latitud requerida</mat-error>        
+      </mat-error>
+    </mat-form-field>  
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Longitud</mat-label>
+      <input
+        required
+        matInput
+        placeholder="Longitud"
+        type="number"
+        formControlName="longitude"
+      />
+      <mat-error *ngIf="f.longitude.errors">
+        <mat-error *ngIf="f.longitude.errors.required">Longitud requerida</mat-error>        
+      </mat-error>
+    </mat-form-field>    
     <div class="form-field">
       <button
         type="button"
@@ -87,7 +127,6 @@
         Es necesario Aceptar los Términos y Condiciones.
       </mat-error>
     </div>
-
     <div class="section-buttons">
       <button
         type="submit"
@@ -100,6 +139,11 @@
       <button type="reset" (click)="onReset()" mat-flat-button color="warn">
         Reset
       </button>
-    </div>
-  </form>
+    </div>    
+  </form>  
+  <div class="prueba">
+    <app-tomtom-maps (newItemEvent)="addItem($event)"></app-tomtom-maps>
+    
+  </div> 
 </div>
+

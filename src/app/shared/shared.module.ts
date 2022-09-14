@@ -9,7 +9,7 @@ import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
-import { GoogleMapsComponent } from "./components/google-maps/google-maps.component";
+import { TomTomMapsComponent } from "./components/tomtom-maps/tomtom-maps.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { GoogleMapsComponent } from "./components/google-maps/google-maps.compon
     SliderComponent,
     SkeletonComponent,
     SpinnerComponent,
-    GoogleMapsComponent
+    TomTomMapsComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,7 @@ import { GoogleMapsComponent } from "./components/google-maps/google-maps.compon
     CardComponent,
     SkeletonComponent,
     SpinnerComponent,
-    GoogleMapsComponent
+    TomTomMapsComponent
   ],
 })
 export class SharedModule {}

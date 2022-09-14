@@ -5,23 +5,23 @@ import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-google-maps',
-  templateUrl: './google-maps.component.html',
-  styleUrls: ['./google-maps.component.scss']
+  selector: 'app-tomtom-maps',
+  templateUrl: './tomtom-maps.component.html',
+  styleUrls: ['./tomtom-maps.component.scss']
 })
 
-export class GoogleMapsComponent implements OnInit {
+export class TomTomMapsComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter<any>(); 
 
-  title: string = 'google-maps';
+  title: string = 'tomtom-maps';
   map: any;
   currentLat: number = 0;
   currentLon: number = 0;
 
   query!: string;
-  marker: any;
-  lnglat?: {};
+  marker!: tt.Marker;
+  lngLat!: any;
 
   constructor() { }
 
@@ -29,7 +29,7 @@ export class GoogleMapsComponent implements OnInit {
     this.initLocationMap();
   }
 
-  private getCurrentPosition(): any {
+  private getCurrentPosition<T>(): Observable<T> {
     return new Observable((observer: Subscriber<any>) => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position: any) => {
@@ -59,27 +59,31 @@ export class GoogleMapsComponent implements OnInit {
     this.map.addControl(new tt.NavigationControl());
 
     this.getCurrentPosition().subscribe((position: any) => {
-      this.map.flyTo({
-        center: {
-          lat: position.latitude,
-          lng: position.longitude,
-        },
-        zoom: 13,
-      });
 
-      const popup = new tt.Popup({
-        anchor: "bottom",
-        offset: { bottom: [0, -40] },
-      }).setHTML("Current Location");
-
-      const marker = new tt.Marker()
+      this.moveMap({lat: position.latitude, lng: position.longitude});      
+      const popup = this.addPopUp(position.latitude, position.longitude);
+      this.marker = new tt.Marker({draggable: true})
         .setLngLat({
           lat: position.latitude,
           lng: position.longitude,
         })
         .addTo(this.map);
-      marker.setPopup(popup).togglePopup();
+        this.lngLat = this.marker.getLngLat();
+        this.marker.on('dragend', () => {
+          this.lngLat = this.marker.getLngLat();
+          popup.setHTML("Estas aquí: <br>" + "Lat: " + this.lngLat.lat.toFixed(4) + "<br>" + "Lng: " + this.lngLat.lng.toFixed(4));
+          this.marker.setPopup(popup).togglePopup();
+        });
+        this.marker.setPopup(popup).togglePopup();
     });
+  }
+
+  addPopUp(lat:number, lng:number): any{
+    const popup = new tt.Popup({
+      anchor: "bottom",
+      offset: { bottom: [0, -40] },
+    }).setHTML("Estas aquí: <br>" + "Lat: " + lat.toFixed(4) + "<br>" + "Lng: " + lng.toFixed(4));
+    return popup
   }
 
   handleResults(query: tto.FuzzySearchResponse): tto.FuzzySearchResult[] | undefined{
@@ -93,19 +97,19 @@ export class GoogleMapsComponent implements OnInit {
       boundingBox: this.map.getBounds()
     })
       .then((response) => {
-        console.log(response)
-        let location = this.handleResults(response);
-        if (location) {
-          let lnglat = location[0].position
-          this.moveMap(lnglat)
-          let markerJSON = JSON.stringify(lnglat)
-          let marker = JSON.parse(markerJSON)
-          this.lnglat = marker
-          this.marker = new tt.Marker()
-            .setLngLat(marker)
-            .addTo(this.map)
-                   
-        }        
+        let location = this.handleResults(response);        
+        if (location && location[0]) { 
+          this.lngLat = location[0].position
+          console.log('ver',this.lngLat)
+          this.moveMap(this.lngLat)
+          this.marker
+            .remove()
+            .setLngLat(this.lngLat)
+            .addTo(this.map)      
+          const popup = this.addPopUp(this.lngLat.lat, this.lngLat.lng)
+          this.marker.setPopup(popup).togglePopup();
+          this.lngLat = this.marker.getLngLat();   
+        } 
       })
   } 
 
@@ -121,7 +125,6 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   print(){   
-    console.log('value',this.lnglat)
-    this.newItemEvent.emit(this.lnglat)
-  }  
+    this.newItemEvent.emit(this.lngLat)
+  }    
 }

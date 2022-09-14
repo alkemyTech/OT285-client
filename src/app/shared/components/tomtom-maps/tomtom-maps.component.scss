@@ -1,0 +1,19 @@
+#map {
+    height: 300px;
+    width: 100%;
+    max-width: 600px;   
+  }
+  .centered{
+    margin: 0 auto;
+  }
+  .flex {
+    display: flex;
+  }
+  .search {
+    align-self: center;
+    height: 50%;
+    padding: 0;
+  }
+  .margin {
+    margin-top: 10px
+  }

@@ -10,6 +10,8 @@ import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.com
   styleUrls: ["./register-form.component.scss"],
 })
 export class RegisterFormComponent implements OnInit {
+  
+  data:any;
   registerForm!: FormGroup;
   termsOfServiceResult!: boolean;
   termsOfServiceTouched: boolean = false;
@@ -19,6 +21,12 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
+        name: [
+          "",
+          [
+            Validators.required,
+          ]
+        ],
         email: [
           "",
           [
@@ -38,11 +46,21 @@ export class RegisterFormComponent implements OnInit {
           ],
         ],
         confirmPassword: ["", Validators.required],
+        latitude: ["", Validators.required],
+        longitude: ["", Validators.required]
       },
       {
         validator: MustMatch("password", "confirmPassword"),
       }
-    );
+    );    
+  }
+
+  addItem(newItem: any){
+    this.data = newItem
+    this.registerForm.patchValue({
+      latitude: this.data.lat,
+      longitude: this.data.lng
+    });
   }
 
   // getter para rapido acceso a form fields

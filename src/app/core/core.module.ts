@@ -11,18 +11,22 @@ import { ProgressLoaderInterceptorService } from "./interceptor/progress-loader-
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from "./components/header/header.component";
+import { LayoutPublicComponent } from "./components/layout-public/layout-public.component";
+import { LayoutBackofficeComponent } from "./components/layout-backoffice/layout-backoffice.component";
 
 @NgModule({
   declarations: [
-    PublicHeaderComponent, 
-    SidebarComponent, 
+    PublicHeaderComponent,
+    SidebarComponent,
     ProgressLoaderComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LayoutPublicComponent,
+    LayoutBackofficeComponent,
   ],
-  imports: [    
-    CommonModule,   
+  imports: [
+    CommonModule,
     HttpClientModule,
     MaterialModule,
     RouterModule,
@@ -32,7 +36,10 @@ import { HeaderComponent } from './components/header/header.component';
     FooterComponent,
     PublicHeaderComponent,
     ProgressLoaderComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidebarComponent,
+    LayoutPublicComponent,
+    LayoutBackofficeComponent,
   ],
   providers: [
     HttpService,
@@ -41,7 +48,7 @@ import { HeaderComponent } from './components/header/header.component';
       provide: HTTP_INTERCEPTORS,
       useClass: ProgressLoaderInterceptorService,
       multi: true,
-    }
+    },
   ],
 })
 export class CoreModule {}

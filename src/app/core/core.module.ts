@@ -12,7 +12,7 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from './components/header/header.component';
-import { BackofficeComponent } from './components/backoffice/backoffice.component';
+import { LayoutBackofficeComponent } from './components/layout-backoffice/layout-backoffice.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { BackofficeComponent } from './components/backoffice/backoffice.componen
     SidebarComponent, 
     ProgressLoaderComponent,
     FooterComponent,
-    BackofficeComponent,
-    HeaderComponent
+    HeaderComponent,
+    LayoutBackofficeComponent
   ],
   imports: [    
     CommonModule,   
@@ -35,7 +35,7 @@ import { BackofficeComponent } from './components/backoffice/backoffice.componen
     PublicHeaderComponent,
     ProgressLoaderComponent,
     HeaderComponent,
-    BackofficeComponent
+    LayoutBackofficeComponent
   ],
   providers: [
     HttpService,

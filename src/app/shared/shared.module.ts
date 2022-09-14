@@ -9,7 +9,6 @@ import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
-import { ProgressComponent } from "./components/progress/progress.component";
 import { GoogleMapsComponent } from "./components/google-maps/google-maps.component";
 
 @NgModule({
@@ -19,7 +18,6 @@ import { GoogleMapsComponent } from "./components/google-maps/google-maps.compon
     SliderComponent,
     SkeletonComponent,
     SpinnerComponent,
-    ProgressComponent,
     GoogleMapsComponent
   ],
   imports: [
@@ -40,7 +38,6 @@ import { GoogleMapsComponent } from "./components/google-maps/google-maps.compon
     CardComponent,
     SkeletonComponent,
     SpinnerComponent,
-    ProgressComponent,
     GoogleMapsComponent
   ],
 })

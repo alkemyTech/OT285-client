@@ -1,5 +1,6 @@
 import { User } from "@angular/fire/auth";
 import { createFeatureSelector, createReducer, createSelector, on } from "@ngrx/store";
+import { UserInfo } from "src/app/features/services/auth.service";
 import { AuthApiActions, AuthPageActions  } from "./actions";
 
 export interface AuthState {
@@ -8,7 +9,7 @@ export interface AuthState {
     password: string,
     token: string | null,
     error: string | null,
-    userData:User | null
+    userData:UserInfo | null
 };
 
 const initialState: AuthState = {

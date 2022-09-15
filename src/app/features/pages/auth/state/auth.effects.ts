@@ -2,15 +2,20 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "src/app/features/services/auth.service";
 import { AuthApiActions, AuthPageActions  } from "./actions";
-import { catchError, map, concatMap, tap, mergeMap, exhaustMap, switchMap, take, delay } from "rxjs/operators"
+import { catchError, map, concatMap, tap, switchMap } from "rxjs/operators"
 import { of } from "rxjs";
 import { AuthError, User, UserCredential } from "@angular/fire/auth";
 import { Router } from "@angular/router";
 
+
 @Injectable()
 export class AuthEffects {
 
-    constructor(private actions$: Actions, private authService: AuthService, private router:Router){}
+    constructor(private actions$: Actions, 
+        private authService: AuthService, 
+        private router:Router,
+       
+        ){}
     
     logIn$ = createEffect(() => {
         return this.actions$
@@ -70,7 +75,7 @@ export class AuthEffects {
         () => this.actions$.pipe(
             ofType(AuthPageActions.logInWithGoogle),
             switchMap(() => this.authService.loginWithGoogle().pipe(
-                map( () => AuthPageActions.getAuthenticationData()),
+                map(() => AuthPageActions.getAuthenticationData()),
                 catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
             )),
             

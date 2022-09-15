@@ -1,20 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData } from '@angular/fire/auth';
-import { from, Observable } from 'rxjs';
+import { addDoc, collection, CollectionReference, doc, docData, DocumentData, DocumentReference, Firestore, setDoc } from '@angular/fire/firestore';
+import { from, Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
+
+export interface UserInfo extends User{
+  admin?:boolean;
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private usersCollection: CollectionReference<DocumentData>;
+
   constructor(
     private privateApiService: PrivateApiServiceService, 
     private publicApiService:PublicApiServiceService,
     private auth: Auth,
-    ) { }
+    private readonly firestore: Firestore
+    ) { 
+      this.usersCollection = collection(this.firestore, 'users');
+    }
 
   signIn<AuthResponse>(registerForm: User): Observable<AuthResponse>{
     return this.publicApiService.post('register', registerForm)
@@ -40,7 +52,36 @@ export class AuthService {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider()));
   }
 
-  getUserData(): Observable<userData | null>{
-    return authState(this.auth)
+  getUserData(): Observable<UserInfo | any>{
+
+    return authState(this.auth).pipe(
+      switchMap((user) => {
+        //Si no hay user logueado
+        if(!user){
+          return of(null);
+        }
+
+        // Traer de firestore info del usuario logueado (rol)
+        return docData(doc(this.firestore ,`users/${user.uid}`))
+        .pipe(
+          map((userData) => {
+            console.log(userData)
+
+            if(userData){
+              return {...user , ...userData} //Si existe el user en firestore agregar rol al object user
+            }else{
+              //Caso contrario crear documento en firestore con el rol
+              setDoc(doc(
+                this.firestore, 'users', user.uid),
+                {
+                  admin:false
+                }
+              );
+              return {...user, ...{admin:false}}
+            }
+          })
+        )
+      })
+    )
   }
 }

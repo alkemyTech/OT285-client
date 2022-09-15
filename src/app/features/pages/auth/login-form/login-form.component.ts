@@ -21,13 +21,10 @@ export class LoginFormComponent implements OnInit {
   });
 
   constructor(
-    private AuthService:AuthService,
-    private router:Router,
     private Store:Store<AuthState>
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(): void{
     console.log(this.logingForm);

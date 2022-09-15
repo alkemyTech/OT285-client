@@ -60,7 +60,6 @@ export class AuthEffects {
                 map((authData) => {
                     const userData =  authData
                     if(userData){
-                        this.router.navigate(['/home'])
                         return AuthApiActions.Authenticated({userData:userData})
                     }
                     return AuthApiActions.NotAuthenticated()       
@@ -71,7 +70,7 @@ export class AuthEffects {
         )
       );
 
-      logInWithGoogle$ = createEffect(
+    logInWithGoogle$ = createEffect(
         () => this.actions$.pipe(
             ofType(AuthPageActions.logInWithGoogle),
             switchMap(() => this.authService.loginWithGoogle().pipe(
@@ -80,5 +79,5 @@ export class AuthEffects {
             )),
             
         )
-      )
+    )
  }

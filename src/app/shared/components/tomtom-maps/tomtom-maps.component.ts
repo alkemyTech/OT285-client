@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as tt from '@tomtom-international/web-sdk-maps';
-import * as tto from '@tomtom-international/web-sdk-services';
+import * as tts from '@tomtom-international/web-sdk-services';
 import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SnackBarService } from '../../services/snack-bar.service';
@@ -13,7 +13,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
 
 export class TomTomMapsComponent implements OnInit {
 
-  @Output() newItemEvent = new EventEmitter<tto.LatLng>(); 
+  @Output() newItemEvent = new EventEmitter<tts.LatLng>(); 
 
   title: string = 'tomtom-maps';
   map!: any;
@@ -22,7 +22,7 @@ export class TomTomMapsComponent implements OnInit {
 
   query!: string;
   marker!: tt.Marker;
-  lngLat!: tto.LatLng;
+  lngLat!: tts.LatLng;
 
   private debounceTimer?: NodeJS.Timeout;
 
@@ -66,32 +66,50 @@ export class TomTomMapsComponent implements OnInit {
       key: environment.tomtom.key,
       container: "map",
     });
-
     this.map.addControl(new tt.FullscreenControl());
     this.map.addControl(new tt.NavigationControl());
 
     this.getCurrentPosition().subscribe((position: any) => {
-
       this.moveMap({lat: position.latitude, lng: position.longitude});      
-      const popup: tt.Popup = this.addPopUp(position.latitude, position.longitude);
-      this.marker = new tt.Marker({draggable: true})
-        .setLngLat({
-          lat: position.latitude,
-          lng: position.longitude,
-        })
-        .addTo(this.map);
-        this.lngLat = this.marker.getLngLat();
-        this.marker.on('dragend', () => {
-          this.lngLat = this.marker.getLngLat();
-          if (this.lngLat.lat && this.lngLat.lng){
-            popup.setHTML("Estas aquí: <br>" + "Lat: " + this.lngLat.lat.toFixed(4) + "<br>" + "Lng: " + this.lngLat.lng.toFixed(4));
-          }
-          this.marker.setPopup(popup).togglePopup();
-          this.sendValue();
-        });
-        this.marker.setPopup(popup).togglePopup();
-        this.sendValue();
+      const popup: tt.Popup = this.addPopUp(position.latitude, position.longitude);   
+      this.createMarker(position, popup)
+      this.marker.setPopup(popup).togglePopup();
+      this.sendValue();
     });
+  }
+
+  createMarker(position:any, popup:tt.Popup): void {
+    this.marker = new tt.Marker({draggable: true})
+    .setLngLat({
+      lat: position.latitude,
+      lng: position.longitude,
+    })
+    .addTo(this.map);
+
+    this.lngLat = this.marker.getLngLat();
+
+    this.marker.on('dragend', () => {
+      this.moveMarker(popup);
+    });
+  }
+
+  moveMarker(popup:tt.Popup): void {
+    this.lngLat = this.marker.getLngLat();
+    if (this.lngLat.lat && this.lngLat.lng){
+      popup.setHTML("Estas aquí: <br>" + "Lat: " + this.lngLat.lat.toFixed(4) + "<br>" + "Lng: " + this.lngLat.lng.toFixed(4));
+    }
+    this.marker.setPopup(popup).togglePopup();
+    this.sendValue();
+  }
+
+  editMarker(lat:number, lng:number): void {
+    this.marker
+      .remove()
+      .setLngLat({
+        lat: lat,
+        lng: lng,
+      })
+      .addTo(this.map)      
   }
 
   addPopUp(lat:number, lng:number): tt.Popup{
@@ -102,44 +120,37 @@ export class TomTomMapsComponent implements OnInit {
     return popup
   }
 
-  handleResults(query: tto.FuzzySearchResponse): tto.FuzzySearchResult[] | undefined{
-    return query.results
+  handleResults(query: tts.FuzzySearchResponse): void {
+    let location: tts.FuzzySearchResult[] | undefined = query.results;
+    if (location && location[0].position) { 
+      this.lngLat = location[0].position
+      this.moveMap(this.lngLat)
+      if (this.lngLat.lat && this.lngLat.lng){
+        this.editMarker(this.lngLat.lat, this.lngLat.lng);      
+      const popup: tt.Popup = this.addPopUp(this.lngLat.lat, this.lngLat.lng)
+      this.marker.setPopup(popup).togglePopup();
+      this.sendValue()   
+      }  
+    }
   }
 
   search(): void{    
-    tto.services.fuzzySearch({
+    tts.services.fuzzySearch({
       key: environment.tomtom.key,
       query: this.query,
       boundingBox: this.map.getBounds()
     })
-      .then((response) => {
-        try {
-          let location: tto.FuzzySearchResult[] | undefined = this.handleResults(response);        
-          if (location && location[0].position) { 
-            this.lngLat = location[0].position
-            this.moveMap(this.lngLat)
-            if (this.lngLat.lat && this.lngLat.lng){
-              this.marker
-              .remove()
-              .setLngLat({
-                lat: this.lngLat.lat,
-                lng: this.lngLat.lng,
-              })
-              .addTo(this.map)      
-            const popup: tt.Popup = this.addPopUp(this.lngLat.lat, this.lngLat.lng)
-            this.marker.setPopup(popup).togglePopup();
-            this.lngLat = this.marker.getLngLat();
-            this.sendValue()   
-            }          
-          } 
-        } catch (error) {
-        console.log("ERRRRRRRR")
-        this.snackBarService.error("Ubicacion no encontrada, Zoom Out e intente nuevamente")
+    .then((response:tts.FuzzySearchResponse) => {
+      try {               
+        this.handleResults(response)
+      } catch (error) {
+      console.log("ERRRRRRRR")
+      this.snackBarService.error("Ubicacion no encontrada, Zoom Out e intente nuevamente")
       }
-      })  
+    })  
   } 
 
-  moveMap(lnglat: tto.LatLng): void{    
+  moveMap(lnglat: tts.LatLng): void{    
     this.map.flyTo({
       center: lnglat,
       zoom: 14

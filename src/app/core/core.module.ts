@@ -14,6 +14,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { LayoutPublicComponent } from "./components/layout-public/layout-public.component";
 import { LayoutBackofficeComponent } from "./components/layout-backoffice/layout-backoffice.component";
+import { ApiErrorInterceptorInterceptor } from "./interceptor/api-error-interceptor.interceptor";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,11 @@ import { LayoutBackofficeComponent } from "./components/layout-backoffice/layout
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ProgressLoaderInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiErrorInterceptorInterceptor,
       multi: true,
     },
   ],

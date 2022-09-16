@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { User } from 'src/app/core/models/user';
 import { AuthService } from 'src/app/features/services/auth.service';
 import { AuthPageActions } from '../state/actions';
 import { AuthState } from '../state/auth.reducers';
@@ -10,7 +11,7 @@ import { AuthState } from '../state/auth.reducers';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit { 
   
   logingForm: FormGroup = new FormGroup({
     'email': new FormControl('', Validators.required),
@@ -33,7 +34,6 @@ export class LoginFormComponent implements OnInit {
       )
     }
   }
-
 
   loginWithGoogle(): void{
     this.Store.dispatch(AuthPageActions.logInWithGoogle())

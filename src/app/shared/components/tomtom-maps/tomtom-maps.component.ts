@@ -158,7 +158,6 @@ export class TomTomMapsComponent implements OnInit {
   }
 
   sendValue(): void{   
-    this.snackBarService.succes("Ubicacion encontrada y añadida al formulario")
     this.newItemEvent.emit(this.lngLat)
   }    
 }

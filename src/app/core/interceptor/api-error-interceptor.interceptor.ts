@@ -21,9 +21,7 @@ export class ApiErrorInterceptorInterceptor implements HttpInterceptor {
         if(event instanceof HttpResponse){
           if (event.body.error){
             this.snackBarService.error(event.body.error)
-          } else {
-            this.snackBarService.succes(event.body.message)
-          }
+          } 
         }      
       }),
       catchError(error => {

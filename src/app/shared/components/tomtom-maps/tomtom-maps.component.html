@@ -1,0 +1,11 @@
+<div class="container-fluid py-3">
+        <mat-form-field class="flex" appearance="fill">
+            <mat-label>Buscar</mat-label>
+            <input matInput [(ngModel)]="query" type="text" #txtQuery (keyup)="onQueryChanged(txtQuery.value)">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    <div class="d-flex square">          
+        <div id="map" class="map centered"></div>  
+    </div>  
+</div>
+  

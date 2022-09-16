@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { LatLng } from "@tomtom-international/web-sdk-services";
 import { MustMatch } from "src/app/shared/validators/pass-match.validator";
 import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.component";
 
@@ -10,6 +11,8 @@ import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.com
   styleUrls: ["./register-form.component.scss"],
 })
 export class RegisterFormComponent implements OnInit {
+  
+  locationData!: LatLng;
   registerForm!: FormGroup;
   termsOfServiceResult!: boolean;
   termsOfServiceTouched: boolean = false;
@@ -19,6 +22,12 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
+        name: [
+          "",
+          [
+            Validators.required,
+          ]
+        ],
         email: [
           "",
           [
@@ -38,11 +47,21 @@ export class RegisterFormComponent implements OnInit {
           ],
         ],
         confirmPassword: ["", Validators.required],
+        latitude: ["", Validators.required],
+        longitude: ["", Validators.required]
       },
       {
         validator: MustMatch("password", "confirmPassword"),
       }
-    );
+    );    
+  }
+
+  addItem(newItem: LatLng){
+    this.locationData = newItem
+    this.registerForm.patchValue({
+      latitude: this.locationData.lat,
+      longitude: this.locationData.lng
+    });
   }
 
   // getter para rapido acceso a form fields

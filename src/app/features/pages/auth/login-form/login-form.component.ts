@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserCredential } from '@angular/fire/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/features/services/auth.service';
 import { AuthPageActions } from '../state/actions';
-import { logInWithGoogle } from '../state/actions/auth-page.actions';
 import { AuthState } from '../state/auth.reducers';
 
 @Component({
@@ -21,13 +18,20 @@ export class LoginFormComponent implements OnInit {
   });
 
   constructor(
-    private Store:Store<AuthState>
+    private Store:Store<AuthState>,
+    private AuthService:AuthService
   ) { }
 
   ngOnInit(): void {}
 
   login(): void{
-    console.log(this.logingForm);
+    if(this.logingForm.valid){
+      this.Store.dispatch(
+        AuthPageActions.logIn(
+          {user:this.logingForm.value}
+        )
+      )
+    }
   }
 
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { collection, CollectionReference, doc, docData, DocumentData, Firestore, setDoc } from '@angular/fire/firestore';
 import { from, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -28,25 +28,29 @@ export class AuthService {
       this.usersCollection = collection(this.firestore, 'users');
     }
 
-  signIn<AuthResponse>(registerForm: User): Observable<AuthResponse>{
-    return this.publicApiService.post('register', registerForm)
+  // signIn<AuthResponse>(registerForm: User): Observable<AuthResponse>{
+  //   return this.publicApiService.post('register', registerForm)
+  // }
+
+  // logIn<AuthResponse>(loginForm: User): Observable<AuthResponse>{    
+  //   return this.publicApiService.post('login', loginForm)
+  // }
+
+  logIn(user:User): Observable<UserCredential>{   
+    return from(signInWithEmailAndPassword(this.auth, user.email, user.password));
   }
 
-  logIn<AuthResponse>(loginForm: User): Observable<AuthResponse>{    
-    return this.publicApiService.post('login', loginForm)
-  }
+  // getToken(): string | null {
+  //   return localStorage.getItem('token');
+  // }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
+  // setToken(token: string): void {
+  //   return localStorage.setItem('token', token)
+  // }
 
-  setToken(token: string): void {
-    return localStorage.setItem('token', token)
-  }
-
-  getData<AuthResponse>(): Observable<AuthResponse>{
-    return this.privateApiService.get('auth/me')
-  }
+  // getData<AuthResponse>(): Observable<AuthResponse>{
+  //   return this.privateApiService.get('auth/me')
+  // }
 
   loginWithGoogle(): Observable<UserCredential> {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider()));

@@ -9,6 +9,7 @@ import { CardComponent } from "./components/card/card.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
+import { TomTomMapsComponent } from "./components/tomtom-maps/tomtom-maps.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
     CardComponent,
     SliderComponent,
     SkeletonComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    TomTomMapsComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
     HeadingComponent,
     CardComponent,
     SkeletonComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    TomTomMapsComponent
   ],
 })
 export class SharedModule {}

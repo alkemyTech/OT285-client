@@ -13,6 +13,9 @@ export const environment = {
   },
   production: false,
   apiUrl: "https://ongapi.alkemy.org/api/",
+  tomtom: {
+    key: "d7nBf1XkOHAIAJEmTTRiLy516fefuiE3"
+  }
 };
 
 /*

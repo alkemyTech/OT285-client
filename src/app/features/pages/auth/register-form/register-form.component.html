@@ -1,6 +1,20 @@
 <div class="form-container">
   <form class="form-body" [formGroup]="registerForm" (ngSubmit)="register()">
     <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input
+        required
+        matInput
+        placeholder="Juan Jose Gonzalez"
+        type="text"
+        formControlName="name"
+      />
+      <mat-error *ngIf="f.name.errors">
+        <mat-error *ngIf="f.name.errors.required">Nombre requerido</mat-error>        
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
       <mat-label>Usuario</mat-label>
       <input
         required
@@ -63,7 +77,6 @@
         >
       </mat-error>
     </mat-form-field>
-
     <div class="form-field">
       <button
         type="button"
@@ -86,8 +99,10 @@
       <mat-error *ngIf="termsOfServiceTouched && !termsOfServiceResult">
         Es necesario Aceptar los Términos y Condiciones.
       </mat-error>
+      <mat-error *ngIf="f.longitude.errors || f.latitude.errors">
+        Ubicacion requerida
+      </mat-error>
     </div>
-
     <div class="section-buttons">
       <button
         type="submit"
@@ -100,6 +115,10 @@
       <button type="reset" (click)="onReset()" mat-flat-button color="warn">
         Reset
       </button>
-    </div>
-  </form>
+    </div>    
+  </form>  
+  <div class="map-container">
+    <app-tomtom-maps (newItemEvent)="addItem($event)"></app-tomtom-maps>    
+  </div> 
 </div>
+

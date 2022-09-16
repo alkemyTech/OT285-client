@@ -13,32 +13,30 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class ApiErrorInterceptorInterceptor implements HttpInterceptor {
 
-  private error = {
-    "error": "No token"
-  }
-
   constructor(private snackBarService: SnackBarService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
+      tap((event: any) => {
+        if(event instanceof HttpResponse){
+          if (event.body.error){
+            this.snackBarService.error(event.body.error)
+          } else {
+            this.snackBarService.succes(event.body.message)
+          }
+        }      
+      }),
       catchError(error => {
         let errorMessage = '';
         if (error instanceof ErrorEvent) {
           // client-side error
           errorMessage = `CLIENT ERROR: ${error.error.message}`;
-          errorMessage = `CLIENT ERROR: ${error}`;
-          console.log(errorMessage)
         } else {
           // backend error
           errorMessage = `SERVER ERROR: ${error.message}`;
-          let errorMessage2 = `Server-side error: ${error.status} ${error.message}`;
-          let errorMessage3 = `Server-side error: ${error.status}`;
         }
-        
-        // aquí podrías agregar código que muestre el error en alguna parte fija de la pantalla.
         this.snackBarService.error(errorMessage)
         return throwError(errorMessage);
       })
-    );
-  }
+    )}
 }

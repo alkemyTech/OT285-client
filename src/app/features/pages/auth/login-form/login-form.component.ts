@@ -24,14 +24,14 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private AuthService:AuthService,
     private router:Router,
-    private Store:Store<AuthState>
+    private Store:Store<AuthState>,
   ) { }
 
   ngOnInit(): void {
   }
 
   login(): void{
-    console.log(this.logingForm);
+    // console.log(this.logingForm);
     let body:User = {
       name: '',
       email: this.logingForm.controls['email'].value,
@@ -39,7 +39,6 @@ export class LoginFormComponent implements OnInit {
     }
     this.Store.dispatch(AuthPageActions.logIn({data:body}))
   }
-
 
   loginWithGoogle(): void{
     this.Store.dispatch(AuthPageActions.logInWithGoogle())

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserInfo } from 'src/app/features/services/auth.service';
+import { AuthService, UserInfo } from 'src/app/features/services/auth.service';
 import { State } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { getUser } from 'src/app/features/pages/auth/state/auth.reducers';
@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
   @Output() OpenCloseSidebar = new EventEmitter();
 
   constructor(
-    private store:Store<State>
+    private store:Store<State>,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -27,5 +28,8 @@ export class HeaderComponent implements OnInit {
     this.OpenCloseSidebar.emit()
   }
 
+  logOut(){
+    this.authService.logOut()
+  }
 
 }

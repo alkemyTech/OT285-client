@@ -4,7 +4,7 @@
     </button>
     <span class="title" [routerLink]="['backoffice/home']">Logo ONG</span>
     <span class="spacer"></span>
-    <button *ngIf="logged$" mat-button class="border">
+    <button *ngIf="logged$" mat-button class="border" (click)="logOut()">
         Log out
     </button>
 </mat-toolbar>

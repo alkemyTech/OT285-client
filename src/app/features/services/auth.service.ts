@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { collection, CollectionReference, doc, docData, DocumentData, Firestore, setDoc } from '@angular/fire/firestore';
 import { from, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
+import { State } from 'src/app/state/app.state';
+import { AuthPageActions } from '../pages/auth/state/actions';
+import { Store } from '@ngrx/store';
 
 export interface UserInfo extends userData{
   admin?:boolean;
@@ -23,7 +26,8 @@ export class AuthService {
     private privateApiService: PrivateApiServiceService, 
     private publicApiService:PublicApiServiceService,
     private auth: Auth,
-    private readonly firestore: Firestore
+    private readonly firestore: Firestore,
+    private store:Store<State>
     ) { 
       this.usersCollection = collection(this.firestore, 'users');
     }
@@ -38,6 +42,12 @@ export class AuthService {
 
   logIn(user:User): Observable<UserCredential>{   
     return from(signInWithEmailAndPassword(this.auth, user.email, user.password));
+  }
+
+  logOut(): void {
+    signOut(this.auth).then(() => {
+      this.store.dispatch(AuthPageActions.logOut());
+    });
   }
 
   // getToken(): string | null {

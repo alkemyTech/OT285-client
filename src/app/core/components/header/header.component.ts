@@ -4,6 +4,8 @@ import { AuthService, UserInfo } from 'src/app/features/services/auth.service';
 import { State } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { getUser } from 'src/app/features/pages/auth/state/auth.reducers';
+import { AuthPageActions } from 'src/app/features/pages/auth/state/actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +19,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private store:Store<State>,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +32,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(){
-    this.authService.logOut()
+    this.store.dispatch(AuthPageActions.logOut());
+    this.router.navigate(['auth/login']);
   }
 
 }

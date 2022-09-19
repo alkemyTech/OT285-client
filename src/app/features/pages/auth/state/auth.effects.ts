@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "src/app/features/services/auth.service";
 import { AuthApiActions, AuthPageActions  } from "./actions";
-import { catchError, map, concatMap, tap, switchMap } from "rxjs/operators"
+import { catchError, map, concatMap, tap, switchMap, mergeMap } from "rxjs/operators"
 import { of } from "rxjs";
 import { AuthError, User, UserCredential } from "@angular/fire/auth";
 import { Router } from "@angular/router";
+import { SnackBarService } from "src/app/shared/services/snack-bar.service";
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class AuthEffects {
     constructor(private actions$: Actions, 
         private authService: AuthService, 
         private router:Router,
-       
+        private snackBarService: SnackBarService       
         ){}
     
     // logIn$ = createEffect(() => {
@@ -44,6 +45,34 @@ export class AuthEffects {
         )
     );
 
+    signUp$ = createEffect(() => this.actions$
+        .pipe(
+            ofType(AuthPageActions.signUp),
+            switchMap((action) => 
+            this.authService.signUp(action.user)
+                .pipe(
+                    map(() => AuthApiActions.signUpSuccess()),
+                    catchError((error:AuthError) => of(AuthApiActions.signUpError({error : error.message})))                    
+                )
+            )
+        ))
+
+    signUpSucces$ = createEffect(() => 
+        this.actions$
+        .pipe(
+            ofType(AuthApiActions.signUpSuccess),
+            tap(() => this.snackBarService.succes('Registro realizado con exito'))
+        ), {dispatch: false}
+    )
+
+    signUpError$ = createEffect(() => 
+        this.actions$
+        .pipe(
+            ofType(AuthApiActions.signUpError),
+            tap((action) => this.snackBarService.error(action.error))
+        ), {dispatch: false}
+    )
+   
     // logInSucces$ = createEffect(() =>
     //     this.actions$
     //     .pipe(

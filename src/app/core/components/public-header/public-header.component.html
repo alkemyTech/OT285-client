@@ -29,10 +29,13 @@
     >
       {{ link.name }}
     </a>
+    <button *ngIf="(user$ | async)?.admin" mat-button routerLink="/donar">
+      Donar
+    </button>
   </div>
 
   <span class="example-spacer"></span>
-  <span class="pr-3" *ngIf="!(logged$ | async)">
+  <span class="pr-3" *ngIf="!(user$ | async)">
     <button mat-button style="margin-right: 15px" routerLink="/auth/login">
       Log in
     </button>
@@ -41,7 +44,7 @@
     </button>
   </span>
 
-  <span class="pr-3" *ngIf="logged$ | async">
+  <span class="pr-3" *ngIf="user$ | async">
     <button mat-button (click)="logout()">Salir</button>
   </span>
 </mat-toolbar>

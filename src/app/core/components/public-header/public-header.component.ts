@@ -16,7 +16,7 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
-  logged$!: Observable<UserInfo | null>;
+  user$!: Observable<UserInfo | null>;
 
   navLinks:link[] = [
     {
@@ -54,7 +54,7 @@ export class PublicHeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.logged$ = this.store.select(getUser) //check if user is logged
+    this.user$ = this.store.select(getUser) //check if user is logged
   }
 
   logout(){

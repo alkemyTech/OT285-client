@@ -15,7 +15,6 @@ export interface UserInfo extends userData{
   admin?:boolean;
 }
 
-
 @Injectable({
   providedIn: 'root'
 })

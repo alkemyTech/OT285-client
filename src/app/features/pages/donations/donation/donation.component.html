@@ -1,11 +1,19 @@
 <div class="content">
     
     <span class="mat-h1">{{text}}</span>
-    <form class="form">
+    <div class="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Elegir monto</mat-label>
+            <mat-select [(value)]="value">
+              <mat-option *ngFor="let val of values" [value]="val">
+                ${{val}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
         <button mat-raised-button color="primary" (click)="send()">
             <img src='../../../../../assets/images/mercadopagologo.png' alt="">
-            Contribuir
+            Contribuir con ${{value}}
         </button>
-    </form>
+    </div>
     
 </div>

@@ -10,6 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 
 @NgModule({
@@ -21,8 +23,10 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     BrowserAnimationsModule,
     StoreModule.forRoot({},{}),
     EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],

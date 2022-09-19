@@ -1,3 +1,5 @@
 <app-progress-loader></app-progress-loader>
-<app-layout-backoffice></app-layout-backoffice>
-<!-- <app-layout-public class="d-flex flex-column h-100"></app-layout-public> -->
+<app-layout-backoffice *ngIf="(user$ | async)?.admin"></app-layout-backoffice>
+<app-layout-public 
+    *ngIf="!(user$ | async) || !(user$ | async)?.admin"
+></app-layout-public>

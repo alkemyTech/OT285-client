@@ -1,10 +1,15 @@
-import { createAction, props } from "@ngrx/store";
+import { Action, createAction, props } from "@ngrx/store";
 import { User } from "src/app/core/models/user";
 
+
+// export const logIn = createAction(
+//     '[Auth Page] Log In',
+//     props<{ data : User }>()
+// );
 export const logIn = createAction(
-    '[Auth Page] Log In',
-    props<{ data : User }>()
-);
+        '[Auth Page] Log In',
+        props<{ user : User}>()
+    );
 
 export const logOut = createAction(
     '[Auth Page] Log Out'

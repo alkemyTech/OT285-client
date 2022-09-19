@@ -1,11 +1,12 @@
 import { User, UserCredential } from "@angular/fire/auth";
 import { createAction, props } from "@ngrx/store";
 import { AuthResponse } from "src/app/core/models/auth";
+import { UserInfo } from "src/app/features/services/auth.service";
 
-export const logInSuccess = createAction(
-    '[Auth API] Log In Succes',
-    props<{ res : AuthResponse }>()
-);
+// export const logInSuccess = createAction(
+//     '[Auth API] Log In Succes',
+//     props<{ res : AuthResponse }>()
+// );
 
 export const logInError = createAction(
     '[Auth API] Log In Error',
@@ -24,7 +25,7 @@ export const signInError = createAction(
 
 export const Authenticated = createAction(
     '[Auth API] Authenticated',
-    props<{userData: User }>()
+    props<{userData: UserInfo }>()
 )
 export const NotAuthenticated = createAction(
     '[Auth API] Not Authenticated'

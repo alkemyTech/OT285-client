@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { isUserLogged } from 'src/app/features/pages/auth/state/auth.reducers';
+import { getUser } from 'src/app/features/pages/auth/state/auth.reducers';
+import { UserInfo } from 'src/app/features/services/auth.service';
 import { State } from 'src/app/state/app.state';
 
 interface link{
@@ -15,7 +16,7 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
-  logged$!: Observable<boolean>;
+  logged$!: Observable<UserInfo | null>;
 
   navLinks:link[] = [
     {
@@ -53,7 +54,7 @@ export class PublicHeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.logged$ = this.store.select(isUserLogged) //check if user is logged
+    this.logged$ = this.store.select(getUser) //check if user is logged
   }
 
   logout(){

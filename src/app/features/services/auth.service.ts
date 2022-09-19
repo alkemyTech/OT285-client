@@ -9,6 +9,7 @@ import { PublicApiServiceService } from 'src/app/core/services/publicApiService.
 import { State } from 'src/app/state/app.state';
 import { AuthPageActions } from '../pages/auth/state/actions';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 export interface UserInfo extends userData{
   admin?:boolean;
@@ -27,7 +28,8 @@ export class AuthService {
     private publicApiService:PublicApiServiceService,
     private auth: Auth,
     private readonly firestore: Firestore,
-    private store:Store<State>
+    private store:Store<State>,
+    private router: Router,
     ) { 
       this.usersCollection = collection(this.firestore, 'users');
     }
@@ -47,6 +49,7 @@ export class AuthService {
   logOut(): void {
     signOut(this.auth).then(() => {
       this.store.dispatch(AuthPageActions.logOut());
+      this.router.navigate(['auth/login']);
     });
   }
 

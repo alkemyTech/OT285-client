@@ -15,6 +15,11 @@ export interface UserInfo extends userData{
 }
 
 
+export interface UserInfo extends userData{
+  admin?:boolean;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +33,7 @@ export class AuthService {
     private auth: Auth,
     private readonly firestore: Firestore,
     private store:Store<State>
+
     ) { 
       this.usersCollection = collection(this.firestore, 'users');
     }

@@ -6,10 +6,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
-import { State } from 'src/app/state/app.state';
-import { AuthPageActions } from '../pages/auth/state/actions';
-import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
+
 
 export interface UserInfo extends userData{
   admin?:boolean;
@@ -27,8 +24,6 @@ export class AuthService {
     private publicApiService:PublicApiServiceService,
     private auth: Auth,
     private readonly firestore: Firestore,
-    private store:Store<State>,
-    private router: Router,
     ) { 
       this.usersCollection = collection(this.firestore, 'users');
     }
@@ -45,12 +40,10 @@ export class AuthService {
     return from(signInWithEmailAndPassword(this.auth, user.email, user.password));
   }
 
-  logOut(): void {
-    signOut(this.auth).then(() => {
-      this.store.dispatch(AuthPageActions.logOut());
-      this.router.navigate(['auth/login']);
-    });
-  }
+  logOut() {
+    return from(signOut(this.auth))
+    };
+  
 
   // getToken(): string | null {
   //   return localStorage.getItem('token');

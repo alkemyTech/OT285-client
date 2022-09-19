@@ -10,88 +10,101 @@ import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthEffects {
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-    constructor(private actions$: Actions, 
-        private authService: AuthService, 
-        private router:Router,
-       
-        ){}
-    
-    // logIn$ = createEffect(() => {
-    //     return this.actions$
-    //     .pipe(
-    //         ofType(AuthPageActions.logIn),
-    //         concatMap((action) => this.authService.logIn(action.data)
-    //             .pipe(
-    //                 map((res:any) => AuthApiActions.logInSuccess({res})),                   
-    //                 catchError(error => of(AuthApiActions.logInError({error})))
-    //             )
-    //         )
-    //     )
-    // });
+  // logIn$ = createEffect(() => {
+  //     return this.actions$
+  //     .pipe(
+  //         ofType(AuthPageActions.logIn),
+  //         concatMap((action) => this.authService.logIn(action.data)
+  //             .pipe(
+  //                 map((res:any) => AuthApiActions.logInSuccess({res})),
+  //                 catchError(error => of(AuthApiActions.logInError({error})))
+  //             )
+  //         )
+  //     )
+  // });
 
-        
-    logIn$ = createEffect(() => this.actions$
-        .pipe(
-            ofType(AuthPageActions.logIn),
-            switchMap((action) => 
-            this.authService.logIn(action.user)
-                .pipe(
-                    map(() => AuthPageActions.getAuthenticationData()),                   
-                    catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
-                )
-            )
+  logIn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthPageActions.logIn),
+      switchMap((action) =>
+        this.authService.logIn(action.user).pipe(
+          map(() => AuthPageActions.getAuthenticationData()),
+          catchError((error: AuthError) =>
+            of(AuthApiActions.logInError({ error: error.message }))
+          )
         )
-    );
-
-    // logInSucces$ = createEffect(() =>
-    //     this.actions$
-    //     .pipe(
-    //         ofType(AuthApiActions.logInSuccess),
-    //         tap(action => this.authService.setToken(action.res.data.token))
-
-    //     ), { dispatch: false }
-    // );
-
-    // signIn$ = createEffect(() => {
-    //     return this.actions$
-    //     .pipe(
-    //         ofType(AuthPageActions.signIn),            
-    //         concatMap((action) => this.authService.signIn(action.data)
-    //             .pipe(
-    //                 map((data:any) => AuthApiActions.signInSuccess({data})),
-    //                 catchError(error => of(AuthApiActions.signInError({error})))
-    //             )
-    //         )
-    //     )
-    // });
-
-    getUser = createEffect(
-        () => this.actions$.pipe(
-            ofType(AuthPageActions.getAuthenticationData),
-            switchMap(() => this.authService.getUserData()
-            .pipe(
-                map((authData) => {
-                    const userData =  authData
-                    if(userData){
-                        return AuthApiActions.Authenticated({userData:userData})
-                    }
-                    return AuthApiActions.NotAuthenticated()       
-                }),
-                catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
-            )),
-            
-        )
-      );
-
-    logInWithGoogle$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(AuthPageActions.logInWithGoogle),
-            switchMap(() => this.authService.loginWithGoogle().pipe(
-                map(() => AuthPageActions.getAuthenticationData()),
-                catchError((error:AuthError) => of(AuthApiActions.logInError({error : error.message})))
-            )),
-            
-        )
+      )
     )
- }
+  );
+
+  logOut$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthPageActions.logOut),
+      switchMap(() =>
+        this.authService.logOut().pipe(map(() => AuthPageActions.logOut()))
+      )
+    )
+  );
+
+  // logInSucces$ = createEffect(() =>
+  //     this.actions$
+  //     .pipe(
+  //         ofType(AuthApiActions.logInSuccess),
+  //         tap(action => this.authService.setToken(action.res.data.token))
+
+  //     ), { dispatch: false }
+  // );
+
+  // signIn$ = createEffect(() => {
+  //     return this.actions$
+  //     .pipe(
+  //         ofType(AuthPageActions.signIn),
+  //         concatMap((action) => this.authService.signIn(action.data)
+  //             .pipe(
+  //                 map((data:any) => AuthApiActions.signInSuccess({data})),
+  //                 catchError(error => of(AuthApiActions.signInError({error})))
+  //             )
+  //         )
+  //     )
+  // });
+
+  getUser = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthPageActions.getAuthenticationData),
+      switchMap(() =>
+        this.authService.getUserData().pipe(
+          map((authData) => {
+            const userData = authData;
+            if (userData) {
+              return AuthApiActions.Authenticated({ userData: userData });
+            }
+            return AuthApiActions.NotAuthenticated();
+          }),
+          catchError((error: AuthError) =>
+            of(AuthApiActions.logInError({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
+
+  logInWithGoogle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthPageActions.logInWithGoogle),
+      switchMap(() =>
+        this.authService.loginWithGoogle().pipe(
+          map(() => AuthPageActions.getAuthenticationData()),
+          catchError((error: AuthError) =>
+            of(AuthApiActions.logInError({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
+}

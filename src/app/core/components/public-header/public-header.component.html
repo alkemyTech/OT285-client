@@ -19,9 +19,10 @@
 
   <!-- Menu desktop -->
   <div class="nav-buttons">
+    <span *ngFor="let link of navLinks">
     <a
       mat-button
-      *ngFor="let link of navLinks"
+      *ngIf="link.routerlink !== 'donar' || !(user$ | async)?.admin"
       [routerLink]="'/' + link.routerlink"
       routerLinkActive
       #routerLink="routerLinkActive"
@@ -29,9 +30,7 @@
     >
       {{ link.name }}
     </a>
-    <button *ngIf="(user$ | async)?.admin" mat-button routerLink="/donar">
-      Donar
-    </button>
+  </span>
   </div>
 
   <span class="example-spacer"></span>

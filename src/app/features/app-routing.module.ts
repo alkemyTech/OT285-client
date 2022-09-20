@@ -2,6 +2,11 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
+import { AngularFireAuthGuard, hasCustomClaim} from '@angular/fire/compat/auth-guard';
+import { customClaims } from '@angular/fire/compat/auth-guard';
+import { pipe } from "rxjs";
+import { map } from "@tomtom-international/web-sdk-maps";
+
 
 const routes: Routes = [
   {
@@ -50,6 +55,8 @@ const routes: Routes = [
 
   {
     path: "backoffice",
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: hasCustomClaim('admin')},
     children: [
       {
         path: "",

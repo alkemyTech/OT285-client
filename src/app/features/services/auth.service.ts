@@ -40,7 +40,7 @@ export class AuthService {
     return from(signInWithEmailAndPassword(this.auth, user.email, user.password));
   }
 
-  logOut() {
+  logOut(): Observable<void> {
     return from(signOut(this.auth))
     };
   

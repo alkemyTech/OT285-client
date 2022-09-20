@@ -61,15 +61,10 @@ export class AuthEffects {
         this.actions$
         .pipe(
             ofType(AuthApiActions.signUpSuccess),
-            tap(() => this.snackBarService.succes('Registro realizado con exito'))
-        ), {dispatch: false}
-    )
-
-    signUpError$ = createEffect(() => 
-        this.actions$
-        .pipe(
-            ofType(AuthApiActions.signUpError),
-            tap((action) => this.snackBarService.error(action.error))
+            tap(() => {
+            this.snackBarService.succes('Registro realizado con exito'),
+            this.router.navigate([''])
+            })
         ), {dispatch: false}
     )
    

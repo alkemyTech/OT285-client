@@ -40,9 +40,11 @@ export class AuthService {
     return from(signInWithEmailAndPassword(this.auth, user.email, user.password));
   }
 
-  signUp(usuario:User){
-    return from(createUserWithEmailAndPassword(this.auth, usuario.email, usuario.password)).pipe(
-      switchMap(({user}) => setDoc(doc(this.firestore, 'users', user.uid), {name: usuario.name, latitude: usuario.latitude, longitude: usuario.longitude}))
+  signUp(usuario:User): Observable<void>{
+    return from(createUserWithEmailAndPassword(this.auth, usuario.email, usuario.password))
+    .pipe(
+      switchMap(({user}) => 
+        setDoc(doc(this.firestore, 'users', user.uid), {name: usuario.name, latitude: usuario.latitude, longitude: usuario.longitude}))
     )
   }
 

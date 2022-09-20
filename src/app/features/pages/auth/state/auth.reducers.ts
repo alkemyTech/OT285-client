@@ -61,6 +61,12 @@ export const authReducer = createReducer<AuthState>(
         error: action.error,
         };
     }),
+    on(AuthApiActions.signUpError, (state, action): AuthState => {
+        return {
+            ...state,
+            error: action.error
+        }
+    }),
     // on(AuthPageActions.logOut, (state): AuthState => {    
     //     return {
     //     ...state,

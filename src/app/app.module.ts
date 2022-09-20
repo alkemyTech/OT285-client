@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { AngularFireModule } from "@angular/fire/compat";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     StoreModule.forRoot({},{}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

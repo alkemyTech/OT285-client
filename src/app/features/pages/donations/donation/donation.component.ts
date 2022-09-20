@@ -1,42 +1,40 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-donation",
   templateUrl: "./donation.component.html",
   styleUrls: ["./donation.component.scss"],
 })
-export class DonationComponent implements OnInit {
+export class DonationComponent {
   @Input() text = "¡Contribuye!";
-  value = 0
-  values = [500, 1000, 1500, 2000, 2500, 3000];
+  url = '';
+  value = 0;
+  values = [
+    {amount: 500, url: 'https://mpago.la/2JmwW1H'},
+    {amount: 1000, url: 'https://mpago.la/1KR4M9L'},
+    {amount: 1500, url: 'https://mpago.la/2VzYK6j'},
+    {amount: 2000, url: 'https://mpago.la/1ALxtHB'},
+    {amount: 2500, url: 'https://mpago.la/33gognJ'},
+    {amount: 3000, url: 'https://mpago.la/2yuJ8a2'},
+    ];
 
   constructor() {}
 
-  ngOnInit(): void {
+  send(url: string): void {
+    if(url){
+      window.open(url, '_blank');
+    }
   }
 
-  send(): void {
-    switch (this.value) {
-      case 500:
-        window.open('https://mpago.la/2JmwW1H', '_blank');
-        break;
-      case 1000:
-        window.open('https://mpago.la/1KR4M9L', '_blank');
-        break;
-      case 1500:
-        window.open('https://mpago.la/2VzYK6j', '_blank');
-        break;
-      case 2000:
-        window.open('https://mpago.la/1ALxtHB', '_blank');
-        break;  
-      case 2500:
-        window.open('https://mpago.la/33gognJ', '_blank');
-        break;
-      case 3000:
-        window.open('https://mpago.la/2yuJ8a2', '_blank');
-        break;
-      default:
-        break;
+  urlOfValue(val: number): string{
+    let url = '';
+    for (let i = 0; i < this.values.length; i++) {
+      const element = this.values[i];
+      if(element.amount == val){
+        url = element.url;
+      }
     }
+    return url;
+
   }
 }

@@ -2,6 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
+import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard"
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -34,6 +38,7 @@ const routes: Routes = [
   },
   {
     path: "auth",
+    ...canActivate(redirectLoggedInToHome),
     loadChildren: () =>
       import("./pages/auth/auth.module").then((m) => m.AuthModule),
   },
@@ -50,6 +55,7 @@ const routes: Routes = [
 
   {
     path: "backoffice",
+    ...canActivate(redirectUnauthorizedToLogin),
     children: [
       {
         path: "",

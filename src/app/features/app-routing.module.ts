@@ -2,11 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
-import { AngularFireAuthGuard, hasCustomClaim} from '@angular/fire/compat/auth-guard';
-import { customClaims } from '@angular/fire/compat/auth-guard';
-import { pipe } from "rxjs";
-import { map } from "@tomtom-international/web-sdk-maps";
+import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard"
 
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -39,6 +38,7 @@ const routes: Routes = [
   },
   {
     path: "auth",
+    ...canActivate(redirectLoggedInToHome),
     loadChildren: () =>
       import("./pages/auth/auth.module").then((m) => m.AuthModule),
   },
@@ -55,8 +55,7 @@ const routes: Routes = [
 
   {
     path: "backoffice",
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: hasCustomClaim('admin')},
+    ...canActivate(redirectUnauthorizedToLogin),
     children: [
       {
         path: "",

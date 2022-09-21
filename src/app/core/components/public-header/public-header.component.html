@@ -45,13 +45,13 @@
     </button>
   </span>
 
-  <span  class="pr-3 username" *ngIf="logged$ | async as user">
+  <span  class="pr-3 username" *ngIf="user$ | async as user">
     <p>{{(user.name ? 
       user.name : 
       user.displayName)}}</p>
   </span>
 
-  <span class="pr-1" *ngIf="logged$ | async">
+  <span class="pr-1" *ngIf="user$ | async">
     <button  mat-stroked-button mat-icon-button (click)="logOut()">
       <mat-icon>logout</mat-icon>
     </button>

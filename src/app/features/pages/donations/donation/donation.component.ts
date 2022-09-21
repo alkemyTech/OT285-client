@@ -7,7 +7,6 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class DonationComponent {
   @Input() text = "¡Contribuye!";
-  url = '';
   value = 0;
   values = [
     {amount: 500, url: 'https://mpago.la/2JmwW1H'},
@@ -16,25 +15,21 @@ export class DonationComponent {
     {amount: 2000, url: 'https://mpago.la/1ALxtHB'},
     {amount: 2500, url: 'https://mpago.la/33gognJ'},
     {amount: 3000, url: 'https://mpago.la/2yuJ8a2'},
-    ];
+  ];
 
   constructor() {}
 
-  send(url: string): void {
+  send(url: string | null): void {
     if(url){
       window.open(url, '_blank');
     }
   }
 
-  urlOfValue(val: number): string{
-    let url = '';
-    for (let i = 0; i < this.values.length; i++) {
-      const element = this.values[i];
-      if(element.amount == val){
-        url = element.url;
-      }
+  urlOfValue(amount: number): string | null{
+    const url = this.values.find((e)=> e.amount == amount)?.url;
+    if(url){
+      return url;
     }
-    return url;
-
+    return null
   }
 }

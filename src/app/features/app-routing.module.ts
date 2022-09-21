@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard"
+import { DonationsGuard } from "./services/donations.guard";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
@@ -31,10 +32,12 @@ const routes: Routes = [
   },
   {
     path: "donar",
+    ...canActivate(redirectUnauthorizedToLogin),
     loadChildren: () =>
       import("./pages/donations/donations.module").then(
         (m) => m.DonationsModule
       ),
+    canActivate: [DonationsGuard]
   },
   {
     path: "auth",

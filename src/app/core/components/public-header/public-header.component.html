@@ -8,7 +8,7 @@
       <span *ngFor="let link of navLinks">
       <button
         mat-menu-item
-        *ngIf="link.routerlink !== 'donar' && (user$ | async) !== null"
+        *ngIf="link.routerlink !== 'donar' || (user$ | async) !== null"
         [routerLink]="'/' + link.routerlink"
       >
         {{ link.name }}
@@ -24,7 +24,7 @@
     <span *ngFor="let link of navLinks">
     <a
       mat-button
-      *ngIf="link.routerlink !== 'donar' && (user$ | async) !== null"
+      *ngIf="link.routerlink !== 'donar' || (user$ | async) !== null"
       [routerLink]="'/' + link.routerlink"
       routerLinkActive
       #routerLink="routerLinkActive"

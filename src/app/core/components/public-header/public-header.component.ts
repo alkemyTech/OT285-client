@@ -18,11 +18,7 @@ export class PublicHeaderComponent implements OnInit {
 
   user$!: Observable<UserInfo | null>;
 
-  navLinks:link[] = [
-    {
-      name:'Inicio',
-      routerlink:'home'
-    },
+  navLinks:link[] = [    
     {
       name:'Nosotros',
       routerlink:'nosotros'

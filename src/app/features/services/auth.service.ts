@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut } from '@angular/fire/auth';
 import { collection, CollectionReference, doc, docData, DocumentData, Firestore, setDoc } from '@angular/fire/firestore';
 import { from, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -7,10 +7,10 @@ import { User } from 'src/app/core/models/user';
 import { PrivateApiServiceService } from 'src/app/core/services/privateApiService.service';
 import { PublicApiServiceService } from 'src/app/core/services/publicApiService.service';
 
+
 export interface UserInfo extends userData{
   admin?:boolean;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,9 @@ export class AuthService {
 
   constructor(
     private privateApiService: PrivateApiServiceService, 
-    private publicApiService:PublicApiServiceService,
+    private publicApiService: PublicApiServiceService,
     private auth: Auth,
-    private readonly firestore: Firestore
+    private readonly firestore: Firestore,
     ) { 
       this.usersCollection = collection(this.firestore, 'users');
     }
@@ -48,6 +48,10 @@ export class AuthService {
     )
   }
 
+  logOut(): Observable<void> {    
+    return from(signOut(this.auth))
+  };  
+
   // getToken(): string | null {
   //   return localStorage.getItem('token');
   // }
@@ -62,7 +66,7 @@ export class AuthService {
 
   loginWithGoogle(): Observable<UserCredential> {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider()));
-  }
+  }  
 
   getUserData(): Observable<UserInfo | null>{
 
@@ -77,12 +81,13 @@ export class AuthService {
         return docData(doc(this.firestore ,`users/${user.uid}`))
         .pipe(
           map((userData) => {
+            const userCopy = JSON.parse(JSON.stringify(user));
             if(userData){
-              return {...user , ...userData} //Si existe el user en firestore agregar rol al object user y devolver
+              return {...userCopy , ...userData} //Si existe el user en firestore agregar rol al object user y devolver
             }else{
               //Caso contrario crear documento en firestore con el rol (admin false por default)
-              setDoc(doc(this.firestore, 'users', user.uid), {admin:false});
-              return {...user, ...{admin:false}}
+              setDoc(doc(this.firestore, 'users', userCopy.uid), {admin:false});
+              return {...userCopy, ...{admin:false}}
             }
           })
         )

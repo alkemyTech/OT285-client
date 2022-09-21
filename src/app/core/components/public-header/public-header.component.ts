@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getUser } from 'src/app/features/pages/auth/state/auth.reducers';
+import { AuthPageActions } from 'src/app/features/pages/auth/state/actions';
+import { AuthState, getUser } from 'src/app/features/pages/auth/state/auth.reducers';
 import { UserInfo } from 'src/app/features/services/auth.service';
-import { State } from 'src/app/state/app.state';
 
 interface link{
   name:string;
@@ -50,15 +50,15 @@ export class PublicHeaderComponent implements OnInit {
   ]
 
   constructor(
-    private store:Store<State>
+    private store:Store<AuthState>,
   ) { }
 
   ngOnInit(): void {
     this.user$ = this.store.select(getUser) //check if user is logged
   }
 
-  logout(){
-    console.log('Hacer el log out')
+  logOut(){
+    this.store.dispatch(AuthPageActions.logOut());
   }
 
 }

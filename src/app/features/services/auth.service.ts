@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential, authState, User as userData, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut } from '@angular/fire/auth';
 import { collection, CollectionReference, doc, docData, DocumentData, Firestore, setDoc } from '@angular/fire/firestore';
 import { from, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -38,6 +38,14 @@ export class AuthService {
 
   logIn(user:User): Observable<UserCredential>{   
     return from(signInWithEmailAndPassword(this.auth, user.email, user.password));
+  }
+
+  signUp(usuario:User): Observable<void>{
+    return from(createUserWithEmailAndPassword(this.auth, usuario.email, usuario.password))
+    .pipe(
+      switchMap(({user}) => 
+        setDoc(doc(this.firestore, 'users', user.uid), {name: usuario.name, latitude: usuario.latitude, longitude: usuario.longitude}))
+    )
   }
 
   logOut(): Observable<void> {

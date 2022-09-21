@@ -5,13 +5,15 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span *ngFor="let link of navLinks">
       <button
         mat-menu-item
-        *ngFor="let link of navLinks"
+        *ngIf="link.routerlink !== 'donar' || !(user$ | async)?.admin"
         [routerLink]="'/' + link.routerlink"
       >
         {{ link.name }}
       </button>
+    </span>
     </mat-menu>
   </span>
 

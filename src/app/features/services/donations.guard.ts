@@ -26,8 +26,13 @@ export class DonationsGuard implements CanActivate {
     | boolean
     | UrlTree {
     return this.Store.select(getUser).pipe(map((user) => {
+      if(user == null){
+        this.router.navigate(['auth/login']);
+        return false;
+      }
       if (user?.admin) {
         this.router.navigate(['/home']);
+        return false
       }
       return true;
     }));

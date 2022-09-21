@@ -42,7 +42,11 @@ export class AuthEffects {
       ofType(AuthPageActions.logIn),
       switchMap((action) =>
         this.authService.logIn(action.user).pipe(
-          map(() => AuthPageActions.getAuthenticationData()),
+          map(() =>{ 
+            this.router.navigate(['']);
+            return AuthPageActions.getAuthenticationData()
+          }),
+
           catchError((error: AuthError) =>
             of(AuthApiActions.logInError({ error: error.message }))
           )
@@ -85,7 +89,7 @@ export class AuthEffects {
         .pipe(
           map(() => {
             this.router.navigate(['auth/login'])
-            return AuthPageActions.logOut()
+            return AuthPageActions.getAuthenticationData()
           })
         )
       )
@@ -122,7 +126,6 @@ export class AuthEffects {
           map((authData) => {
             const userData = authData;
             if (userData) {
-              this.router.navigate(['']);
               return AuthApiActions.Authenticated({ userData: userData });
             }
             return AuthApiActions.NotAuthenticated();
@@ -140,7 +143,10 @@ export class AuthEffects {
       ofType(AuthPageActions.logInWithGoogle),
       switchMap(() =>
         this.authService.loginWithGoogle().pipe(
-          map(() => AuthPageActions.getAuthenticationData()),
+          map(() => {
+            this.router.navigate(['']);
+            return AuthPageActions.getAuthenticationData()
+          }),
           catchError((error: AuthError) =>
             of(AuthApiActions.logInError({ error: error.message }))
           )

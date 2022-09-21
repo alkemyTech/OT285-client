@@ -13,13 +13,17 @@ export const logInError = createAction(
     props<{ error : string }>()
 );
 
-export const signInSuccess = createAction(
-    '[Auth API] Sign In Succes',
-    props<{ data : AuthResponse }>()
+// export const signUpSuccess = createAction(
+//     '[Auth API] Sign Up Succes',
+//     props<{ data : AuthResponse }>()
+// );
+
+export const signUpSuccess = createAction(
+    '[Auth API] Sign Up Succes',    
 );
 
-export const signInError = createAction(
-    '[Auth API] Sign In Error',
+export const signUpError = createAction(
+    '[Auth API] Sign Up Error',
     props<{ error : string }>()
 );
 

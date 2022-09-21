@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { Store } from "@ngrx/store";
 import { LatLng } from "@tomtom-international/web-sdk-services";
 import { MustMatch } from "src/app/shared/validators/pass-match.validator";
+import { AuthPageActions } from "../state/actions";
+import { AuthState } from "../state/auth.reducers";
 import { TermsOfServiceComponent } from "./terms-of-service/terms-of-service.component";
 
 @Component({
@@ -17,7 +20,7 @@ export class RegisterFormComponent implements OnInit {
   termsOfServiceResult!: boolean;
   termsOfServiceTouched: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {}
+  constructor(private formBuilder: FormBuilder, private dialog: MatDialog, private store: Store<AuthState>) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
@@ -71,6 +74,13 @@ export class RegisterFormComponent implements OnInit {
 
   register(): void {
     console.log(this.registerForm);
+    if(this.registerForm.valid){
+      this.store.dispatch(
+        AuthPageActions.signUp(
+          {user:this.registerForm.value}
+        )
+      )
+    }
 
     // return si formulario es invalido
     if (this.registerForm.invalid) {

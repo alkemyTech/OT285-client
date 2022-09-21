@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthPageActions } from 'src/app/features/pages/auth/state/actions';
 import { AuthState, getUser } from 'src/app/features/pages/auth/state/auth.reducers';
-import { AuthService, UserInfo } from 'src/app/features/services/auth.service';
+import { UserInfo } from 'src/app/features/services/auth.service';
 
 interface link{
   name:string;
@@ -52,8 +51,6 @@ export class PublicHeaderComponent implements OnInit {
 
   constructor(
     private store:Store<AuthState>,
-    private authService: AuthService,
-    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -62,7 +59,6 @@ export class PublicHeaderComponent implements OnInit {
 
   logOut(){
     this.store.dispatch(AuthPageActions.logOut());
-    this.router.navigate(['auth/login']);
   }
 
 }

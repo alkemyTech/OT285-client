@@ -65,13 +65,13 @@ export class AuthEffects {
     )
   );
 
-  signUpSucces$ = createEffect(
+  signUpSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthApiActions.signUpSuccess),
         tap(() => {
           this.snackBarService.succes("Registro realizado con exito"),
-            this.router.navigate([""]);
+          this.router.navigate([""]);
         })
       ),
     { dispatch: false }
@@ -81,7 +81,13 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthPageActions.logOut),
       switchMap(() =>
-        this.authService.logOut().pipe(map(() => AuthPageActions.logOut()))
+        this.authService.logOut()
+        .pipe(
+          map(() => {
+            this.router.navigate(['auth/login'])
+            return AuthPageActions.logOut()
+          })
+        )
       )
     )
   );
@@ -108,7 +114,7 @@ export class AuthEffects {
   //     )
   // });
 
-  getUser = createEffect(() =>
+  getUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthPageActions.getAuthenticationData),
       switchMap(() =>
@@ -116,6 +122,7 @@ export class AuthEffects {
           map((authData) => {
             const userData = authData;
             if (userData) {
+              this.router.navigate(['']);
               return AuthApiActions.Authenticated({ userData: userData });
             }
             return AuthApiActions.NotAuthenticated();

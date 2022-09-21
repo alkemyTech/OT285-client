@@ -21,7 +21,7 @@ export class AuthService {
 
   constructor(
     private privateApiService: PrivateApiServiceService, 
-    private publicApiService:PublicApiServiceService,
+    private publicApiService: PublicApiServiceService,
     private auth: Auth,
     private readonly firestore: Firestore,
     ) { 
@@ -48,10 +48,9 @@ export class AuthService {
     )
   }
 
-  logOut(): Observable<void> {
+  logOut(): Observable<void> {    
     return from(signOut(this.auth))
-    };
-  
+  };  
 
   // getToken(): string | null {
   //   return localStorage.getItem('token');
@@ -67,7 +66,7 @@ export class AuthService {
 
   loginWithGoogle(): Observable<UserCredential> {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider()));
-  }
+  }  
 
   getUserData(): Observable<UserInfo | null>{
 
@@ -82,12 +81,13 @@ export class AuthService {
         return docData(doc(this.firestore ,`users/${user.uid}`))
         .pipe(
           map((userData) => {
+            const userCopy = JSON.parse(JSON.stringify(user));
             if(userData){
-              return {...user , ...userData} //Si existe el user en firestore agregar rol al object user y devolver
+              return {...userCopy , ...userData} //Si existe el user en firestore agregar rol al object user y devolver
             }else{
               //Caso contrario crear documento en firestore con el rol (admin false por default)
-              setDoc(doc(this.firestore, 'users', user.uid), {admin:false});
-              return {...user, ...{admin:false}}
+              setDoc(doc(this.firestore, 'users', userCopy.uid), {admin:false});
+              return {...userCopy, ...{admin:false}}
             }
           })
         )

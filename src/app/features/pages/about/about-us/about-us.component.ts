@@ -11,14 +11,13 @@ export class AboutUsComponent implements OnInit {
   title: string = 'Sobre Nosotros';  
   membersList: Card[] = [
     {
-      title: 'Example',
-      description: 'Lorem Ipsum',
+      title: 'Integrante',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       imageLeft: true
     },
     {
-      title: 'ExampleN2',
-      image: 'ex-imageN2',
-      description: 'Lorem Ipsum Dolorem',
+      title: 'Integrante',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       imageLeft: true
     }
   ]

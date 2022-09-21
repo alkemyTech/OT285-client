@@ -32,10 +32,6 @@ export class PublicHeaderComponent implements OnInit {
       routerlink:'news'
     },
     {
-      name:'Testimonios',
-      routerlink:'testimonials'
-    },
-    {
       name:'Contacto',
       routerlink:'contacto'
     },

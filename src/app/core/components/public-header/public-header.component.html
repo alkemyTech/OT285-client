@@ -5,23 +5,26 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span *ngFor="let link of navLinks">
       <button
         mat-menu-item
-        *ngFor="let link of navLinks"
+        *ngIf="link.routerlink !== 'donar' || (user$ | async) !== null"
         [routerLink]="'/' + link.routerlink"
       >
         {{ link.name }}
       </button>
+    </span>
     </mat-menu>
   </span>
 
-  <span class="pl-3">Somos Más</span>
+  <span routerLink="/home" class="pl-3">Somos Más</span>
 
   <!-- Menu desktop -->
   <div class="nav-buttons">
+    <span *ngFor="let link of navLinks">
     <a
       mat-button
-      *ngFor="let link of navLinks"
+      *ngIf="link.routerlink !== 'donar' || (user$ | async) !== null"
       [routerLink]="'/' + link.routerlink"
       routerLinkActive
       #routerLink="routerLinkActive"
@@ -29,10 +32,11 @@
     >
       {{ link.name }}
     </a>
+  </span>
   </div>
 
   <span class="example-spacer"></span>
-  <span class="pr-3" *ngIf="!(logged$ | async)">
+  <span class="pr-3" *ngIf="!(user$ | async)">
     <button mat-button style="margin-right: 15px" routerLink="/auth/login">
       Log in
     </button>
@@ -41,7 +45,15 @@
     </button>
   </span>
 
-  <span class="pr-3" *ngIf="logged$ | async">
-    <button mat-button (click)="logout()">Salir</button>
+  <span  class="pr-3 username" *ngIf="user$ | async as user">
+    <p>{{(user.name ? 
+      user.name : 
+      user.displayName)}}</p>
+  </span>
+
+  <span class="pr-1" *ngIf="user$ | async">
+    <button  mat-stroked-button mat-icon-button (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+    </button>
   </span>
 </mat-toolbar>

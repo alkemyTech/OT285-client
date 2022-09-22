@@ -16,24 +16,16 @@ export class FooterComponent implements OnInit {
 
   navBar = [
     {
-      name: 'Noticias',
-      redirectTo: 'news'
-    },
-    {
       name: 'Actividades',
       redirectTo: 'actividades'
     },
     {
       name: 'Novedades',
-      redirectTo: 'somewhere...'
+      redirectTo: 'news'
     }
   ]
 
   socialLinks = [
-    {
-      name: 'Testimonios',
-      redirectTo: 'somewhere...'
-    },
     {
       name: 'Nosotros',
       redirectTo: 'nosotros'

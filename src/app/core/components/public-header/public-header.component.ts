@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getUser } from 'src/app/features/pages/auth/state/auth.reducers';
+import { AuthPageActions } from 'src/app/features/pages/auth/state/actions';
+import { AuthState, getUser } from 'src/app/features/pages/auth/state/auth.reducers';
 import { UserInfo } from 'src/app/features/services/auth.service';
-import { State } from 'src/app/state/app.state';
 
 interface link{
   name:string;
@@ -16,13 +16,9 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
-  logged$!: Observable<UserInfo | null>;
+  user$!: Observable<UserInfo | null>;
 
-  navLinks:link[] = [
-    {
-      name:'Inicio',
-      routerlink:'home'
-    },
+  navLinks:link[] = [    
     {
       name:'Nosotros',
       routerlink:'nosotros'
@@ -36,10 +32,6 @@ export class PublicHeaderComponent implements OnInit {
       routerlink:'news'
     },
     {
-      name:'Testimonios',
-      routerlink:'testimonials'
-    },
-    {
       name:'Contacto',
       routerlink:'contacto'
     },
@@ -50,15 +42,15 @@ export class PublicHeaderComponent implements OnInit {
   ]
 
   constructor(
-    private store:Store<State>
+    private store:Store<AuthState>,
   ) { }
 
   ngOnInit(): void {
-    this.logged$ = this.store.select(getUser) //check if user is logged
+    this.user$ = this.store.select(getUser) //check if user is logged
   }
 
-  logout(){
-    console.log('Hacer el log out')
+  logOut(){
+    this.store.dispatch(AuthPageActions.logOut());
   }
 
 }

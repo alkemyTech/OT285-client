@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { getError, getSlides, State } from "../state/slides.reducer";
-import * as SlidesActions from "../state/slides.actions";
 import { Slide } from "src/app/core/models/slide";
 import { Observable } from "rxjs";
+import { loadSlides } from '../state/actions/slides-page.actions';
 
 @Component({
   selector: "app-slides-list",
@@ -12,12 +12,12 @@ import { Observable } from "rxjs";
   styleUrls: ["./slides-list.component.scss"],
 })
 export class SlidesListComponent implements OnInit {
-  constructor(private router: Router, private store: Store<State>) {}
+  constructor(private router: Router, private store: Store) {}
 
   ngOnInit(): void {
     this.slidesList$ = this.store.select(getSlides);
     this.errorMessage$ = this.store.select(getError);
-    this.store.dispatch(SlidesActions.loadSlides());
+    this.store.dispatch(loadSlides());
   }
 
   errorMessage$!: Observable<string>;

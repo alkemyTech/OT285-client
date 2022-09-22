@@ -18,17 +18,14 @@ export class SidebarComponent implements OnInit {
     //Traigo un todas las rutas
     this.routes = this.router.config;
     //Busco las rutas del backoffice
+    console.log('lenght',this.routes.length)
     for (let i = 0; i < this.routes.length; i++) {
-      if (this.routes[i].path == "backoffice") {
+      if (this.routes[i].path == "backoffice") {        
         let backofficeRoutes;
-        backofficeRoutes = this.routes[i].children;
-
-        //Saco la ruta "backoffice" ya que su path vacio genera conflicto y lo hardcodeo ya que siempre sera constante
-        if (backofficeRoutes[0].path == "") {
-          backofficeRoutes.splice(0, 1);
-        }
-        this.routes = backofficeRoutes;
+        backofficeRoutes = this.routes[i].children;         
+        this.routes = backofficeRoutes;        
       }
     }
+    this.routes.splice(6,7);
   }
 }

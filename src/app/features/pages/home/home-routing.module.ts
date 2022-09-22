@@ -4,7 +4,7 @@ import { HomeFormComponent } from './home-form/home-form.component';
 
 const routes: Routes = [
   {
-    path:'create',
+    path:'',
     component:HomeFormComponent
   }
 ];

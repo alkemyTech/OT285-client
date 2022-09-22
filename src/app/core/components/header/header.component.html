@@ -3,8 +3,14 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span class="title" [routerLink]="['backoffice/home']">Logo ONG</span>
+    
     <span class="spacer"></span>
-    <button *ngIf="logged$ | async" mat-button class="border" (click)="logOut()">
-        Log out
+    <span  class="pr-3 username" *ngIf="logged$ | async as user">
+      <p>{{(user.name ? 
+        user.name : 
+        user.displayName)}}</p>
+    </span>
+    <button  mat-icon-button *ngIf="logged$ | async" class="border" (click)="logOut()">
+      <mat-icon>logout</mat-icon>
     </button>
 </mat-toolbar>

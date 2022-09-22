@@ -10,6 +10,9 @@ import { PublicApiServiceService } from 'src/app/core/services/publicApiService.
 
 export interface UserInfo extends userData{
   admin?:boolean;
+  latitude?:number;
+  longitude?:number;
+  name?:string;
 }
 
 @Injectable({
@@ -82,11 +85,11 @@ export class AuthService {
         .pipe(
           map((userData) => {
             const userCopy = JSON.parse(JSON.stringify(user));
-            if(userData){
+            if(userData["admin"] !== undefined){
               return {...userCopy , ...userData} //Si existe el user en firestore agregar rol al object user y devolver
             }else{
               //Caso contrario crear documento en firestore con el rol (admin false por default)
-              setDoc(doc(this.firestore, 'users', userCopy.uid), {admin:false});
+              setDoc(doc(this.firestore, 'users', userCopy.uid), {...userData, ...{admin:false}});
               return {...userCopy, ...{admin:false}}
             }
           })

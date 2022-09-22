@@ -5,10 +5,8 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from "@angular/router";
-import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { AuthState, getUser } from "src/app/features/pages/auth/state/auth.reducers";
 import { AuthService } from "src/app/features/services/auth.service";
 
 @Injectable({

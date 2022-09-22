@@ -9,12 +9,13 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { AuthState, getUser } from "src/app/features/pages/auth/state/auth.reducers";
+import { AuthService } from "src/app/features/services/auth.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class AdminGuard implements CanActivate{
-  constructor(private store:Store<AuthState>) {}
+  constructor(private authService: AuthService) {}
   ngOnInit(): void {
 
   }
@@ -27,7 +28,7 @@ export class AdminGuard implements CanActivate{
     | boolean
     | UrlTree 
   {
-    return this.store.select(getUser).pipe(map(res => {
+    return this.authService.getUserData().pipe(map(res => {
       console.log(res);
       if(res?.admin){
         console.log('adminguard acepta');

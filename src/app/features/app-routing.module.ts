@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard"
-import { UserResolver } from "../core/resolvers/user.resolver";
 import { DonationsGuard } from "./services/donations.guard";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
@@ -13,7 +12,6 @@ const routes: Routes = [
   {
     path: "home",
     component: HomepageComponent,
-    resolve:{ state: UserResolver }
   },
   {
     path: "nosotros",
@@ -61,7 +59,6 @@ const routes: Routes = [
   {
     path: "backoffice",
     ...canActivate(redirectUnauthorizedToLogin),
-    resolve:{ state: UserResolver },
     children: [
       {
         path: "",

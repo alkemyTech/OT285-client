@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { getAuthenticationData } from './features/pages/auth/state/actions/auth-page.actions';
 import { AuthState, getUser } from './features/pages/auth/state/auth.reducers';
 import { UserInfo } from './features/services/auth.service';
 
@@ -16,6 +17,7 @@ export class AppComponent {
   constructor(private Store:Store<AuthState>) { }
 
   ngOnInit(): void {
+    this.Store.dispatch(getAuthenticationData())
     this.user$ = this.Store.select(getUser)
   }
 }

@@ -2,10 +2,15 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
-import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard"
+import { AngularFireAuthGuard, canActivate, customClaims, redirectLoggedInTo, hasCustomClaim } from "@angular/fire/compat/auth-guard"
+import { pipe } from "rxjs";
+import { map } from "rxjs/operators";
+import { AdminGuard } from "../core/guards/admin.guard";
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
+//const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const adminOnly = () => pipe(customClaims, map(claims => console.log(claims)));
+
 
 const routes: Routes = [
   {
@@ -55,7 +60,7 @@ const routes: Routes = [
 
   {
     path: "backoffice",
-    ...canActivate(redirectUnauthorizedToLogin),
+    canActivate: [AdminGuard],
     children: [
       {
         path: "",

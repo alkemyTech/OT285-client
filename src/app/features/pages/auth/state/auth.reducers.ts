@@ -8,7 +8,7 @@ export interface AuthState {
     // password: string,
     // token: string | null,
     error: string | null,
-    userData:UserInfo | null
+    userData:UserInfo | null | undefined
 };
 
 const initialState: AuthState = {
@@ -17,7 +17,7 @@ const initialState: AuthState = {
     // password: '',
     // token: null,
     error: null,
-    userData: null
+    userData: undefined
 }
 
 const getAuthFeatureState = createFeatureSelector<AuthState>('auth');

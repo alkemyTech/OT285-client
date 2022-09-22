@@ -14,7 +14,6 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { AngularFireModule } from "@angular/fire/compat";
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

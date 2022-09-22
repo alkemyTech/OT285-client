@@ -12,7 +12,7 @@ import { UserInfo } from './features/services/auth.service';
 })
 export class AppComponent {
 
-  user$!:Observable<UserInfo | null>;
+  user$!:Observable<UserInfo | null | undefined>;
   
   constructor(private Store:Store<AuthState>) { }
 

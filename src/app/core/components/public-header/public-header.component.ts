@@ -16,7 +16,7 @@ interface link{
 })
 export class PublicHeaderComponent implements OnInit {
 
-  user$!: Observable<UserInfo | null>;
+  user$!: Observable<UserInfo | null | undefined>;
 
   navLinks:link[] = [    
     {

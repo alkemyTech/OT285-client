@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  logged$!: Observable<UserInfo | null>;
+  logged$!: Observable<UserInfo | null | undefined>;
 
   @Output() OpenCloseSidebar = new EventEmitter();
 

@@ -1,6 +1,7 @@
 
 <div class="form-container">
-  
+  <h1 *ngIf="!editing">Editar Actividad</h1>
+  <h1 *ngIf="editing">Crear Actividad</h1>
   <form class="example-form" [formGroup]="formActivity" >
         <div>
           <mat-form-field class="input-form" appearance="fill" id="name-form-activity" name="name-form-activity">
@@ -28,7 +29,7 @@
 
       <div class="section-buttons">
         <button mat-raised-button color="primary" id="createActivity" [disabled]="formActivity.invalid"
-         (click)="addActivity(formActivity.value)">Crear Actividad</button>
+         (click)="addActivity()">Crear Actividad</button>
 
         <br>
           <button mat-raised-button color="primary" id="editActivity" [disabled]="formActivity.invalid"

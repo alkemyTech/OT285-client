@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core'; 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Store } from '@ngrx/store';
+import { State } from '../state/activities.reducer';
+import * as activitiesPageActions from "../state/actions/activities-page.actions";
+import { Activity } from 'src/app/core/models/activity';
 
 @Component({
   selector: 'app-activity-form',
@@ -9,10 +13,12 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class ActivityFormComponent implements OnInit {
   title = 'base-ong-angular-client';
-
-  constructor() { }
+  editing = false;
+  
+  constructor(private store: Store<State>) { }
 
   ngOnInit(): void {
+    this.formActivity.value.name == "" ? (this.editing = false) : (this.editing = true);
   }
 
   public creationActivity = ClassicEditor;
@@ -41,10 +47,13 @@ formActivity = new FormGroup({
     }
   }
 
-
-
-  addActivity(formActivity:FormGroup):void{
-    
+  addActivity():void{
+    let body: Activity = {
+      name: this.formActivity.controls["nameActivity"].value,
+      description: this.formActivity.controls["descriptionActivity"].value,
+      image: ''
+    }
+    this.store.dispatch(activitiesPageActions.createActivity({activity:body}))
     /* crear actividad  (/activities/create) */
 
   }
@@ -57,9 +66,4 @@ formActivity = new FormGroup({
   loadImageActivity(event:any):void{
     const file = event.target.files[0];
   }
-
-
-
-
-
 }

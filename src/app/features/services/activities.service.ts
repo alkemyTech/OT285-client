@@ -32,7 +32,7 @@ export class ActivitiesService {
     return this.PrivateApiService.put(this.route, ActivityId, Activity)
   }
 
-  deleteActivity(ActivityId:number)/*: Observable<any>*/{
-    // return this.PrivateApiService.delete('activities', ActivityId)
+  deleteActivity(ActivityId:number): Observable<any>{
+    return this.PrivateApiService.delete('activities', ActivityId)
   }
 }

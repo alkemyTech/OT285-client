@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { Activity } from "src/app/core/models/activity";
+import * as activitiesPageActions from "../state/actions/activities-page.actions";
 import {
   getActivitiesList,
   getError,
   State,
 } from "../state/activities.reducer";
-import * as ActivitiesActions from "../state/activities.actions";
 
 @Component({
   selector: "app-activities-list",
@@ -17,7 +17,7 @@ import * as ActivitiesActions from "../state/activities.actions";
 export class ActivitiesListComponent implements OnInit {
   columns: string[] = ["name", "image", "createdAt", "acciones"];
 
-  activityFlag = {};
+  activityFlag!: Activity;
 
   deleteConfirm = false;
 
@@ -36,7 +36,7 @@ export class ActivitiesListComponent implements OnInit {
     this.errorMessage$ = this.store.select(getError);
 
     //dispatch action to load activities
-    this.store.dispatch(ActivitiesActions.loadActivities());
+    this.store.dispatch(activitiesPageActions.loadActivities());
 
     this.activities$.subscribe((res) => {
       if (res.length) {
@@ -47,19 +47,21 @@ export class ActivitiesListComponent implements OnInit {
   editActivity(): void {
     console.log("Redigir al router de modificar actividad");
   }
-  deleteActivity(activity: {}): void {
+  deleteActivity(activity: Activity): void {
     this.activityFlag = activity;
     this.deleteConfirm = true;
   }
 
   confirmDelete(): void {
     this.deleteConfirm = false;
-    this.activityFlag = {};
-
+    if(this.activityFlag.id){
+      this.store.dispatch(activitiesPageActions.deleteActivity({activityID:this.activityFlag.id}))
+    }
+    this.deleteConfirm = false; 
     console.log("Eliminar actividad");
   }
   cancel(): void {
     this.deleteConfirm = false;
-    this.activityFlag = {};
+    // this.activityFlag = null;
   }
 }

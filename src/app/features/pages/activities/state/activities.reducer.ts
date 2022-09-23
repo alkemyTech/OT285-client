@@ -1,7 +1,8 @@
 import { createAction, createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 import { Activity } from 'src/app/core/models/activity';
 import * as AppState from 'src/app/state/app.state';
-import * as ActivitiesActions from './activities.actions';
+import * as activitiesApiActions from "./actions/activities-api.actions";
+import * as activitiesPageActions from "./actions/activities-page.actions";
 
 export interface State extends AppState.State {
   products: ActivitiesState;
@@ -25,18 +26,29 @@ export const getError = createSelector(getActivitiesFeatureState, (state) => sta
 
 export const activitiesReducer = createReducer<ActivitiesState>(
   initialState,
-  on(ActivitiesActions.loadActivitiesSuccess, (state, action): ActivitiesState => {
+  on(activitiesApiActions.loadActivitiesSuccess, (state, action): ActivitiesState => {
     return {
       ...state,
       activities: action.activities,
     };
   }),
-
-  on(ActivitiesActions.loadActivitiesFailure, (state, action): ActivitiesState => {
+  on(activitiesApiActions.loadActivitiesFailure, (state, action): ActivitiesState => {
     return {
       ...state,
       activities: [],
       error: action.error,
     };
-  })
+  }),
+  on(activitiesApiActions.createActivitySuccess, (state, action): ActivitiesState => {
+    return {
+      ...state,
+      activities: [...state.activities, action.activity]
+    };
+  }),
+  on(activitiesApiActions.deleteActivitySuccess, (state, action): ActivitiesState => {
+    return {
+      ...state,
+      activities: [...state.activities.filter((item) => item.id)]
+    };
+  }),
 );

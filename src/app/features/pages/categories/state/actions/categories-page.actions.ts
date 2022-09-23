@@ -1,5 +1,5 @@
 import { createAction } from "@ngrx/store";
 
 export const loadCategories = createAction(
-    '[Categories API] Load categories list'
+    '[Categories Page] Load categories list'
 )

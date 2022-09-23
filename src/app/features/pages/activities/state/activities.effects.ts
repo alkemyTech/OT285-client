@@ -19,7 +19,6 @@ export class ActivitiesEffects {
     private actions$: Actions, 
     private ActivitiesService:ActivitiesService,
     private snackBar: SnackBarService,
-    private snackBarService: SnackBarService
     ) { }
 
   loadActivities$ = createEffect(() => {
@@ -49,14 +48,6 @@ export class ActivitiesEffects {
       ))
     )
   })
-  createActivitySuccess$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(activitiesApiActions.createActivitySuccess),
-        tap(() => this.snackBarService.succes("Actividad creada con exito"))
-      ),
-    { dispatch: false }
-  );
   deleteActivity$ = createEffect(() => {
     return this.actions$
     .pipe(
@@ -73,7 +64,7 @@ export class ActivitiesEffects {
     () =>
       this.actions$.pipe(
         ofType(activitiesApiActions.deleteActivitySuccess),
-        tap(() => this.snackBarService.succes("Actividad eliminada con exito"))
+        tap(() => window.location.reload())
       ),
     { dispatch: false }
   );

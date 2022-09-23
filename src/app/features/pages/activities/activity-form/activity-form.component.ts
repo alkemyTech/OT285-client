@@ -51,7 +51,7 @@ formActivity = new FormGroup({
     let body: Activity = {
       name: this.formActivity.controls["nameActivity"].value,
       description: this.formActivity.controls["descriptionActivity"].value,
-      // image: ''
+      // image: this.formActivity.controls["imageActivity"].value,
     }
     this.store.dispatch(activitiesPageActions.createActivity({activity:body}))
     /* crear actividad  (/activities/create) */

@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { SlidesService } from "src/app/features/services/slides.service";
-import * as SlidesActions from "./slides.actions";
 import { mergeMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
+import * as SlidesApiActions from "./actions/slides-api.actions";
+import * as SlidesPageActions from "./actions/slides-page.actions";
+
 
 @Injectable()
 export class SlidesEffects {
@@ -12,15 +14,15 @@ export class SlidesEffects {
     private slidesService: SlidesService
   ) {}
 
-  loadSlides$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(SlidesActions.loadSlides),
+  loadSlides$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(SlidesPageActions.loadSlides),
       mergeMap(() =>
         this.slidesService.getSlide().pipe(
-          map((slides: any) => SlidesActions.loadSlidesSuccess({ slides })),
-          catchError((error) => of(SlidesActions.loadSlidesFailure({ error })))
+          map((slides: any) => SlidesApiActions.loadSlidesSuccess({slides: slides.data})),
+          catchError((error) => of(SlidesApiActions.loadSlidesFailure({error: error.message})))
         )
       )
-    );
-  });
+    )
+  );
 }

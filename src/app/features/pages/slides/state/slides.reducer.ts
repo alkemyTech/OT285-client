@@ -6,7 +6,7 @@ import {
 } from "@ngrx/store";
 import { Slide } from "src/app/core/models/slide";
 import * as AppState from "src/app/state/app.state";
-import * as SlidesActions from "./slides.actions";
+import * as slidesApiActions from "./actions/slides-api.actions";
 
 export interface State extends AppState.State {
   slides: SlidesState;
@@ -36,14 +36,14 @@ export const getError = createSelector(
 
 export const slidesReducer = createReducer<SlidesState>(
   initialState,
-  on(SlidesActions.loadSlidesSuccess, (state, action): SlidesState => {
+  on(slidesApiActions.loadSlidesSuccess, (state, action): SlidesState => {
     return {
       ...state,
       slides: action.slides,
       error: "",
     };
   }),
-  on(SlidesActions.loadSlidesFailure, (state, action): SlidesState => {
+  on(slidesApiActions.loadSlidesFailure, (state, action): SlidesState => {
     return {
       ...state,
       slides: [],

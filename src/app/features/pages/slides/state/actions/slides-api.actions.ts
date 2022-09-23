@@ -4,11 +4,11 @@ import { Slide } from "src/app/core/models/slide";
 export const loadSlides = createAction("[slides] Load slides");
 
 export const loadSlidesSuccess = createAction(
-  "[slides] Load success",
+  "[Slides API] Load success",
   props<{ slides: Slide[] }>()
 );
 
 export const loadSlidesFailure = createAction(
-  "[slides] Load fail",
+  "[Slides API] Load fail",
   props<{ error: string }>()
 );

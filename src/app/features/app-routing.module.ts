@@ -4,9 +4,11 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard"
 import { DonationsGuard } from "./services/donations.guard";
+import { AdminGuard } from "../core/guards/admin.guard";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+
 
 const routes: Routes = [
   {
@@ -58,8 +60,15 @@ const routes: Routes = [
 
   {
     path: "backoffice",
-    // canActivate:[AdminOnlyGuard],
-    children: [      
+    canActivate: [AdminGuard],
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./pages/dashboard/dashboard.module").then(
+            (m) => m.DashboardModule
+          ),
+      },
       {
         path: "home",
         loadChildren: () =>

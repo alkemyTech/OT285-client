@@ -39,7 +39,7 @@ const routes: Routes = [
       import("./pages/donations/donations.module").then(
         (m) => m.DonationsModule
       ),
-    canActivate: [DonationsGuard]
+    // canActivate: [DonationsGuard]
   },
   {
     path: "auth",

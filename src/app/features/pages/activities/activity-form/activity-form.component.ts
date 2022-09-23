@@ -31,8 +31,7 @@ formActivity = new FormGroup({
      ('',[Validators.required,
        Validators.min(3)]),
     imageActivity: new FormControl
-     ('', [Validators.required,
-       Validators.pattern(/.(?:jpg|png)/)]),
+     ('', [Validators.pattern(/.(?:jpg|png)/)]),
     descriptionActivity: new FormControl
     ('Ingesa una descripcion')
 

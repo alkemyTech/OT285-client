@@ -8,8 +8,8 @@ import {
 } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { AuthState, getUser } from "../pages/auth/state/auth.reducers";
 import { map } from 'rxjs/operators';
+import { AuthState, getUser } from "src/app/features/pages/auth/state/auth.reducers";
 
 @Injectable({
   providedIn: "root",

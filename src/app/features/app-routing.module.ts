@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { HomepageComponent } from "./pages/homepage/homepage.component";
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard"
-import { DonationsGuard } from "./services/donations.guard";
+import { DonationsGuard } from "../core/guards/donations.guard";
 import { AdminGuard } from "../core/guards/admin.guard";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/registro'])
@@ -106,20 +106,20 @@ const routes: Routes = [
         loadChildren: () =>
           import("./pages/slides/slides.module").then((m) => m.SlidesModule),
       },
-      {
-        path: "",
-        loadChildren: () =>
-          import("./pages/dashboard/dashboard.module").then(
-            (m) => m.DashboardModule
-          ),
-      },
-      {
-        path: "**",
-        loadChildren: () =>
-          import("./pages/dashboard/dashboard.module").then(
-            (m) => m.DashboardModule
-          ),
-      },
+      // {
+      //   path: "",
+      //   loadChildren: () =>
+      //     import("./pages/dashboard/dashboard.module").then(
+      //       (m) => m.DashboardModule
+      //     ),
+      // },
+      // {
+      //   path: "**",
+      //   loadChildren: () =>
+      //     import("./pages/dashboard/dashboard.module").then(
+      //       (m) => m.DashboardModule
+      //     ),
+      // },
     ],
   },
   {

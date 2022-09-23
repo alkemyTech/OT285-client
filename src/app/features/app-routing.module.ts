@@ -106,20 +106,13 @@ const routes: Routes = [
         loadChildren: () =>
           import("./pages/slides/slides.module").then((m) => m.SlidesModule),
       },
-      // {
-      //   path: "",
-      //   loadChildren: () =>
-      //     import("./pages/dashboard/dashboard.module").then(
-      //       (m) => m.DashboardModule
-      //     ),
-      // },
-      // {
-      //   path: "**",
-      //   loadChildren: () =>
-      //     import("./pages/dashboard/dashboard.module").then(
-      //       (m) => m.DashboardModule
-      //     ),
-      // },
+      {
+        path: "**",
+        loadChildren: () =>
+          import("./pages/dashboard/dashboard.module").then(
+            (m) => m.DashboardModule
+          ),
+      },
     ],
   },
   {

@@ -3,9 +3,10 @@
     ><mat-list>
       <mat-list-item><a routerLink="/backoffice">Dashboard</a></mat-list-item>
       <mat-list-item *ngFor="let route of routes"
-        ><a [routerLink]="['/backoffice/' + route.path]">
+        ><a *ngIf="route.path != '**'" [routerLink]="['/backoffice/' + route.path]">
           {{ route.path }}
-        </a></mat-list-item
+        </a>
+      </mat-list-item
       >
     </mat-list></mat-sidenav
   >
